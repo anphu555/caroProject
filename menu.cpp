@@ -116,6 +116,8 @@ void MenuHandler() {
     while (true) {
         system("cls");
 
+        backgroundMusicSound();
+
         AboutLogo(70, 10);
 
         CaroLogo(25, 3);
