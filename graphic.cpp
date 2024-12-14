@@ -29,7 +29,9 @@ void CaroLogo(int x, int y)
 void AboutLogo(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, luu vô để hồi đổi lại
-	// tạo biến logo caro
+
+	
+	// tạo biến 
 	wstring logo[12];
 			
 	logo[0] =  L"⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣄⡀                ";

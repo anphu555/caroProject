@@ -10,7 +10,6 @@ extern int _COMMAND;
 extern int _X, _Y;
 
 
-
 void GotoXY(int x, int y)
 {
     COORD coord;
@@ -44,6 +43,8 @@ void AppearCursor()
     cursorInfo.bVisible = true;
     SetConsoleCursorInfo(out, &cursorInfo);
 }
+
+
 
 void DrawBoard() // pSize = BOARD_SIZE
 {
@@ -151,7 +152,7 @@ int ProcessFinish(int pWhoWin)
 int AskContinue()
 {
     GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 4);
-    //cout << BACKGROUND_MAGNETA;
+
     cout << "Nhan y/n de choi lai hoac thoat: ";
     return toupper(getch());
 }

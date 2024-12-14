@@ -14,11 +14,11 @@ void About(){
     printf("\n======================== ABOUT ========================\n");
     printf("A small caro project developed by a bunch of randoms \n");
     printf("Developers: \n");
-    printf("24127494: Vo An Phu\n");//điền tên, mssv dô nào mấy fen hehe..
-    printf("24127074: Nguyen Le Duy Loc\n");//điền tên, mssv dô nào mấy fen hehe..
-    printf("24127011: Nguyen Tuan An\n");//điền tên, mssv dô nào mấy fen hehe..
-    printf("24127375: Nguyen Tai Hoan\n");//điền tên, mssv dô nào mấy fen hehe..
-    printf("24127420: Pham Dinh Gia Khanh\n");//điền tên, mssv dô nào mấy fen hehe..
+    printf("24127494: Vo An Phu\n");
+    printf("24127074: Nguyen Le Duy Loc\n");
+    printf("24127011: Nguyen Tuan An\n");
+    printf("24127375: Nguyen Tai Hoan\n");
+    printf("24127420: Pham Dinh Gia Khanh\n");
     printf("\n======================================================\n");
 }
 
@@ -121,8 +121,9 @@ void MenuHandler() {
         AboutLogo(70, 10);
 
         CaroLogo(25, 3);
-        //cout << "====================== THE CARO GAME ======================\n\n"; 
+
         system("color f0");
+
         // display menu with highlights
 
         // vị trí các ô chức năng
@@ -196,6 +197,7 @@ void MenuHandler() {
             case 27: // Escape key
                 ExitGame();
                 exit(0);
+                break;
         }
     }
 }
