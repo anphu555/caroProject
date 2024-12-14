@@ -118,7 +118,8 @@ void MenuHandler() {
 
         backgroundMusicSound();
 
-        AboutLogo(70, 10);
+        MenuLogo1(70, 14);
+        MenuLogo2(10, 14);
 
         CaroLogo(25, 3);
 
@@ -127,7 +128,7 @@ void MenuHandler() {
         // display menu with highlights
 
         // vị trí các ô chức năng
-        int toadoY1 = 15;  // bien test ===============================
+        int toadoY1 = 15;  // bien test ========================================== 
         
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
             GotoXY((RIGHT + LEFT) / 2, toadoY1+i*2); // *2 thì giữa 2 chức năng có 1 khoảng cách
