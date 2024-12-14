@@ -48,7 +48,7 @@ int main() {
  /*   HWND hWnd = GetConsoleWindowNT();
     MoveWindow(hWnd, 1230, 600, 300, 200, TRUE);*/
 
-    PlaySound(TEXT("NhacGame.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    PlaySound(TEXT("music1.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
   
     
 
