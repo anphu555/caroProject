@@ -76,4 +76,5 @@ void WinEffect(int x, int y, int Mode)
 		
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	PlaySound(TEXT("gameWin.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
