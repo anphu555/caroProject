@@ -1,7 +1,6 @@
 ﻿#include "Functions.h"
 #include "Color.h"
 
-// test unicode
 #include "graphic.h"
 
 
@@ -10,8 +9,6 @@ extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
 
-
-// tam thoi de nen TIM (background_magneta) truoc moi cai "cout" =============
 
 
 void GotoXY(int x, int y)
@@ -122,23 +119,33 @@ void DrawBoard() // pSize = BOARD_SIZE
 int ProcessFinish(int pWhoWin)
 {
     GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 2);
-    switch (pWhoWin)
+    if (pWhoWin == 2) // chưa có ai thắng hoặc hòa
     {
-    case -1:
-        //cout << BACKGROUND_MAGNETA;
-        cout << "Nguoi choi O da thang va nguoi choi X da thua" /*<< COLOR_RESET*/ << endl;
-        break;
-    case 1:
-        //cout << BACKGROUND_MAGNETA;
-        cout << "Nguoi choi X da thang va nguoi choi O da thua" /*<< COLOR_RESET*/ << endl;
-        break;
-    case 0:
-        //cout << BACKGROUND_MAGNETA;
-        cout << "Hai ben da hoa!" /*<< COLOR_RESET*/ << endl;
-        break;
-    case 2:
         _TURN = !_TURN;
     }
+    else
+    {
+        WinEffect(50, 15, pWhoWin);
+    }
+    
+    //switch (pWhoWin)
+    //{
+    //case -1:
+    //    // o win
+    //    WinEffect(50, 15, pWhoWin);
+    //    cout << "Nguoi choi O da thang va nguoi choi X da thua" << endl;
+    //    break;
+    //case 1:
+    //    // x win
+    //    cout << "Nguoi choi X da thang va nguoi choi O da thua" << endl;
+    //    break;
+    //case 0:
+    //    // draw
+    //    cout << "Hai ben da hoa!" << endl;
+    //    break;
+    //case 2:
+    //    _TURN = !_TURN;
+    //}
     GotoXY(_X, _Y);
     return pWhoWin;
 }
