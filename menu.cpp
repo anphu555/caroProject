@@ -115,6 +115,9 @@ void MenuHandler() {
     int selectedItem = 0;
     while (true) {
         system("cls");
+
+        AboutLogo(70, 10);
+
         CaroLogo(25, 3);
         //cout << "====================== THE CARO GAME ======================\n\n"; 
         system("color f0");
@@ -209,8 +212,6 @@ void InGameMenu() {
     
     while (true) {
         system("cls");
-        // TAM THOI DE MAU TIM truoc moi cai "cout"===============================
-        //cout << BACKGROUND_MAGNETA;
         cout << "====================== PAUSING ======================" << "\n" << "\n";
         
         // display menu with highlights
@@ -284,10 +285,8 @@ void InGameMenu() {
                     for (int j = 0; j < BOARD_SIZE; j++) {
                         GotoXY(_A[i][j].x, _A[i][j].y);
                         if (_A[i][j].c == -1) {
-                            //cout << BACKGROUND_MAGNETA;
                             cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
                         } else if (_A[i][j].c == 1) {
-                            //cout << BACKGROUND_MAGNETA;
                             cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
                         }
                     }

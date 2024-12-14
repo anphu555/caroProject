@@ -1,5 +1,8 @@
 #include "Functions.h"
 
+#include "Color.h"
+#include "graphic.h"
+
 _POINT _A[BOARD_SIZE][BOARD_SIZE];
 bool _TURN;
 int _COMMAND;
@@ -47,6 +50,8 @@ int main() {
 
     PlaySound(TEXT("NhacGame.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
   
+    
+
     system("color f0");
     FixConsoleWindow();
     HideCursor();
