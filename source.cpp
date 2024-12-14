@@ -8,7 +8,8 @@ bool _TURN;
 int _COMMAND;
 int _X, _Y;
 
-bool SFXmode; // 0 off, 1 on
+bool backgroundMusicmode = true;
+bool SFXmode = true; // false off, true on
 
 //HWND WINAPI GetConsoleWindowNT(void)
 //{
@@ -48,9 +49,10 @@ int main() {
  /*   HWND hWnd = GetConsoleWindowNT();
     MoveWindow(hWnd, 1230, 600, 300, 200, TRUE);*/
 
-    PlaySound(TEXT("music1.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-  
-    
+    //PlaySound(TEXT("NhacGame.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
+    // play mp3 file
+    backgroundMusicSound();
 
     system("color f0");
     FixConsoleWindow();

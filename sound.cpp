@@ -1,0 +1,14 @@
+#include "Functions.h"
+
+extern bool backgroundMusicmode;
+extern bool SFXmode; // false off, true on
+
+
+void backgroundMusicSound()
+{
+	(backgroundMusicmode) ? mciSendString(L"play \"music1.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
+}
+void SFXSound()
+{
+	(SFXmode) ? PlaySound(TEXT("enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0,0,0);
+}

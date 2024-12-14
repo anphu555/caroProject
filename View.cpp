@@ -125,6 +125,7 @@ int ProcessFinish(int pWhoWin)
     }
     else
     {
+        // 50,15 là tọa độ kiểm thử
         WinEffect(50, 15, pWhoWin);
     }
     
