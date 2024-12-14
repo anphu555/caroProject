@@ -1,5 +1,7 @@
 Chức năng còn thiếu:
 - Nhận biết thắng thua (chưa nhận dạng được tại sao thắng)
+- Fix kích thước console windows
+
 - Chức năng thêm tên khi khởi tạo trò chơi mới
 - Settings (music, sfx)
 - Bổ sung menu, menu ingame (chức năng setting)
