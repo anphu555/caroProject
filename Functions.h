@@ -14,7 +14,7 @@
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
 #include <conio.h>
-#include    <ctype.h>
+#include <ctype.h>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -87,5 +87,10 @@ void ResetData();
 //void GarbageCollect();
 int TestBoard();
 int CheckBoard(int, int);
+
+// Sound
+void backgroundMusicSound();
+void SFXSound();
+
 
 #endif
