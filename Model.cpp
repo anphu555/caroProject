@@ -35,7 +35,7 @@ int TestBoard() {
 
     // check ngang
     for (int i = 0; i < BOARD_SIZE; i++) {
-        for (int j = 0; j < BOARD_SIZE; j++) { // tru 5 vi no giam
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (_A[i][j].c != 0 &&
                 _A[i][j].c == _A[i][j+1].c &&
                 _A[i][j].c == _A[i][j+2].c &&
