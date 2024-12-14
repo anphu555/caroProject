@@ -135,7 +135,6 @@ void MenuHandler() {
 				cout << "   " << menuItems[i];
 			}
         }
-        GotoXY(120, 20); cout << "as";
         
         // inpit
         int ch = getch();

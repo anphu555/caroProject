@@ -116,8 +116,6 @@ void DrawBoard() // pSize = BOARD_SIZE
     GotoXY(RIGHT, TOP);     cout << char(187);
     GotoXY(RIGHT, BOTTOM);  cout << char(188);
 
-
-    cout << BACKGROUND_BLUE << COLOR_GREEN << char(254);
     cout << COLOR_RESET;
 }
 
