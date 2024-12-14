@@ -48,9 +48,6 @@ void AppearCursor()
 void DrawBoard() // pSize = BOARD_SIZE
 {
     AppearCursor();
-    // ===========================================================
-    //PlaySound(0, 0, 0);
-    //============================================================
 
     cout << COLOR_GREEN << COLOR_BOLD; // tao mau cho toan bang
 
@@ -72,7 +69,7 @@ void DrawBoard() // pSize = BOARD_SIZE
         else
             cout << char(205);
     }
-    // t?o các dòng cho bàn c?
+    // tao các dòng cho bàn co
     char Line0[4*BOARD_SIZE + 1 + 1];   // dòng có ô trong, +1 cho vien phai, +1 de them '\0'
     char Line1[4 * BOARD_SIZE + 1 + 1]; // dòng vien
 

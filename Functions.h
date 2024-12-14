@@ -90,7 +90,8 @@ int CheckBoard(int, int);
 
 // Sound
 void backgroundMusicSound();
-void SFXSound();
+void enterXOSound();
+void winSound();
 
 
 #endif

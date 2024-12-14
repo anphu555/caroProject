@@ -8,7 +8,11 @@ void backgroundMusicSound()
 {
 	(backgroundMusicmode) ? mciSendString(L"play \"music1.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
 }
-void SFXSound()
+void enterXOSound()
 {
 	(SFXmode) ? PlaySound(TEXT("enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0,0,0);
+}
+void winSound()
+{
+	(SFXmode) ? PlaySound(TEXT("gameWin.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
