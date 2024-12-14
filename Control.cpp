@@ -110,13 +110,13 @@ void GameMove()
                 case -1:
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_RED << COLOR_BOLD<< "X" << COLOR_RESET;
-                    PlaySound(TEXT("Sounds\\enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                    PlaySound(TEXT("enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC);
                     break;
                 
                 case 1:
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_BLUE << COLOR_BOLD<< "O" << COLOR_RESET;
-                    PlaySound(TEXT("Sounds\\enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                    PlaySound(TEXT("enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC);
                     break;
                 
                 case 0:

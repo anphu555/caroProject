@@ -23,7 +23,6 @@
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="source.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
