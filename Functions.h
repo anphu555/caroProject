@@ -1,0 +1,84 @@
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+#define LEFT 3 // 33
+#define TOP 1 // 1
+#define RIGHT LEFT+BOARD_SIZE*4
+#define BOTTOM TOP+BOARD_SIZE*2
+
+// kich thuoc mac dinh cua terminal la 120x30 tren may toi la the????? cai nay chinh duoc....
+
+// 1 o co kich thuoc la 4x2 (ngang 4 dai 2)
+#define BOARD_SIZE 13
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+
+#include <conio.h>
+#include <ctype.h>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <windows.h>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <experimental/filesystem>
+using namespace std;
+using namespace std::experimental::filesystem;
+
+struct Cursor {
+    COORD coord;
+};
+
+struct CursorRemove {
+    COORD coord;
+};
+
+struct XO{
+    COORD X[200], O[200];
+    int nX = 0, nO = 0;
+};
+
+
+struct _POINT {
+    int x , y, c;
+};
+
+
+
+//Control
+void StartGame();
+void ExitGame();
+void MoveRight();
+void MoveLeft();
+void MoveDown();
+void MoveUp();
+void moveWASD();
+
+//View
+void GotoXY(int, int);
+void FixConsoleWindow();
+void DrawBoard();
+int ProcessFinish(int);
+int AskContinue();
+
+
+//Menu
+void MenuHandler();
+void About();
+void loadGame();
+void saveGame();
+void Guide();
+void InGameMenu();
+vector<string> GetSaveFiles();
+string SelectSaveFile(bool);
+
+
+
+//Model
+void ResetData();
+//void GarbageCollect();
+int TestBoard();
+int CheckBoard(int, int);
+
+#endif
