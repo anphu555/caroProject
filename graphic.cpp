@@ -88,6 +88,77 @@ void MenuLogo2(int x, int y)
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
+void IngameLogo(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"╔═╗╔═╦═══╗";
+	logo[1] = L"╚╗╚╝╔╣╔═╗║";
+	logo[2] = L" ╚╗╔╝║║▒║║";
+	logo[3] = L" ╔╝╚╗║║▒║║";
+	logo[4] = L"╔╝╔╗╚╣╚═╝║";
+	logo[5] = L"╚═╝╚═╩═══╝";
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
+
+void IngameLogo4(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"████████╗██╗░░██╗███████╗░█████╗░░█████╗░██████╗░░█████╗░░██████╗░░█████╗░███╗░░░███╗███████╗";
+	logo[1] = L"╚══██╔══╝██║░░██║██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗████╗░████║██╔════╝";
+	logo[2] = L"░░░██║░░░███████║█████╗░░██║░░╚═╝███████║██████╔╝██║░░██║██║░░██╗░███████║██╔████╔██║█████╗░░";
+	logo[3] = L"░░░██║░░░██╔══██║██╔══╝░░██║░░██╗██╔══██║██╔══██╗██║░░██║██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░";
+	logo[4] = L"░░░██║░░░██║░░██║███████╗╚█████╔╝██║░░██║██║░░██║╚█████╔╝╚██████╔╝██║░░██║██║░╚═╝░██║███████╗";
+	logo[5] = L"░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝";
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << COLOR_RED << COLOR_BOLD << logo[i] << " " << COLOR_RESET;
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
+
+void IngameLogo2(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"╔════╦╗▒╔╦═══╗╔═══╦═══╦═══╦═══╗╔═══╦═══╦═╗╔═╦═══╗";
+	logo[1] = L"║╔╗╔╗║║▒║║╔══╝║╔═╗║╔═╗║╔═╗║╔═╗║║╔═╗║╔═╗║║╚╝║║╔══╝";
+	logo[2] = L"╚╝║║╚╣╚═╝║╚══╗║║▒╚╣║▒║║╚═╝║║▒║║║║▒╚╣║▒║║╔╗╔╗║╚══╗";
+	logo[3] = L"▒▒║║▒║╔═╗║╔══╝║║▒╔╣╚═╝║╔╗╔╣║▒║║║║╔═╣╚═╝║║║║║║╔══╝";
+	logo[4] = L"▒▒║║▒║║▒║║╚══╗║╚═╝║╔═╗║║║╚╣╚═╝║║╚╩═║╔═╗║║║║║║╚══╗";
+	logo[5] = L"▒▒╚╝▒╚╝▒╚╩═══╝╚═══╩╝▒╚╩╝╚═╩═══╝╚═══╩╝▒╚╩╝╚╝╚╩═══╝";
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}//cai nay se tach ra lam x voi o roi de 2 ben
+void IngameLogo3(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"██╗░░██╗ ░█████╗░";
+	logo[1] = L"╚██╗██╔╝ ██╔══██╗";
+	logo[2] = L"░╚███╔╝ ░██║░░██║";
+	logo[3] = L"░██╔██╗ ░██║░░██║║";
+	logo[4] = L"██╔╝╚██╗ ╚█████╔╝";
+	logo[5] = L"╚═╝░░╚═╝ ░╚════╝░";
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
 
 void AboutLogo(int x, int y)
 {

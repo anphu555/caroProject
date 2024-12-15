@@ -147,11 +147,12 @@ void MenuHandler() {
         backgroundMusicSound();
 
         MenuLogo1(70, 14);
+        /*CaroLogo(40, 1);*/
+        IngameLogo4(10, 5);
         MenuLogo2(10, 14);
 
-        CaroLogo(25, 3);
-
         system("color f0");
+
 
         // display menu with highlights
 
