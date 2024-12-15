@@ -48,9 +48,10 @@ void Guide() {
     printf("=======================================================\n\n");
 }
 
-void Settings(int SettingsMode) { // mode 0 la luc moi vo game, 1 la luc pause
+void Settings(bool SettingsMode = true) { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
     // cais này sẽ chỉnh thành logo sau
     system("cls");
+    HideCursor();
     cout << "=======Settings======\n\n";
 
     const int NUM_SETTINGS_ITEMS = 3;
@@ -121,12 +122,12 @@ void Settings(int SettingsMode) { // mode 0 la luc moi vo game, 1 la luc pause
                 }
             }
             else if (selectedItem == 2) { // exit
-                if (SettingsMode == 0)
+                if (SettingsMode) // true, exit ra menu
                 {
                     MenuHandler();
                     return;
                 }
-                else if (SettingsMode == 1)
+                else
                 {
                     return;
                 }
@@ -207,7 +208,7 @@ void MenuHandler() {
 
                     case 2: // Settings
                         system("cls");
-                        Settings(0);
+                        Settings();
                         cout << "Press any key to return to menu...";
                         getch();
                         break;
@@ -255,6 +256,7 @@ void InGameMenu() {
     
     while (true) {
         system("cls");
+        HideCursor();
         cout << "====================== PAUSING ======================" << "\n" << "\n";
         
         // display menu with highlights
@@ -285,6 +287,7 @@ void InGameMenu() {
                 switch (selectedItem) {
                     case 0: // Continue
                         system("cls");
+                        AppearCursor();
                         DrawBoard();
                         // redraw existing X and O 
                         for (int i = 0; i < BOARD_SIZE; i++) {
@@ -313,7 +316,7 @@ void InGameMenu() {
                         return;
 
                     case 3: // Settings
-                        Settings(1);
+                        Settings(false);
                         break;
                     
                     case 4: // Exit Game
