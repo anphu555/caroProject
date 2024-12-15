@@ -6,7 +6,8 @@ extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
 
-extern bool SFXmode; // 0 off, 1 on
+extern bool backgroundMusicmode;
+extern bool SFXmode; // false off, true on
 
 // TAM THOI DE MAU TIM ===================================
 
@@ -48,158 +49,83 @@ void Guide() {
 }
 
 void Settings() {
-    cout << "============Menu======\n\n";
+    // cais này sẽ chỉnh thành logo sau
+    system("cls");
+    cout << "=======Settings======\n\n";
 
-    const int NUM_SETTINGS_ITEMS = 4;
+    const int NUM_SETTINGS_ITEMS = 3;
     string settingsItems[NUM_SETTINGS_ITEMS] = {
-        "Language: English",
-        "Music: ON",       
-        "SFX: ON",         
-        "Game setting"        // Mục này bỏ vô chơi với máy hay người
+        "Music: ON",
+        "SFX: ON",
+        "Exit"
     };
 
-    int selectedItem = 0; 
-    bool running = true;   
+    int selectedItem = 0;
 
-    while (running) {
+    while (1) {
         // Hiển thị menu cài đặt
         for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-            int toadoY1 = 15; 
+            system("cls");
 
+            int toadoY1 = 15;
             GotoXY(10, toadoY1 + i * 2);
 
             if (i == selectedItem) {
-                cout << "\x1B[47m\x1B[30m>> " << settingsItems[i] << " <<\x1B[0m";
+                cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+                cout << ">> " << settingsItems[i] << " <<";
+                cout << COLOR_RESET;
             }
             else {
                 cout << "   " << settingsItems[i];
             }
-
-            cout << endl;
         }
 
+        // lựa chọn các item
         char key = _getch();
 
         switch (key) {
-        case BACKSPACE_KEY: {
-            system("cls");
-            MenuHandler();
-            }
-        case UP_KEY: 
-            if (selectedItem > 0) {
-                selectedItem--;
-            }
+        case UP_KEY:    case 'W':   case 'w':
+            selectedItem = (selectedItem - 1 + NUM_SETTINGS_ITEMS) % NUM_SETTINGS_ITEMS;
             break;
-        case DOWN_KEY:
-            if (selectedItem < NUM_SETTINGS_ITEMS - 1) {
-                selectedItem++;
-            }
+
+        case DOWN_KEY:  case 'S':   case 's':
+            selectedItem = (selectedItem + 1 + NUM_SETTINGS_ITEMS) % NUM_SETTINGS_ITEMS;
             break;
-        case TOGGLE_KEY:
-                if (selectedItem == 0) {
-                    if (settingsItems[selectedItem] == "Language: English") {
-                        settingsItems[selectedItem] = "Language: Vietnamese";
-                    }
-                    else {
-                        settingsItems[selectedItem] = "Language: English";
-                    }
-            }
-            else if (selectedItem == 1) {
-              
-                if (settingsItems[selectedItem] == "Music: OFF") {
+
+        case ENTER_KEY:
+            if (selectedItem == 0) { // music mode
+
+                if (settingsItems[selectedItem] == "Music: OFF")
+                {
                     settingsItems[selectedItem] = "Music: ON";
+                    backgroundMusicmode = true;
+                    backgroundMusicSound();
                 }
                 else {
                     settingsItems[selectedItem] = "Music: OFF";
+                    backgroundMusicmode = false;
+                    backgroundMusicSound();
                 }
             }
-            else if (selectedItem == 2) {
-              
-                if (settingsItems[selectedItem] == "SFX: OFF") {
+            else if (selectedItem == 1) { // sfx mode
+
+                if (settingsItems[selectedItem] == "SFX: OFF")
+                {
                     settingsItems[selectedItem] = "SFX: ON";
+                    SFXmode = true;
                 }
                 else {
                     settingsItems[selectedItem] = "SFX: OFF";
+                    SFXmode = false;
                 }
             }
-            else if (selectedItem == 3) {
-                bool gameSettingsRunning = true;
-                string gameSettingsItems[] = {
-                    "Play against Player",
-                    "Play against Computer",
-                    "Back"
-                };
-                int selectedGameItem = 0;
-
-                while (gameSettingsRunning) {
-                    system("cls");  // Xóa màn hình
-                    // Hiển thị menu con của game settings
-      
-                    for (int i = 0; i < 3; i++) {
-                        int toadoY1 = 15; // Tọa độ dòng đầu tiên
-                        GotoXY(10, toadoY1 + i * 2); // *2 để tạo khoảng cách giữa các mục
-
-                        if (i == selectedGameItem) {
-                            cout << "\x1B[47m\x1B[30m>> " << gameSettingsItems[i] << " <<\x1B[0m";
-                        }
-                        else {
-                            cout << "   " << gameSettingsItems[i];
-                        }
-
-                        cout << endl;
-                    }
-
-                   
-                    char key = _getch();
-
-                    switch (key) {
-                    case UP_KEY: 
-                        if (selectedGameItem > 0) {
-                            selectedGameItem--;
-                        }
-                        break;
-                    case DOWN_KEY: 
-                        if (selectedGameItem < 2) {
-                            selectedGameItem++;
-                        }
-                        break;
-                    case ENTER_KEY: 
-                        if (selectedGameItem == 0) {
-                            cout << "\nYou selected: Play against Player\n";
-                            
-                            gameSettingsRunning = false; 
-                        }
-                        else if (selectedGameItem == 1) {
-                            cout << "\nYou selected: Play against Computer\n";
-                           
-                            gameSettingsRunning = false; 
-                        }
-                        else if (selectedGameItem == 2) {
-                            gameSettingsRunning = false; 
-                        }
-                        break;
-                    case 'q': 
-                        gameSettingsRunning = false; 
-                        break;
-                    }
-                }
+            else if (selectedItem == 2) { // exit
+                MenuHandler();
+                return;
             }
-            break;
-        case ENTER_KEY: 
-            if (selectedItem == 3) {
-                cout << "\nEntering game settings...\n";
-                //chỗ đây chuyển sang phần setting
-            }
-            else {
-                cout << "\nOption selected: " << settingsItems[selectedItem] << endl;
-            }
-            break;
-        case 'q':
-            running = false;
+
             break;
         }
-
-        system("cls");
     }
 }
 
