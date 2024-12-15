@@ -48,7 +48,7 @@ void Guide() {
     printf("=======================================================\n\n");
 }
 
-void Settings() {
+void Settings(int SettingsMode) { // mode 0 la luc moi vo game, 1 la luc pause
     // cais này sẽ chỉnh thành logo sau
     system("cls");
     cout << "=======Settings======\n\n";
@@ -121,8 +121,16 @@ void Settings() {
                 }
             }
             else if (selectedItem == 2) { // exit
-                MenuHandler();
-                return;
+                if (SettingsMode == 0)
+                {
+                    MenuHandler();
+                    return;
+                }
+                else if (SettingsMode == 1)
+                {
+                    return;
+                }
+                    
             }
 
             break;
@@ -199,7 +207,7 @@ void MenuHandler() {
 
                     case 2: // Settings
                         system("cls");
-                        Settings();
+                        Settings(0);
                         cout << "Press any key to return to menu...";
                         getch();
                         break;
@@ -234,11 +242,12 @@ void MenuHandler() {
 
 
 void InGameMenu() {
-    const int NUM_MENU_ITEMS = 4;
+    const int NUM_MENU_ITEMS = 5;
     const char* menuItems[NUM_MENU_ITEMS] = {
         "Continue",
         "Save Game", 
         "Load Game",
+        "Settings",
         "Exit Game"
     };
     
@@ -302,8 +311,12 @@ void InGameMenu() {
                         loadGame();
                         GameMove();
                         return;
+
+                    case 3: // Settings
+                        Settings(1);
+                        break;
                     
-                    case 3: // Exit Game
+                    case 4: // Exit Game
                         ExitGame();
                         MenuHandler();
                         return;
