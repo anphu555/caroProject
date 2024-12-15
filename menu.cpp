@@ -23,7 +23,6 @@ void About(){
     printf("\n======================================================\n");
 }
 
-
 void Guide() {
     printf("\n======================== GUIDE ========================\n");
     //GotoXY(0, 0);//
@@ -240,7 +239,6 @@ void MenuHandler() {
         }
     }
 }
-
 
 void InGameMenu() {
     const int NUM_MENU_ITEMS = 5;
@@ -517,11 +515,17 @@ void saveGame() {
                         
                         cout << "Press any key to continue...";
                         getch();
+
+                        fclose(outFile);
+
                         return;
                     } else {
                         printf("Error: Unable to save the file.\n");
                         cout << "Press any key to continue...";
                         getch();
+
+                        fclose(outFile);
+
                         return;
                     }
                 } else {
@@ -548,11 +552,18 @@ void saveGame() {
                         
                         cout << "Press any key to continue...";
                         getch();
+
+                        fclose(outFile);
+
                         return;
-                    } else {
+                    }
+                    else {
                         printf("Error: Unable to save the file.\n");
                         cout << "Press any key to continue...";
                         getch();
+
+                        fclose(outFile);
+
                         return;
                     }
                 }
@@ -563,8 +574,6 @@ void saveGame() {
         }
     }
 }
-
-
 
 void loadGame() {
     string filename = SelectSaveFile(false);
@@ -598,6 +607,13 @@ void loadGame() {
         fclose(inFile);
 
         // draw board
+
+
+        // tới đây sao ko gọi lại new game
+        /*system("cls");
+        StartGame();
+        GameMove();
+        return;*/
         DrawBoard();
         
         // draw X and O 
@@ -621,4 +637,6 @@ void loadGame() {
         getch();
         MenuHandler();
     }
+
+    fclose(inFile);
 }
