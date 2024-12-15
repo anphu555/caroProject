@@ -26,6 +26,22 @@ void FixConsoleWindow()
     SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
+void setConsoleSize(int width, int height) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // handle tro vo cai console
+
+    // Get the console screen buffer info
+    CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+    GetConsoleScreenBufferInfo(hConsole, &bufferInfo);
+
+    // Set the size of the screen buffer
+    SMALL_RECT windowSize = { 0, 0, width - 1, height - 1 };
+    COORD bufferSize = { width, height };
+    SetConsoleScreenBufferSize(hConsole, bufferSize);
+
+    // Set the console window size
+    SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
+}
+
 void HideCursor()
 {
     HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -114,12 +130,12 @@ void DrawBoard() // pSize = BOARD_SIZE
     // khoảng cách từ rìa bàn cờ tới mép ngoài hiện là 20
 
     // vẽ rộng ra 2 bên bàn cờ
-    GotoXY(LEFT - 20 - 1, TOP);      cout << char(201);  // goc ria ngoai
-    GotoXY(LEFT - 20 - 1, BOTTOM);   cout << char(200);
-    GotoXY(RIGHT + 20 + 1, TOP);     cout << char(187);
-    GotoXY(RIGHT + 20 + 1, BOTTOM);  cout << char(188);
+    GotoXY(LEFT - 33 - 1, TOP);      cout << char(201);  // goc ria ngoai
+    GotoXY(LEFT - 33 - 1, BOTTOM);   cout << char(200);
+    GotoXY(RIGHT + 33 + 1, TOP);     cout << char(187);
+    GotoXY(RIGHT + 33 + 1, BOTTOM);  cout << char(188);
 
-    for (int i = 1; i <= 20; i++) // ve cac duong noi tren
+    for (int i = 1; i <= 33; i++) // ve cac duong noi tren
     {
         GotoXY(LEFT - i, TOP);       cout << char(205);
         GotoXY(LEFT - i, BOTTOM);    cout << char(205);
@@ -128,8 +144,8 @@ void DrawBoard() // pSize = BOARD_SIZE
     }
     for (int i = 1; i < (BOTTOM - TOP); i++)
     {
-        GotoXY(LEFT - 20 - 1, TOP + i);  cout << char(186);
-        GotoXY(RIGHT + 20 + 1, TOP + i); cout << char(186);
+        GotoXY(LEFT - 33 - 1, TOP + i);  cout << char(186);
+        GotoXY(RIGHT + 33 + 1, TOP + i); cout << char(186);
     }
 
     cout << COLOR_RESET;
