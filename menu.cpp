@@ -481,6 +481,7 @@ void saveGame() {
             
             case 13: // enter
                 if (selectedOption == 0) {
+                    AppearCursor();
                     // save to new
                     string filename = SelectSaveFile(true);
                     if (filename.empty()) return; // user canceled
@@ -597,12 +598,6 @@ void loadGame() {
 
         // draw board
 
-
-        // tới đây sao ko gọi lại new game
-        /*system("cls");
-        StartGame();
-        GameMove();
-        return;*/
         DrawBoard();
         
         // draw X and O 
@@ -610,12 +605,15 @@ void loadGame() {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 GotoXY(_A[i][j].x, _A[i][j].y);
                 if (_A[i][j].c == -1) {
-                    cout << "X";
+                    cout << BACKGROUND_WHITE;
+                    cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
                 } else if (_A[i][j].c == 1) {
-                    cout << "O";
+                    cout << BACKGROUND_WHITE;
+                    cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
                 }
             }
         }
+       
         
         // position cursor
         GotoXY(_X, _Y);

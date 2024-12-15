@@ -105,11 +105,32 @@ void DrawBoard() // pSize = BOARD_SIZE
         else
             cout << Line1;
     }
-    // ve cac goc
-    GotoXY(LEFT, TOP);      cout << char(201);
-    GotoXY(LEFT, BOTTOM);   cout << char(200);
-    GotoXY(RIGHT, TOP);     cout << char(187);
-    GotoXY(RIGHT, BOTTOM);  cout << char(188);
+    // ve cac goc ria ban co
+    GotoXY(LEFT, TOP);      cout << char(203); 
+    GotoXY(LEFT, BOTTOM);   cout << char(202);
+    GotoXY(RIGHT, TOP);     cout << char(203);
+    GotoXY(RIGHT, BOTTOM);  cout << char(202);
+
+    // khoảng cách từ rìa bàn cờ tới mép ngoài hiện là 20
+
+    // vẽ rộng ra 2 bên bàn cờ
+    GotoXY(LEFT - 20 - 1, TOP);      cout << char(201);  // goc ria ngoai
+    GotoXY(LEFT - 20 - 1, BOTTOM);   cout << char(200);
+    GotoXY(RIGHT + 20 + 1, TOP);     cout << char(187);
+    GotoXY(RIGHT + 20 + 1, BOTTOM);  cout << char(188);
+
+    for (int i = 1; i <= 20; i++) // ve cac duong noi tren
+    {
+        GotoXY(LEFT - i, TOP);       cout << char(205);
+        GotoXY(LEFT - i, BOTTOM);    cout << char(205);
+        GotoXY(RIGHT + i, TOP);      cout << char(205);
+        GotoXY(RIGHT + i, BOTTOM);   cout << char(205);
+    }
+    for (int i = 1; i < (BOTTOM - TOP); i++)
+    {
+        GotoXY(LEFT - 20 - 1, TOP + i);  cout << char(186);
+        GotoXY(RIGHT + 20 + 1, TOP + i); cout << char(186);
+    }
 
     cout << COLOR_RESET;
 }

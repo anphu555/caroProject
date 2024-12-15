@@ -1,6 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-#define LEFT 25 // 3 // toa do cua ban co
+#define LEFT 25 // 3 toa do cua ban co
 #define TOP 1 // 1
 #define RIGHT LEFT+BOARD_SIZE*4
 #define BOTTOM TOP+BOARD_SIZE*2
