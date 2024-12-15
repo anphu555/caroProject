@@ -187,12 +187,12 @@ void WinEffect(int x, int y, int Mode) {
 	};
 
 	wstring XWin[6] = {
-		L"██╗  ██╗     ██╗    ██╗██╗███╗   ██╗",
-		L"╚██╗██╔╝     ██║    ██║██║████╗  ██║",
-		L" ╚███╔╝      ██║ █╗ ██║██║██╔██╗ ██║",
-		L" ██╔██╗      ██║███╗██║██║██║╚██╗██║",
-		L"██╔╝ ██╗     ╚███╔███╔╝██║██║ ╚████║",
-		L"╚═╝  ╚═╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝"
+		L"██╗  ██╗    ██╗    ██╗██╗███╗   ██╗",
+		L"╚██╗██╔╝    ██║    ██║██║████╗  ██║",
+		L" ╚███╔╝     ██║ █╗ ██║██║██╔██╗ ██║",
+		L" ██╔██╗     ██║███╗██║██║██║╚██╗██║",
+		L"██╔╝ ██╗    ╚███╔███╔╝██║██║ ╚████║",
+		L"╚═╝  ╚═╝     ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝"
 	};
 
 	wstring Draw[6] = {
@@ -210,28 +210,38 @@ void WinEffect(int x, int y, int Mode) {
 	// Hiệu ứng chớp nháy
 	for (int blink = 0; blink < 7; ++blink) { // Chớp nháy 7 lần
 		// Hiển thị logo
+		/*system("color 9");
+		cout << " "<<endl;
+		system("color A");
+		cout << " "<<endl;
+		system("color B");
+		cout << " "<<endl;
+		system("color C");
+		cout << " "<<endl;
+		system("color D");
+		cout << " " <<endl;*/
 		for (int i = 0; i < 6; i++) {
+			
 			GotoXY(x, y + i);
 			switch (Mode) {
 			case -1:
-				wcout << OWin[i];
+				wcout << COLOR_BLUE<< OWin[i];
 				break;
 			case 1:
-				wcout << XWin[i];
+				wcout << COLOR_RED<< XWin[i];
 				break;
 			case 0:
-				wcout << Draw[i];
+				wcout << COLOR_CYAN << Draw[i];
 				break;
 			}
 		}
-
 		// Dừng lại một khoảng thời gian
 		//this_thread::sleep_for(chrono::milliseconds(300));
 		Sleep(300);
 		
 		for (int i = 0; i < 6; i++) {
 			GotoXY(x, y + i);
-			wcout << L"                                        "; 
+			wcout << L"                                   "; 
 			//Sleep(100);
 		}
 		Sleep(180);

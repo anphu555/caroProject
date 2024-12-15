@@ -161,12 +161,12 @@ int ProcessFinish(int pWhoWin)
     else if (pWhoWin == 1)
     {
         // 50,15 là tọa độ kiểm thử
-        WinEffect(5, 15, pWhoWin);
+        WinEffect(2.5, 15, pWhoWin);
     }
     else if (pWhoWin == -1)
     {
         // 50,15 là tọa độ kiểm thử
-        WinEffect(80, 15, pWhoWin);
+        WinEffect(84, 15, pWhoWin);
     }
 
     GotoXY(_X, _Y);

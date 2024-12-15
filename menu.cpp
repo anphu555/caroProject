@@ -143,24 +143,22 @@ void MenuHandler() {
     int selectedItem = 0;
     while (true) {
         system("cls");
-
+       
         backgroundMusicSound();
 
         MenuLogo1(70, 14);
-        /*CaroLogo(40, 1);*/
+            /*CaroLogo(40, 1);*/
         IngameLogo4(10, 5);
         MenuLogo2(10, 14);
 
         system("color f0");
-
-
         // display menu with highlights
 
         // vị trí các ô chức năng
         int toadoY1 = 15;  // bien test ========================================== 
         
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-            GotoXY((RIGHT + LEFT) / 2, toadoY1+i*2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+            GotoXY(((RIGHT + LEFT) / 2 ) - 15, toadoY1+i*2); // *2 thì giữa 2 chức năng có 1 khoảng cách
 
 			if (i == selectedItem) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -195,7 +193,7 @@ void MenuHandler() {
                         system("cls");
                         loadGame();
                         GameMove();
-                        return;
+                        break;
 
                     case 2: // Settings
                         system("cls");
