@@ -47,58 +47,156 @@ void Guide() {
     printf("=======================================================\n\n");
 }
 
-
-void Settings()
-{
+void Settings() {
     cout << "============Menu======\n\n";
 
-    const int NUM_SETTINGS_ITEMS = 2;
-    const char* settingsItems[NUM_SETTINGS_ITEMS] = {
-        "Music: ",
-        "SFX: "
+    const int NUM_SETTINGS_ITEMS = 4;
+    string settingsItems[NUM_SETTINGS_ITEMS] = {
+        "Language: English",
+        "Music: ON",       
+        "SFX: ON",         
+        "Game setting"        // Mục này bỏ vô chơi với máy hay người
     };
 
-    int selectedItem = 0; // biến lựa chọn music hoặc sfx
+    int selectedItem = 0; 
+    bool running = true;   
 
-    for (int i = 0; i < NUM_SETTINGS_ITEMS; i++)
-    {
-        int toadoY1 = 15;   // bien testt ==========================================
+    while (running) {
+        // Hiển thị menu cài đặt
+        for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
+            int toadoY1 = 15; 
 
-        GotoXY((RIGHT + LEFT) / 2, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+            GotoXY(10, toadoY1 + i * 2);
 
-        if (i == selectedItem) {
-            cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-            cout << ">> " << settingsItems[i] << " <<";
-            cout << COLOR_RESET;
+            if (i == selectedItem) {
+                cout << "\x1B[47m\x1B[30m>> " << settingsItems[i] << " <<\x1B[0m";
+            }
+            else {
+                cout << "   " << settingsItems[i];
+            }
+
+            cout << endl;
         }
-        else {
-            cout << "   " << settingsItems[i];
+
+        char key = _getch();
+
+        switch (key) {
+        case UP_KEY: 
+            if (selectedItem > 0) {
+                selectedItem--;
+            }
+            break;
+        case DOWN_KEY:
+            if (selectedItem < NUM_SETTINGS_ITEMS - 1) {
+                selectedItem++;
+            }
+            break;
+        case TOGGLE_KEY:
+            if (selectedItem == 0) {
+                if (settingsItems[selectedItem] == "Language: English") {
+                    settingsItems[selectedItem] = "Language: Vietnamese";
+                }
+                else {
+                    settingsItems[selectedItem] = "Language: English";
+                }
+            }
+            else if (selectedItem == 1) {
+              
+                if (settingsItems[selectedItem] == "Music: OFF") {
+                    settingsItems[selectedItem] = "Music: ON";
+                }
+                else {
+                    settingsItems[selectedItem] = "Music: OFF";
+                }
+            }
+            else if (selectedItem == 2) {
+              
+                if (settingsItems[selectedItem] == "SFX: OFF") {
+                    settingsItems[selectedItem] = "SFX: ON";
+                }
+                else {
+                    settingsItems[selectedItem] = "SFX: OFF";
+                }
+            }
+            else if (selectedItem == 3) {
+                bool gameSettingsRunning = true;
+                string gameSettingsItems[] = {
+                    "Play against Player",
+                    "Play against Computer",
+                    "Back"
+                };
+                int selectedGameItem = 0;
+
+                while (gameSettingsRunning) {
+                    system("cls");  // Xóa màn hình
+                    // Hiển thị menu con của game settings
+      
+                    for (int i = 0; i < 3; i++) {
+                        int toadoY1 = 15; // Tọa độ dòng đầu tiên
+                        GotoXY(10, toadoY1 + i * 2); // *2 để tạo khoảng cách giữa các mục
+
+                        if (i == selectedGameItem) {
+                            cout << "\x1B[47m\x1B[30m>> " << gameSettingsItems[i] << " <<\x1B[0m";
+                        }
+                        else {
+                            cout << "   " << gameSettingsItems[i];
+                        }
+
+                        cout << endl;
+                    }
+
+                   
+                    char key = _getch();
+
+                    switch (key) {
+                    case UP_KEY: 
+                        if (selectedGameItem > 0) {
+                            selectedGameItem--;
+                        }
+                        break;
+                    case DOWN_KEY: 
+                        if (selectedGameItem < 2) {
+                            selectedGameItem++;
+                        }
+                        break;
+                    case ENTER_KEY: 
+                        if (selectedGameItem == 0) {
+                            cout << "\nYou selected: Play against Player\n";
+                            
+                            gameSettingsRunning = false; 
+                        }
+                        else if (selectedGameItem == 1) {
+                            cout << "\nYou selected: Play against Computer\n";
+                           
+                            gameSettingsRunning = false; 
+                        }
+                        else if (selectedGameItem == 2) {
+                            gameSettingsRunning = false; 
+                        }
+                        break;
+                    case 'q': 
+                        gameSettingsRunning = false; 
+                        break;
+                    }
+                }
+            }
+            break;
+        case ENTER_KEY: 
+            if (selectedItem == 3) {
+                cout << "\nEntering game settings...\n";
+                //chỗ đây chuyển sang phần setting
+            }
+            else {
+                cout << "\nOption selected: " << settingsItems[selectedItem] << endl;
+            }
+            break;
+        case 'q':
+            running = false;
+            break;
         }
+
+        system("cls");
     }
-
-    while (1)
-    {
-        char ch = getch();
-		switch (ch)
-		{
-		case 'W': case 'w': case 72: // up
-            selectedItem = (selectedItem - 1 + NUM_SETTINGS_ITEMS) % NUM_SETTINGS_ITEMS;
-            break;
-        case 'S': case 's': case 77: // down
-            selectedItem = (selectedItem + 1 + NUM_SETTINGS_ITEMS) % NUM_SETTINGS_ITEMS;
-            break;
-
-        case 'A': case 'a': case 75: // left
-            break;
-
-        case 'D': case 'd': case 80: // right
-            break;
-
-		}
-            
-    }
-   /* cout << "Music: \n";
-    cout << "SFX: ";*/
 }
 
 void MenuHandler() {
