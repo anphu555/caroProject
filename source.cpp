@@ -55,5 +55,6 @@ int main() {
     MenuHandler();
     WinEffect(10, 5, -1);
     PlaySound(0, 0, 0);
+    winSound();
     return 0;
 }
