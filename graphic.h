@@ -3,6 +3,8 @@
 
 #include <io.h>
 #include <fcntl.h>
+#include <thread>
+#include <chrono>
 
 
 // NHỮNG HÀM LIÊN QUAN TỚI ĐỒ HỌA IN RA MÀN HÌNH
