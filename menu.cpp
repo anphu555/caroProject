@@ -54,7 +54,7 @@ void Settings() {
     cout << "=======Settings======\n\n";
 
     const int NUM_SETTINGS_ITEMS = 3;
-    string settingsItems[NUM_SETTINGS_ITEMS] = {
+    const char* settingsItems[NUM_SETTINGS_ITEMS] = {
         "Music: ON",
         "SFX: ON",
         "Exit"
@@ -63,11 +63,12 @@ void Settings() {
     int selectedItem = 0;
 
     while (1) {
-        // Hiển thị menu cài đặt
-        for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-            system("cls");
 
-            int toadoY1 = 15;
+        system("cls");
+        // Hiển thị menu cài đặt
+
+        int toadoY1 = 15; // tọa đọ test vị trsi settings
+        for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
             GotoXY(10, toadoY1 + i * 2);
 
             if (i == selectedItem) {
