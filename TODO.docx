@@ -1,6 +1,5 @@
 Chức năng còn thiếu:
 - Nhận biết thắng thua (chưa nhận dạng được tại sao thắng)
-- Fix kích thước console windows
 
 - Chức năng thêm tên khi khởi tạo trò chơi mới
 
@@ -9,10 +8,8 @@ Chức năng còn thiếu:
 - Trang trí bàn cờ
 - PvE (Phú)
 
-
-- vẽ bàn cờ mở rộng (An)
-
 - Trang trí game
 
 ĐÃ XONG:
 - Settings (music, sfx)
+- Fix kích thước console windows
