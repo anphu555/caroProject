@@ -105,54 +105,67 @@ void AboutLogo(int x, int y)
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-void WinEffect(int x, int y, int Mode)
-{
-	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, luu vô để hồi đổi lại
-	// tạo biến logo chiến thắng
-	// mode -1: o win
-	wstring OWin[6];
-	OWin[0] = L" ██████╗     ██╗    ██╗██╗███╗   ██╗";
-	OWin[1] = L"██╔═══██╗    ██║    ██║██║████╗  ██║";
-	OWin[2] = L"██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║";
-	OWin[3] = L"██║   ██║    ██║███╗██║██║██║╚██╗██║";
-	OWin[4] = L"╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║";
-	OWin[5] = L" ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝";
+void WinEffect(int x, int y, int Mode) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // Đổi chế độ ghi Unicode
 
-	// mode 1: x win
-	wstring XWin[6];
-	XWin[0] = L"██╗  ██╗     ██╗    ██╗██╗███╗   ██╗";
-	XWin[1] = L"╚██╗██╔╝     ██║    ██║██║████╗  ██║";
-	XWin[2] = L" ╚███╔╝      ██║ █╗ ██║██║██╔██╗ ██║";
-	XWin[3] = L" ██╔██╗      ██║███╗██║██║██║╚██╗██║";
-	XWin[4] = L"██╔╝ ██╗     ╚███╔███╔╝██║██║ ╚████║";
-	XWin[5] = L"╚═╝  ╚═╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝";
+	// Tạo biến logo chiến thắng
+	wstring OWin[6] = {
+		L" ██████╗     ██╗    ██╗██╗███╗   ██╗",
+		L"██╔═══██╗    ██║    ██║██║████╗  ██║",
+		L"██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║",
+		L"██║   ██║    ██║███╗██║██║██║╚██╗██║",
+		L"╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║",
+		L" ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝"
+	};
 
-	// mode 0: draw
-	wstring Draw[6];
-	Draw[0] = L"██████╗ ██████╗  █████╗ ██╗    ██╗";
-	Draw[1] = L"██╔══██╗██╔══██╗██╔══██╗██║    ██║";
-	Draw[2] = L"██║  ██║██████╔╝███████║██║ █╗ ██║";
-	Draw[3] = L"██║  ██║██╔══██╗██╔══██║██║███╗██║";
-	Draw[4] = L"██████╔╝██║  ██║██║  ██║╚███╔███╔╝";
-	Draw[5] = L"╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ";
+	wstring XWin[6] = {
+		L"██╗  ██╗     ██╗    ██╗██╗███╗   ██╗",
+		L"╚██╗██╔╝     ██║    ██║██║████╗  ██║",
+		L" ╚███╔╝      ██║ █╗ ██║██║██╔██╗ ██║",
+		L" ██╔██╗      ██║███╗██║██║██║╚██╗██║",
+		L"██╔╝ ██╗     ╚███╔███╔╝██║██║ ╚████║",
+		L"╚═╝  ╚═╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝"
+	};
 
-	// in logo caro
-	for (int i = 0; i < 6; i++)
-	{
-		GotoXY(x, y + i);
-		switch (Mode)
-		{
-		case -1:
-			wcout << OWin[i];
-			break;
-		case 1:
-			wcout << XWin[i];
-			break;
-		case 0:
-			wcout << Draw[i];
-			break;
+	wstring Draw[6] = {
+		L"██████╗ ██████╗  █████╗ ██╗    ██╗",
+		L"██╔══██╗██╔══██╗██╔══██╗██║    ██║",
+		L"██║  ██║██████╔╝███████║██║ █╗ ██║",
+		L"██║  ██║██╔══██╗██╔══██║██║███╗██║",
+		L"██████╔╝██║  ██║██║  ██║╚███╔███╔╝",
+		L"╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ "
+	};
+
+	// Hiệu ứng chớp nháy
+	for (int blink = 0; blink < 10; ++blink) { // Chớp nháy 10 lần
+		// Hiển thị logo
+		for (int i = 0; i < 6; i++) {
+			GotoXY(x, y + i);
+			switch (Mode) {
+			case -1:
+				wcout << OWin[i];
+				break;
+			case 1:
+				wcout << XWin[i];
+				break;
+			case 0:
+				wcout << Draw[i];
+				break;
+			}
 		}
+
+		// Dừng lại một khoảng thời gian
+		this_thread::sleep_for(chrono::milliseconds(300));
+
+		
+		for (int i = 0; i < 6; i++) {
+			GotoXY(x, y + i);
+			wcout << L"                                        "; 
+		}
+
+		this_thread::sleep_for(chrono::milliseconds(300));
 	}
+
+	// Phát âm thanh chiến thắng
 	winSound();
-	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
