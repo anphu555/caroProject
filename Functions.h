@@ -4,7 +4,10 @@
 #define TOP 1 // 1
 #define RIGHT LEFT+BOARD_SIZE*4
 #define BOTTOM TOP+BOARD_SIZE*2
-
+#define UP_KEY 72
+#define DOWN_KEY 80
+#define TOGGLE_KEY 32 // phím Space
+#define ENTER_KEY 13  // phím Enter
 // kich thuoc mac dinh cua terminal la 120x30 tren may toi la the????? cai nay chinh duoc....
 
 // 1 o co kich thuoc la 4x2 (ngang 4 dai 2)
