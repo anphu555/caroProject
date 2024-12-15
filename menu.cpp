@@ -47,7 +47,7 @@ void Guide() {
     printf("=======================================================\n\n");
 }
 
-void Settings(bool SettingsMode = true) { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
+void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
     // cais này sẽ chỉnh thành logo sau
     system("cls");
     HideCursor();
@@ -121,16 +121,7 @@ void Settings(bool SettingsMode = true) { // mode 0 la luc moi vo game, 1 la luc
                 }
             }
             else if (selectedItem == 2) { // exit
-                if (SettingsMode) // true, exit ra menu
-                {
-                    MenuHandler();
-                    return;
-                }
-                else
-                {
-                    return;
-                }
-                    
+                return;     
             }
 
             break;
@@ -208,8 +199,6 @@ void MenuHandler() {
                     case 2: // Settings
                         system("cls");
                         Settings();
-                        cout << "Press any key to return to menu...";
-                        getch();
                         break;
                     
                     case 3: // Guide
@@ -314,7 +303,7 @@ void InGameMenu() {
                         return;
 
                     case 3: // Settings
-                        Settings(false);
+                        Settings();
                         break;
                     
                     case 4: // Exit Game

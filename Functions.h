@@ -79,7 +79,7 @@ void About();
 void loadGame();
 void saveGame();
 void Guide();
-void Settings(bool);
+void Settings();
 void InGameMenu();
 vector<string> GetSaveFiles();
 string SelectSaveFile(bool);
