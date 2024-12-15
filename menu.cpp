@@ -81,6 +81,10 @@ void Settings() {
         char key = _getch();
 
         switch (key) {
+        case BACKSPACE_KEY: {
+            system("cls");
+            MenuHandler();
+            }
         case UP_KEY: 
             if (selectedItem > 0) {
                 selectedItem--;
@@ -92,13 +96,13 @@ void Settings() {
             }
             break;
         case TOGGLE_KEY:
-            if (selectedItem == 0) {
-                if (settingsItems[selectedItem] == "Language: English") {
-                    settingsItems[selectedItem] = "Language: Vietnamese";
-                }
-                else {
-                    settingsItems[selectedItem] = "Language: English";
-                }
+                if (selectedItem == 0) {
+                    if (settingsItems[selectedItem] == "Language: English") {
+                        settingsItems[selectedItem] = "Language: Vietnamese";
+                    }
+                    else {
+                        settingsItems[selectedItem] = "Language: English";
+                    }
             }
             else if (selectedItem == 1) {
               

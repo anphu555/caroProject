@@ -6,7 +6,8 @@
 #define BOTTOM TOP+BOARD_SIZE*2
 #define UP_KEY 72
 #define DOWN_KEY 80
-#define TOGGLE_KEY 32 // phím Space
+#define TOGGLE_KEY 32// phím Space
+#define BACKSPACE_KEY 8
 #define ENTER_KEY 13  // phím Enter
 // kich thuoc mac dinh cua terminal la 120x30 tren may toi la the????? cai nay chinh duoc....
 
