@@ -1,9 +1,8 @@
 Chức năng còn thiếu:
 - Nhận biết thắng thua (chưa nhận dạng được tại sao thắng)
+- Giao diện chọn y/n khi thắng game
 
-- Chức năng thêm tên khi khởi tạo trò chơi mới
-
-- Bổ sung menu, menu ingame (chức năng setting)
+((- Chức năng thêm tên khi khởi tạo trò chơi mới)
 
 - Trang trí bàn cờ
 - PvE (Phú)
@@ -13,3 +12,4 @@ Chức năng còn thiếu:
 ĐÃ XONG:
 - Settings (music, sfx)
 - Fix kích thước console windows
+- Bổ sung menu, menu ingame (chức năng setting)
