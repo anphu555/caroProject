@@ -359,7 +359,6 @@ string SelectSaveFile(bool isSaving) {
 
     while (true) {
         system("cls");
-        //cout << BACKGROUND_MAGNETA;
         cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
         
         // add new save

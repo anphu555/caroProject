@@ -1,4 +1,4 @@
-#include "Functions.h"
+﻿#include "Functions.h"
 #include "Color.h"
 
 extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
@@ -131,7 +131,9 @@ void GameMove()
                     case -1: case 1: case 0:
                         if (AskContinue() != 'Y')
                         {
-                            ExitGame();
+                            /*ExitGame();*/
+                            // gọi lại như lúc vào game
+                            MenuHandler();
                             return;
                         }
                         else

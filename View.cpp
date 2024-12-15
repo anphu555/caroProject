@@ -126,25 +126,7 @@ int ProcessFinish(int pWhoWin)
         // 50,15 là tọa độ kiểm thử
         WinEffect(50, 15, pWhoWin);
     }
-    
-    //switch (pWhoWin)
-    //{
-    //case -1:
-    //    // o win
-    //    WinEffect(50, 15, pWhoWin);
-    //    cout << "Nguoi choi O da thang va nguoi choi X da thua" << endl;
-    //    break;
-    //case 1:
-    //    // x win
-    //    cout << "Nguoi choi X da thang va nguoi choi O da thua" << endl;
-    //    break;
-    //case 0:
-    //    // draw
-    //    cout << "Hai ben da hoa!" << endl;
-    //    break;
-    //case 2:
-    //    _TURN = !_TURN;
-    //}
+
     GotoXY(_X, _Y);
     return pWhoWin;
 }

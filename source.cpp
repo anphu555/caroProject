@@ -53,8 +53,7 @@ int main() {
     FixConsoleWindow();
     HideCursor();
     MenuHandler();
-    WinEffect(10, 5, -1);
-    PlaySound(0, 0, 0);
-    winSound();
+    //WinEffect(10, 5, -1);
+    //winSound();
     return 0;
 }

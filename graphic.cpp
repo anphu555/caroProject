@@ -177,6 +177,7 @@ void AboutLogo(int x, int y)
 }
 
 void WinEffect(int x, int y, int Mode) {
+	HideCursor();
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // Đổi chế độ ghi Unicode
 
 	// Tạo biến logo chiến thắng
@@ -211,7 +212,7 @@ void WinEffect(int x, int y, int Mode) {
 	winSound();
 
 	// Hiệu ứng chớp nháy
-	for (int blink = 0; blink < 5; ++blink) { // Chớp nháy 5 lần
+	for (int blink = 0; blink < 7; ++blink) { // Chớp nháy 7 lần
 		// Hiển thị logo
 		for (int i = 0; i < 6; i++) {
 			GotoXY(x, y + i);
@@ -231,15 +232,34 @@ void WinEffect(int x, int y, int Mode) {
 		// Dừng lại một khoảng thời gian
 		//this_thread::sleep_for(chrono::milliseconds(300));
 		Sleep(300);
-
 		
 		for (int i = 0; i < 6; i++) {
 			GotoXY(x, y + i);
 			wcout << L"                                        "; 
-			Sleep(100);
+			//Sleep(100);
 		}
-
+		Sleep(180);
 		//this_thread::sleep_for(chrono::milliseconds(300));
 	}
+
+	// in lại cho khỏi mất sau khi nhấp
+	for (int i = 0; i < 6; i++) {
+		GotoXY(x, y + i);
+		switch (Mode) {
+		case -1:
+			wcout << OWin[i];
+			break;
+		case 1:
+			wcout << XWin[i];
+			break;
+		case 0:
+			wcout << Draw[i];
+			break;
+		}
+	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	AppearCursor();
+
+	return;
 }
