@@ -487,6 +487,7 @@ string SelectSaveFile(bool isSaving) {
 
 
 void saveGame() {
+	HideCursor();
 
 	if (_X == 0 && _Y == 0) {
 		printf("Cannot save game before starting!\n");
@@ -548,7 +549,7 @@ void saveGame() {
 				AppearCursor();
 				// save to new
 				string filename = SelectSaveFile(true);
-				if (filename == "BACK") return; // user canceled (Back)
+				if (filename == "BACK")		break; // user canceled (Back) , break de nhay khoi switch ko phai return
 
 				FILE* outFile = fopen(filename.c_str(), "w");
 				if (outFile) {
@@ -587,7 +588,7 @@ void saveGame() {
 			else {
 
 				string filename = SelectSaveFile(false);
-				if (filename == "BACK") return; // user canceled (Back)
+				if (filename == "BACK") break; // user canceled (Back)
 
 				FILE* outFile = fopen(filename.c_str(), "w");
 				if (outFile) {
@@ -628,8 +629,6 @@ void saveGame() {
 					getch();
 					return;
 				}
-
-	
 			}
 			break;
 
