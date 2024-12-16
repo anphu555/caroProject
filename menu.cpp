@@ -499,7 +499,7 @@ void saveGame() {
 		"Save to New File",
 		"Overwrite Existing Save"
 	};
-	int selectedOption = 0;
+	int selectedOption = 3;
 
 	while (true) {
 		system("cls");
@@ -512,10 +512,15 @@ void saveGame() {
 			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
 
 			if (i == selectedOption) {
-				cout << ">> " << saveOptions[i] << " <<\n";
+
+				//==================================
+				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+				cout << ">> " << saveOptions[i] << " <<";
+				cout << COLOR_RESET;
+				
 			}
 			else {
-				cout << "   " << saveOptions[i] << "\n";
+				cout << "   " << saveOptions[i];
 			}
 		}
 
