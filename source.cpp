@@ -17,7 +17,8 @@ bool SFXmode = true; // false off, true on
 int main() {
     
     //test
-    AnimatedSquare(0, 5, 2, 10);
+    system("pause");
+    AnimatedSquare(10, 80, 3, 4, 60);
     GotoXY(70, 20);
     system("pause");
 
