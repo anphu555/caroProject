@@ -27,6 +27,8 @@ void nhapnhayXO(int x, int y, int mode);
 void XLogo(int x, int y);
 void OLogo(int x, int y);
 
+void AnimatedSquare(int xleft, int xright, int ytop, int ybottom);
+
 //void openingScreen(int x, int y);
 
 #endif

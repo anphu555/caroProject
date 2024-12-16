@@ -320,3 +320,49 @@ void OLogo(int x, int y)
 //	CaroLogo(50, 50);
 //
 //}
+void AnimatedSquare(int xleft, int xright, int ytop, int ybottom)
+{
+	for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
+	{
+		GotoXY(i, ytop); cout << char(220); // 220
+		GotoXY(xright - i, ybottom); cout << char(223);//223
+		Sleep(50);
+	}
+	//for (int i = (ytop+1); i <= (ybottom-1); i++) // để cho nó chạy từ 0
+	//{
+	//	++i;
+	//	GotoXY(xleft, i); cout << char(219); //221
+	//	GotoXY(xright , ybottom - i); cout << char(219); //222
+	//	Sleep(10);
+	//}
+	
+	//for (int i = 0; i < D2_ABOUT_1.size() - 1 - i; i += 2) {
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 7);
+	//	wcout << L"▜";
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 6);
+	//	wcout << D2_ABOUT_2[i] << D2_ABOUT_2[i + 1];
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 5);
+	//	wcout << D2_ABOUT_3[i] << D2_ABOUT_3[i + 1];
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 4);
+	//	wcout << D2_ABOUT_4[i] << D2_ABOUT_4[i + 1];
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 3);
+	//	wcout << D2_ABOUT_5[i] << D2_ABOUT_5[i + 1];
+	//	gotoxy(_pos_x + i, D2_Y_ABOUT - 2);
+	//	wcout << D2_ABOUT_6[i] << D2_ABOUT_6[i + 1];
+
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 7);
+	//	wcout << D2_ABOUT_1[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_1[D2_ABOUT_1.size() - 1 - i];
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 6);
+	//	wcout << D2_ABOUT_2[int(D2_ABOUT_1.size()) - 2 - i] << D2_ABOUT_2[D2_ABOUT_1.size() - 1 - i];
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 5);
+	//	wcout << D2_ABOUT_3[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_3[D2_ABOUT_1.size() - 1 - i];
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 4);
+	//	wcout << D2_ABOUT_4[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_4[D2_ABOUT_1.size() - 1 - i];
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 3);
+	//	wcout << D2_ABOUT_5[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_5[D2_ABOUT_1.size() - 1 - i];
+	//	gotoxy(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 2);
+	//	wcout << D2_ABOUT_6[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_6[D2_ABOUT_1.size() - 1 - i];
+
+	//	Sleep(10);
+	//}
+}
