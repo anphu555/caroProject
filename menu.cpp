@@ -457,9 +457,10 @@ string SelectSaveFile(bool isSaving) {
 				% (saveFiles.size() + (isSaving ? 2 : 1));
 			break;
 
-		case 13:
+		case 13: // enter
+			pickSound();
+
 			if (selectedFile == 0) {
-				pickSound();
 				return "BACK";
 			}
 			if (isSaving && selectedFile == 1) {
@@ -477,6 +478,7 @@ string SelectSaveFile(bool isSaving) {
 
 		case 27: // exit with esc
 			pickSound();
+
 			return "BACK";
 		}
 	}
@@ -557,6 +559,9 @@ void saveGame() {
 					printf("Game state saved to: %s\n", filename.c_str());
 					fclose(outFile);
 
+					// am thanh save file tahnh cong
+					saveSound();
+
 					cout << "Press any key to continue...";
 					getch();
 
@@ -593,10 +598,19 @@ void saveGame() {
 					printf("Game state saved to: %s\n", filename.c_str());
 					fclose(outFile);
 
+
+					// am thanh save file tahnh cong
+					saveSound();
+
+
+
 					cout << "Press any key to continue...";
 					getch();
 
 					fclose(outFile);
+
+					
+
 
 					return;
 				}
@@ -610,6 +624,8 @@ void saveGame() {
 			break;
 
 		case 27:
+			pickSound();
+
 			return;
 		}
 	}
