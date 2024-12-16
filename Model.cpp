@@ -1,4 +1,4 @@
-#include "Functions.h"
+﻿#include "Functions.h"
 #include "graphic.h"
 
 extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
@@ -41,7 +41,7 @@ int TestBoard() {
                 _A[i][j].c == _A[i][j+1].c &&
                 _A[i][j].c == _A[i][j+2].c &&
                 _A[i][j].c == _A[i][j+3].c &&
-                _A[i][j].c == _A[i][j+4].c) {
+                _A[i][j].c == _A[i][j+4].c && j < (BOARD_SIZE - 5)) {  // j < 8 để j +4 ở dưới không quá (BOARD_SIZE - 1) (vì mảng từ 0 đến boardsize -1
 
                 int mode;
                 _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
@@ -87,7 +87,7 @@ int TestBoard() {
                _A[i][j].c == _A[i+1][j+1].c &&
                _A[i][j].c == _A[i+2][j+2].c &&
                _A[i][j].c == _A[i+3][j+3].c &&
-               _A[i][j].c == _A[i+4][j+4].c) {
+               _A[i][j].c == _A[i+4][j+4].c && j < (BOARD_SIZE - 5)) {
 
                 int mode;
                 _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
