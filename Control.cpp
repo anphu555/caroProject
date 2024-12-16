@@ -1,4 +1,5 @@
 ﻿#include "Functions.h"
+#include "graphic.h"
 #include "Color.h"
 
 extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
@@ -13,6 +14,7 @@ void StartGame() {
     system("cls");
     ResetData();
     DrawBoard();
+   
    
     // Khi khoi dong game, con tro o giua man hinh
     _X += (BOARD_SIZE/2) * (4);     // vi 1 o la 4x2

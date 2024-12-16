@@ -147,8 +147,9 @@ void DrawBoard() // pSize = BOARD_SIZE
         GotoXY(LEFT - 33 - 1, TOP + i);  cout << char(186);
         GotoXY(RIGHT + 33 + 1, TOP + i); cout << char(186);
     }
-
+    
     cout << COLOR_RESET;
+   
 }
 
 int ProcessFinish(int pWhoWin)
@@ -168,6 +169,11 @@ int ProcessFinish(int pWhoWin)
         // 50,15 là tọa độ kiểm thử
         WinEffect(84, 15, pWhoWin);
     }
+
+    else if (pWhoWin == 0) {
+            WinEffect(50, 5, pWhoWin);
+    }
+
 
     GotoXY(_X, _Y);
     return pWhoWin;

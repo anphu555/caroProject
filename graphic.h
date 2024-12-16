@@ -24,6 +24,9 @@ void IngameLogo4(int x, int y);
 
 void nhapnhayXO(int x, int y, int mode);
 
+void XLogo(int x, int y);
+void OLogo(int x, int y);
+
 //void openingScreen(int x, int y);
 
 #endif

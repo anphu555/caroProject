@@ -237,14 +237,15 @@ void InGameMenu() {
         "Settings",
         "Exit Game"
     };
-    
+   
     int selectedItem = 9;
     
     while (true) {
         system("cls");
         HideCursor();
-        cout << "====================== PAUSING ======================" << "\n" << "\n";
         
+        cout << "====================== PAUSING ======================" << "\n" << "\n";
+    
         // display menu with highlights
         for (int i = 0; i < NUM_MENU_ITEMS; i++) {
             if (i == selectedItem) {
@@ -331,6 +332,8 @@ void InGameMenu() {
                 return;
         }
     }
+    
+
 }
 
 
