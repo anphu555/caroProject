@@ -220,7 +220,7 @@ void MenuHandler() {
                 }
                 break;
             
-            case 27: // Escape key
+            case 27: 
                 ExitGame();
                 exit(0);
                 break;
@@ -232,90 +232,49 @@ void InGameMenu() {
     const int NUM_MENU_ITEMS = 5;
     const char* menuItems[NUM_MENU_ITEMS] = {
         "Continue",
-        "Save Game", 
+        "Save Game",
         "Load Game",
         "Settings",
         "Exit Game"
     };
-   
+
     int selectedItem = 9;
-    
+
     while (true) {
         system("cls");
         HideCursor();
-        
         cout << "====================== PAUSING ======================" << "\n" << "\n";
-    
+
         // display menu with highlights
         for (int i = 0; i < NUM_MENU_ITEMS; i++) {
             if (i == selectedItem) {
                 cout << ">> " << menuItems[i] << " <<" << endl;
-            } else {
+            }
+            else {
                 cout << "   " << menuItems[i] << endl;
             }
         }
-        
+
         // input
         int ch = getch();
         switch (ch) {
-            case 'W':
-            case 'w':
-            case 72: // up
-                selectedItem = (selectedItem - 1 + NUM_MENU_ITEMS) % NUM_MENU_ITEMS;
-                break;
-            
-            case 'S':
-            case 's':
-            case 80: // down
-                selectedItem = (selectedItem + 1) % NUM_MENU_ITEMS;
-                break;
-            
-            case 13: // enter
-                switch (selectedItem) {
-                    case 0: // Continue
-                        system("cls");
-                        AppearCursor();
-                        DrawBoard();
-                        // redraw existing X and O 
-                        for (int i = 0; i < BOARD_SIZE; i++) {
-                            for (int j = 0; j < BOARD_SIZE; j++) {
-                                GotoXY(_A[i][j].x, _A[i][j].y);
-                                if (_A[i][j].c == -1) {
-                                    //cout << BACKGROUND_MAGNETA;
-                                    cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
-                                } else if (_A[i][j].c == 1) {
-                                    //cout << BACKGROUND_MAGNETA;
-                                    cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
-                                }
-                            }
-                        }
-                        GotoXY(_X, _Y);
-                        return;
-                    
-                    case 1: // Save Game
-                        saveGame();
-                        getch();
-                        break;
-                    
-                    case 2: // Load Game
-                        loadGame();
-                        GameMove();
-                        return;
+        case 'W':
+        case 'w':
+        case 72: // up 
+            selectedItem = (selectedItem - 1 + NUM_MENU_ITEMS) % NUM_MENU_ITEMS;
+            break;
 
-                    case 3: // Settings
-                        Settings();
-                        break;
-                    
-                    case 4: // Exit Game
-                        ExitGame();
-                        MenuHandler();
-                        return;
-                }
-                break;
-            
-            case 27: // esc key
-                // redraw board and return to game
+        case 'S':
+        case 's':
+        case 80: // down 
+            selectedItem = (selectedItem + 1) % NUM_MENU_ITEMS;
+            break;
+
+        case 13: // enter
+            switch (selectedItem) {
+            case 0: // Continue
                 system("cls");
+                AppearCursor();
                 DrawBoard();
                 // redraw existing X and O 
                 for (int i = 0; i < BOARD_SIZE; i++) {
@@ -323,24 +282,62 @@ void InGameMenu() {
                         GotoXY(_A[i][j].x, _A[i][j].y);
                         if (_A[i][j].c == -1) {
                             cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
-                        } else if (_A[i][j].c == 1) {
+                        }
+                        else if (_A[i][j].c == 1) {
                             cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
                         }
                     }
                 }
                 GotoXY(_X, _Y);
                 return;
+
+            case 1: // Save Game
+                saveGame();
+                getch();
+                break;
+
+            case 2: // Load Game
+                system("cls");
+                loadGame();
+                break;
+
+            case 3: // Settings
+                Settings();
+                break;
+
+            case 4: // Exit Game
+                ExitGame();
+                MenuHandler(); // Quay lại menu chính
+                return;
+            }
+            break;
+
+        case 27: 
+          
+            system("cls");
+            DrawBoard();
+          
+            for (int i = 0; i < BOARD_SIZE; i++) {
+                for (int j = 0; j < BOARD_SIZE; j++) {
+                    GotoXY(_A[i][j].x, _A[i][j].y);
+                    if (_A[i][j].c == -1) {
+                        cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
+                    }
+                    else if (_A[i][j].c == 1) {
+                        cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
+                    }
+                }
+            }
+            GotoXY(_X, _Y);
+            return;
         }
     }
-    
-
 }
-
 
 
 vector<string> GetSaveFiles() {
     vector<string> saveFiles;
-    string savePath = "."; // current directory
+    string savePath = "."; 
 
     for (const auto& entry : directory_iterator(savePath)) {
         if (is_regular_file(entry)) {
@@ -354,6 +351,7 @@ vector<string> GetSaveFiles() {
 
     return saveFiles;
 }
+
 string SelectSaveFile(bool isSaving) {
     vector<string> saveFiles = GetSaveFiles();
     int selectedFile = 0;
@@ -361,85 +359,72 @@ string SelectSaveFile(bool isSaving) {
     while (true) {
         system("cls");
         cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
+
         
-        // add new save
+        if (selectedFile == 0) {
+            cout << ">> Back <<" << endl;
+        }
+        else {
+            cout << "   Back" << endl;
+        }
+
+        
         if (isSaving) {
-            if (selectedFile == 0) {
+            if (selectedFile == 1) {
                 cout << ">> New Save <<" << endl;
-            } else {
+            }
+            else {
                 cout << "   New Save" << endl;
             }
         }
 
-        // display existing save files
+       
         for (int i = 0; i < saveFiles.size(); i++) {
-            if (i + (isSaving ? 1 : 0) == selectedFile) {
+            if (i + (isSaving ? 2 : 1) == selectedFile) {
                 cout << ">> " << saveFiles[i] << " <<" << endl;
-            } else {
+            }
+            else {
                 cout << "   " << saveFiles[i] << endl;
             }
         }
-        
+
         int ch = getch();
         switch (ch) {
-            case 'W':
-            case 'w':
-            case 72: // up
-                selectedFile = (selectedFile - 1 + saveFiles.size() + (isSaving ? 1 : 0)) 
-                               % (saveFiles.size() + (isSaving ? 1 : 0));
-                break;
-            
-            case 'S':
-            case 's':
-            case 80: // down
-                selectedFile = (selectedFile + 1) 
-                               % (saveFiles.size() + (isSaving ? 1 : 0));
-                break;
-            
-            case 13: // enter
-                if (isSaving && selectedFile == 0) {
-                    // new save
-                    system("cls");
-                    cout << "Enter save name: ";
-                    string filename;
-                    getline(cin, filename);
-                    
-                    // them .txt
-                    if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
-                        filename += ".txt";
-                    }
-                    
-                    // check file co san chua
-                    bool fileExists = false;
-                    for (const string& existingFile : saveFiles) {
-                        if (existingFile == filename) {
-                            fileExists = true;
-                            break;
-                        }
-                    }
-                    
-                    if (fileExists) {
-                        cout << "File already exists! Press any key to try again...";
-                        getch();
-                        continue;
-                    }
-                    
-                    return filename;
-                } else {
-                    // return selected existing save file
-                    return saveFiles[selectedFile - (isSaving ? 1 : 0)];
+        case 'W': case 'w': case 72: 
+            selectedFile = (selectedFile - 1 + saveFiles.size() + (isSaving ? 2 : 1))
+                % (saveFiles.size() + (isSaving ? 2 : 1));
+            break;
+
+        case 'S': case 's': case 80: 
+            selectedFile = (selectedFile + 1)
+                % (saveFiles.size() + (isSaving ? 2 : 1));
+            break;
+
+        case 13:
+            if (selectedFile == 0) {
+                return "BACK"; 
+            }
+            if (isSaving && selectedFile == 1) {
+                // New Save
+                system("cls");
+                cout << "Enter save name: ";
+                string filename;
+                getline(cin, filename);
+                if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
+                    filename += ".txt";
                 }
-                break;
-            
-            case 27: // escape
-                return "";  // nha ra empty de biet la cancel duoc
+                return filename;
+            }
+            return saveFiles[selectedFile - (isSaving ? 2 : 1)];
         }
     }
 }
 
 
+
+
 void saveGame() {
-    // prevent saving during initial menu
+  
     if (_X == 0 && _Y == 0) {
         printf("Cannot save game before starting!\n");
         cout << "Press any key to continue...";
@@ -461,118 +446,119 @@ void saveGame() {
         for (int i = 0; i < 2; i++) {
             if (i == selectedOption) {
                 cout << ">> " << saveOptions[i] << " <<\n";
-            } else {
+            }
+            else {
                 cout << "   " << saveOptions[i] << "\n";
             }
         }
 
         int ch = getch();
         switch (ch) {
-            case 'W':
-            case 'w':
-            case 72: // up arrow
-                selectedOption = (selectedOption - 1 + 2) % 2;
-                break;
-            
-            case 'S':
-            case 's':
-            case 80: // down arrow
-                selectedOption = (selectedOption + 1) % 2;
-                break;
-            
-            case 13: // enter
-                if (selectedOption == 0) {
-                    AppearCursor();
-                    // save to new
-                    string filename = SelectSaveFile(true);
-                    if (filename.empty()) return; // user canceled
+        case 'W':
+        case 'w':
+        case 72: // up arrow
+            selectedOption = (selectedOption - 1 + 2) % 2;
+            break;
 
-                    FILE *outFile = fopen(filename.c_str(), "w");
-                    if (outFile) {
-                        // lưu trạng thái của bảng!!!
-                        for (int i = 0; i < BOARD_SIZE; i++) {
-                            for (int j = 0; j < BOARD_SIZE; j++) {
-                                fprintf(outFile, "%d ", _A[i][j].c);
-                            }
-                            fprintf(outFile, "\n");
+        case 'S':
+        case 's':
+        case 80: // down arrow
+            selectedOption = (selectedOption + 1) % 2;
+            break;
+
+        case 13: // enter
+            if (selectedOption == 0) {
+                AppearCursor();
+                // save to new
+                string filename = SelectSaveFile(true);
+                if (filename == "BACK") return; // user canceled (Back)
+
+                FILE* outFile = fopen(filename.c_str(), "w");
+                if (outFile) {
+                    // lưu trạng thái của bảng!!!
+                    for (int i = 0; i < BOARD_SIZE; i++) {
+                        for (int j = 0; j < BOARD_SIZE; j++) {
+                            fprintf(outFile, "%d ", _A[i][j].c);
                         }
-                        // save lượt chơi
-                        fprintf(outFile, "%d\n", _TURN);
-                        // save tọa độ
-                        fprintf(outFile, "%d %d\n", _X, _Y);
-                        
-                        printf("Game state saved to: %s\n", filename.c_str());
-                        fclose(outFile);
-                        
-                        cout << "Press any key to continue...";
-                        getch();
-
-                        fclose(outFile);
-
-                        return;
-                    } else {
-                        printf("Error: Unable to save the file.\n");
-                        cout << "Press any key to continue...";
-                        getch();
-
-                        fclose(outFile);
-
-                        return;
+                        fprintf(outFile, "\n");
                     }
-                } else {
-                    // overwrite existing save
-                    string filename = SelectSaveFile(false);
-                    if (filename.empty()) return; // user canceled
+                    // save lượt chơi
+                    fprintf(outFile, "%d\n", _TURN);
+                    // save tọa độ
+                    fprintf(outFile, "%d %d\n", _X, _Y);
 
-                    FILE *outFile = fopen(filename.c_str(), "w");
-                    if (outFile) {
-                        // lưu trạng thái của bảng!!!
-                        for (int i = 0; i < BOARD_SIZE; i++) {
-                            for (int j = 0; j < BOARD_SIZE; j++) {
-                                fprintf(outFile, "%d ", _A[i][j].c);
-                            }
-                            fprintf(outFile, "\n");
-                        }
-                        // save lượt chơi
-                        fprintf(outFile, "%d\n", _TURN);
-                        // save tọa độ
-                        fprintf(outFile, "%d %d\n", _X, _Y);
-                        
-                        printf("Game state saved to: %s\n", filename.c_str());
-                        fclose(outFile);
-                        
-                        cout << "Press any key to continue...";
-                        getch();
+                    printf("Game state saved to: %s\n", filename.c_str());
+                    fclose(outFile);
 
-                        fclose(outFile);
+                    cout << "Press any key to continue...";
+                    getch();
 
-                        return;
-                    }
-                    else {
-                        printf("Error: Unable to save the file.\n");
-                        cout << "Press any key to continue...";
-                        getch();
+                    fclose(outFile);
 
-                        fclose(outFile);
-
-                        return;
-                    }
+                    return;
                 }
-                break;
-            
-            case 27: // escape
-                return;
+                else {
+                    printf("Error: Unable to save the file.\n");
+                    cout << "Press any key to continue...";
+                    getch();
+                    return;
+                }
+            }
+            else {
+               
+                string filename = SelectSaveFile(false);
+                if (filename == "BACK") return; // user canceled (Back)
+
+                FILE* outFile = fopen(filename.c_str(), "w");
+                if (outFile) {
+                    // lưu trạng thái của bảng!!!
+                    for (int i = 0; i < BOARD_SIZE; i++) {
+                        for (int j = 0; j < BOARD_SIZE; j++) {
+                            fprintf(outFile, "%d ", _A[i][j].c);
+                        }
+                        fprintf(outFile, "\n");
+                    }
+                    // save lượt chơi
+                    fprintf(outFile, "%d\n", _TURN);
+                    // save tọa độ
+                    fprintf(outFile, "%d %d\n", _X, _Y);
+
+                    printf("Game state saved to: %s\n", filename.c_str());
+                    fclose(outFile);
+
+                    cout << "Press any key to continue...";
+                    getch();
+
+                    fclose(outFile);
+
+                    return;
+                }
+                else {
+                    printf("Error: Unable to save the file.\n");
+                    cout << "Press any key to continue...";
+                    getch();
+                    return;
+                }
+            }
+            break;
+
+        case 27: 
+            return;
         }
     }
 }
 
+
 void loadGame() {
     string filename = SelectSaveFile(false);
-    if (filename.empty()) return; // user canceled
+    if (filename == "BACK") {
+        MenuHandler(); 
+        return;
+    }
 
-    FILE *inFile = fopen(filename.c_str(), "r");
+    FILE* inFile = fopen(filename.c_str(), "r");
     if (inFile) {
-        // reset neu dang choi
+       
         system("cls");
         ResetData();
 
@@ -580,17 +566,17 @@ void loadGame() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 fscanf(inFile, "%d", &_A[i][j].c);
-                // Ensure x and y coordinates are correct
-                _A[i][j].x = 4 * j + LEFT + 2; 
-                _A[i][j].y = 2 * i + TOP + 1; 
+                
+                _A[i][j].x = 4 * j + LEFT + 2;
+                _A[i][j].y = 2 * i + TOP + 1;
             }
         }
-        
+
         //đọc lượt chơi
         int turn;
         fscanf(inFile, "%d", &turn);
         _TURN = turn;
-        
+
         // đọc tọa độ 
         fscanf(inFile, "%d %d", &_X, &_Y);
 
@@ -598,28 +584,25 @@ void loadGame() {
         fclose(inFile);
 
         // draw board
-
         DrawBoard();
-        
+
         // draw X and O 
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 GotoXY(_A[i][j].x, _A[i][j].y);
                 if (_A[i][j].c == -1) {
-                    cout << BACKGROUND_WHITE;
-                    cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
-                } else if (_A[i][j].c == 1) {
-                    cout << BACKGROUND_WHITE;
-                    cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
+                    cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
+                }
+                else if (_A[i][j].c == 1) {
+                    cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
                 }
             }
         }
-       
-        
-        // position cursor
+
         GotoXY(_X, _Y);
         GameMove();
-    } else {
+    }
+    else {
         printf("Error: Unable to open the file.\n");
         cout << "Press any key to continue...";
         getch();
