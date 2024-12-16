@@ -18,7 +18,7 @@ int main() {
     
     //test
     system("pause");
-    AnimatedSquare(10, 80, 3, 4, 60);
+    AnimatedSquare(10, 80, 3, 4, 20);
     GotoXY(70, 20);
     system("pause");
 
