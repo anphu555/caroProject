@@ -215,7 +215,7 @@ void WinEffect(int x, int y, int Mode) {
 			GotoXY(x, y + i);
 			wcout << L"                                   ";
 		}
-		Sleep(180);
+		Sleep(150);
 
 		// Hiển thị logo
 		for (int i = 0; i < 6; i++) {
@@ -234,7 +234,7 @@ void WinEffect(int x, int y, int Mode) {
 			}
 		}
 		// Dừng lại một khoảng thời gian
-		Sleep(300);	
+		Sleep(100);	
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
