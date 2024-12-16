@@ -177,6 +177,67 @@ int AskContinue()
 {
     GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 4);
 
-    cout << "Nhan y/n de choi lai hoac thoat: ";
+    GotoXY(50, 50);
+    HideCursor();
+    const int NUM_REPLAY_ITEMS = 2;
+    const char* settingsItems[NUM_REPLAY_ITEMS] = {
+        "REPLAY",
+        "Exit"
+    };
+
+    int selectedItem = 3;
+
+    while (1) {
+
+        system("cls");
+        // Hiển thị menu cài đặt
+
+        int toadoX1 = 15; // tọa đọ test vị trsi settings
+        for (int i = 0; i < NUM_REPLAY_ITEMS; i++) {
+            GotoXY(toadoX1 + i * 30, 15);
+
+            if (i == selectedItem) {
+                cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+                cout << ">> " << settingsItems[i] << " <<";
+                cout << COLOR_RESET;
+            }
+            else {
+                cout << "   " << settingsItems[i];
+            }
+        }
+
+        // lựa chọn các item
+        char key = _getch();
+
+        switch (key) {
+        case UP_KEY:    case 'A':   case 'a':
+            selectedItem = (selectedItem - 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS;
+            break;
+
+        case DOWN_KEY:  case 'D':   case 'd':
+            selectedItem = (selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS;
+            break;
+
+        case ENTER_KEY:
+            switch (selectedItem)
+            {
+            case 0:
+                return 'Y';
+            case 1:
+                return 'N';
+            }
+
+            break;
+        }
+    }
+
+    //cout << 
+    //cout << "Nhan y/n de choi lai hoac thoat: ";
     return toupper(getch());
 }
+
+    
+
+    
+
+    

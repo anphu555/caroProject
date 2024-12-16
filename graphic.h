@@ -22,4 +22,6 @@ void IngameLogo2(int x, int y);
 void IngameLogo3(int x, int y);
 void IngameLogo4(int x, int y);
 
+//void openingScreen(int x, int y);
+
 #endif

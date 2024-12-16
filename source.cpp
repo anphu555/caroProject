@@ -20,6 +20,9 @@ int main() {
     setConsoleSize(120, 30);
     FixConsoleWindow();
     HideCursor();
+
+    // openingscreen
+
     MenuHandler();
 
     return 0;

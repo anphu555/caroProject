@@ -6,18 +6,18 @@ void CaroLogo(int x, int y)
 {
     int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, luu vô để hồi đổi lại
 	// tạo biến logo caro
-	wstring logo[9];
+	wstring logo[8];
 	logo[0] = L"   ▄▄██▀▀▀  ▄█████▄   ▄█████▄  ▀ ▄██████▄ ";
 	logo[1] = L"█ ▄██▀    ▀      ███  ██▀  ▀██  ██▀    ▀██";
 	logo[2] = L"  ██              ██  ██   ▄██  ██      ██";
-	logo[3] = L"  ██   ▀    ▄████▄██  ██▄███▀   ██  ██  ██  ▀ ";
+	logo[3] = L"  ██   ▀    ▄████▄██  ██▄███▀   ██  ██  ██";
 	logo[4] = L"  ██       ██▀   ▀██  ██▀█▄     ██      ██";
 	logo[5] = L"  ▀██▄     ██▄ ▀ ▄██  ██ ▀██▄   ██▄    ▄██";
 	logo[6] = L" ▀  ▀▀██▄▄▄ ▀█████▀▀  ██   ▀██▄▄ ▀██████▀ ";
 	logo[7] = L"                     ▄██                  ";
-	logo[8] = L"       ▀       ▀              ▀       ";
+	//logo[8] = L"       ▀       ▀              ▀       ";
 	// in logo caro
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 8; i++)
 	{
         GotoXY(x, y + i);
 		wcout << logo[i];
@@ -236,16 +236,13 @@ void WinEffect(int x, int y, int Mode) {
 			}
 		}
 		// Dừng lại một khoảng thời gian
-		//this_thread::sleep_for(chrono::milliseconds(300));
 		Sleep(300);
 		
 		for (int i = 0; i < 6; i++) {
 			GotoXY(x, y + i);
-			wcout << L"                                   "; 
-			//Sleep(100);
+			wcout << L"                                   ";
 		}
 		Sleep(180);
-		//this_thread::sleep_for(chrono::milliseconds(300));
 	}
 
 	// in lại cho khỏi mất sau khi nhấp
@@ -269,3 +266,9 @@ void WinEffect(int x, int y, int Mode) {
 
 	return;
 }
+
+//void openingScreen(int x, int y)
+//{
+//	CaroLogo(50, 50);
+//
+//}
