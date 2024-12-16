@@ -361,14 +361,14 @@ string SelectSaveFile(bool isSaving) {
         cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
 
         
-        if (selectedFile == 0) {
+       /* if (selectedFile == 0) {
             cout << ">> Back <<" << endl;
         }
         else {
             cout << "   Back" << endl;
-        }
+        }*/
 
-        
+    
         if (isSaving) {
             if (selectedFile == 1) {
                 cout << ">> New Save <<" << endl;
@@ -386,6 +386,13 @@ string SelectSaveFile(bool isSaving) {
             else {
                 cout << "   " << saveFiles[i] << endl;
             }
+        }
+
+        if (selectedFile == 0) {
+            cout << ">> Back <<" << endl;
+        }
+        else {
+            cout << "   Back" << endl;
         }
 
         int ch = getch();
