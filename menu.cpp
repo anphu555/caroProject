@@ -57,10 +57,10 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
     const char* settingsItems[NUM_SETTINGS_ITEMS] = {
         "Music: ON",
         "SFX: ON",
-        "Exit"
+        "Back"
     };
 
-    int selectedItem = 0;
+    int selectedItem = 5;
 
     while (1) {
 
@@ -140,7 +140,7 @@ void MenuHandler() {
         "   Exit   "
     };
     
-    int selectedItem = 0;
+    int selectedItem = 11;
     while (true) {
         system("cls");
        
@@ -238,7 +238,7 @@ void InGameMenu() {
         "Exit Game"
     };
     
-    int selectedItem = 0;
+    int selectedItem = 9;
     
     while (true) {
         system("cls");

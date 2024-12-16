@@ -104,7 +104,7 @@ int TestBoard() {
     }
 
     // check cheo tu tren phai xuong duoi trai
-    for (int i = 0; i < BOARD_SIZE ; i++ ) {
+    for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE ; j++) {
             if(_A[i][j].c != 0 && 
                _A[i][j].c == _A[i+1][j-1].c &&
@@ -123,6 +123,7 @@ int TestBoard() {
 
                 return (mode);
                }
+
         }
     }
 
