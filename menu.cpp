@@ -213,8 +213,8 @@ void MenuHandler() {
 				system("cls");
 				Guide();
 				cout << "Press any key to return to menu...";
-				getch();
-
+				/*getch();*/
+				system("pause");
 				pickSound();
 
 				break;
@@ -316,7 +316,7 @@ void InGameMenu() {
 
 			case 1: // Save Game
 				saveGame();
-				getch();
+				/*getch();*/
 				break;
 
 			case 2: // Load Game
@@ -497,16 +497,17 @@ void saveGame() {
 
 	const char* saveOptions[] = {
 		"Save to New File",
-		"Overwrite Existing Save"
+		"Overwrite Existing Save",
+		"Back"
 	};
-	int selectedOption = 3;
+	int selectedOption = 0;
 
 	while (true) {
 		system("cls");
 		cout << "Save Game Options:\n\n";
 
 		// display menu with highlights
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 
 			int toadoY1 = 15; // toa độ kiểm thử
 			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
@@ -529,18 +530,20 @@ void saveGame() {
 		case 'W':
 		case 'w':
 		case 72: // up arrow
-			selectedOption = (selectedOption - 1 + 2) % 2;
+			selectedOption = (selectedOption - 1 + 3) % 3;
 			break;
 
 		case 'S':
 		case 's':
 		case 80: // down arrow
-			selectedOption = (selectedOption + 1) % 2;
+			selectedOption = (selectedOption + 1) % 3;
 			break;
 
 		case 13: // enter
 			pickSound();
-
+			if (selectedOption == 2) {
+				return;
+			}
 			if (selectedOption == 0) {
 				AppearCursor();
 				// save to new
@@ -625,6 +628,8 @@ void saveGame() {
 					getch();
 					return;
 				}
+
+	
 			}
 			break;
 
