@@ -22,6 +22,8 @@ void IngameLogo2(int x, int y);
 void IngameLogo3(int x, int y);
 void IngameLogo4(int x, int y);
 
+void nhapnhayXO(int x, int y, int mode);
+
 //void openingScreen(int x, int y);
 
 #endif

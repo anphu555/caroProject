@@ -42,17 +42,27 @@
 // CACH SU DUNG: printf(1 3 "<text>" 2); // reset de lan sau khoi dinh dang lai
 
 // ========chua biet sai ==============
-////High intensty background 
+// High intensty background 
 #define BACKGROUND_BLACK		"\u001b[100m"
 #define BACKGROUND_RED			"\u001b[101m"
+#define BACKGROUND_RED_DARK		"\u001b[41m"
 #define BACKGROUND_GREEN		"\u001b[102m"
 #define BACKGROUND_YELLOW		"\u001b[103m"
-#define BACKGROUND_YELLOW_HI	"\u001b[43m"
+#define BACKGROUND_YELLOW_DARK	"\u001b[43m"
 #define BACKGROUND_BLUE			"\u001b[104m"
-//#define BACKGROUND_MAGNETA		"\u001b[105m" // sua lai cho khopo 
+//#define BACKGROUND_BLUE_DARK	"\u001b[44m"
 #define BACKGROUND_MAGNETA		"\u001b[105m"
 #define BACKGROUND_CYAN			"\u001b[106m"
 #define BACKGROUND_WHITE		"\u001b[107m"
+
+//\e[40m	Black
+//\e[41m	Red
+//\e[42m	Green
+//\e[43m	Yellow
+//\e[44m	Blue
+//\e[45m	Purple
+//\e[46m	Cyan
+//\e[47m	White
 // ========================
 
 

@@ -95,11 +95,11 @@ void GameMove()
                 if(!_TURN) MoveUp();
                 break;
             }
-            case 80: {          // right arrow: 80
+            case 80: {          // down arrow: 80
                 if(!_TURN) MoveDown();
                 break;
             }
-            case 77: {          // down arrow: 77
+            case 77: {          // right arrow: 77
                 if(!_TURN) MoveRight();
                 break;
             }

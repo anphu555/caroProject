@@ -175,34 +175,43 @@ int ProcessFinish(int pWhoWin)
 
 int AskContinue()
 {
-    GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 4);
+    //GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 4);
+    //system("color f0");
 
-    GotoXY(50, 50);
+    //GotoXY(80, 50);
     HideCursor();
     const int NUM_REPLAY_ITEMS = 2;
-    const char* settingsItems[NUM_REPLAY_ITEMS] = {
-        "REPLAY",
-        "Exit"
+    const char* replayItems[NUM_REPLAY_ITEMS] = {
+        "   PLAY AGAIN   ",
+        "   Exit   "
     };
 
     int selectedItem = 3;
 
     while (1) {
+        if (selectedItem == 0) {
 
-        system("cls");
-        // Hiển thị menu cài đặt
+            replayItems[selectedItem] = ">> PLAY AGAIN <<";
 
-        int toadoX1 = 15; // tọa đọ test vị trsi settings
+            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = "   Exit   ";
+        }
+        else if (selectedItem == 1) {
+            replayItems[selectedItem] = ">> Exit <<";
+
+            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = "   PLAY AGAIN   ";
+        }
+
+        int toadoX1 = LEFT + 7; // tọa đọ test vị trsi settings
         for (int i = 0; i < NUM_REPLAY_ITEMS; i++) {
-            GotoXY(toadoX1 + i * 30, 15);
+            GotoXY(toadoX1 + i * 25, 15);
 
             if (i == selectedItem) {
                 cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-                cout << ">> " << settingsItems[i] << " <<";
+                cout << replayItems[i];
                 cout << COLOR_RESET;
             }
             else {
-                cout << "   " << settingsItems[i];
+                cout << replayItems[i];
             }
         }
 
@@ -210,11 +219,11 @@ int AskContinue()
         char key = _getch();
 
         switch (key) {
-        case UP_KEY:    case 'A':   case 'a':
+        case 75:    case 'A':   case 'a':
             selectedItem = (selectedItem - 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS;
             break;
 
-        case DOWN_KEY:  case 'D':   case 'd':
+        case 77:  case 'D':   case 'd':
             selectedItem = (selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS;
             break;
 
@@ -226,7 +235,6 @@ int AskContinue()
             case 1:
                 return 'N';
             }
-
             break;
         }
     }

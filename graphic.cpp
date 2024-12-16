@@ -209,62 +209,66 @@ void WinEffect(int x, int y, int Mode) {
 
 	// Hiệu ứng chớp nháy
 	for (int blink = 0; blink < 7; ++blink) { // Chớp nháy 7 lần
-		// Hiển thị logo
-		/*system("color 9");
-		cout << " "<<endl;
-		system("color A");
-		cout << " "<<endl;
-		system("color B");
-		cout << " "<<endl;
-		system("color C");
-		cout << " "<<endl;
-		system("color D");
-		cout << " " <<endl;*/
-		for (int i = 0; i < 6; i++) {
-			
-			GotoXY(x, y + i);
-			switch (Mode) {
-			case -1:
-				wcout << COLOR_BLUE<< OWin[i];
-				break;
-			case 1:
-				wcout << COLOR_RED<< XWin[i];
-				break;
-			case 0:
-				wcout << COLOR_CYAN << Draw[i];
-				break;
-			}
-		}
-		// Dừng lại một khoảng thời gian
-		Sleep(300);
 		
+
 		for (int i = 0; i < 6; i++) {
 			GotoXY(x, y + i);
 			wcout << L"                                   ";
 		}
 		Sleep(180);
-	}
 
-	// in lại cho khỏi mất sau khi nhấp
-	for (int i = 0; i < 6; i++) {
-		GotoXY(x, y + i);
-		switch (Mode) {
-		case -1:
-			wcout << OWin[i];
-			break;
-		case 1:
-			wcout << XWin[i];
-			break;
-		case 0:
-			wcout << Draw[i];
-			break;
+		// Hiển thị logo
+		for (int i = 0; i < 6; i++) {
+			
+			GotoXY(x, y + i);
+			switch (Mode) {
+			case -1:
+				wcout << COLOR_BLUE<< OWin[i] << COLOR_RESET;
+				break;
+			case 1:
+				wcout << COLOR_RED<< XWin[i] << COLOR_RESET;
+				break;
+			case 0:
+				wcout << COLOR_CYAN << Draw[i] << COLOR_RESET;
+				break;
+			}
 		}
+		// Dừng lại một khoảng thời gian
+		Sleep(300);	
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
 	AppearCursor();
 
 	return;
+}
+
+void nhapnhayXO(int x, int y, int mode) // mode -1 o, 1 x, 0draw
+{
+	HideCursor();
+
+	//if (mode == 0) return; do draw thi khong nhap nhay
+	for (int blink = 0; blink < 3; blink++)
+	{
+		GotoXY(x, y); cout << ' ';
+		Sleep(70);
+
+		// in x ra
+		GotoXY(x, y);
+		switch (mode)
+		{
+		case 1:
+			cout << COLOR_RED COLOR_BOLD BACKGROUND_RED COLOR_DARK << "X" << COLOR_RESET;
+			break;
+		case -1:
+			cout << COLOR_BLUE COLOR_BOLD BACKGROUND_CYAN COLOR_DARK << "O" << COLOR_RESET;
+			break;
+		}
+
+		Sleep(50);
+
+		// làm mất chữ
+	}
 }
 
 //void openingScreen(int x, int y)

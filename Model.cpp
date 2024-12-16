@@ -1,4 +1,5 @@
 #include "Functions.h"
+#include "graphic.h"
 
 extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
@@ -41,7 +42,17 @@ int TestBoard() {
                 _A[i][j].c == _A[i][j+2].c &&
                 _A[i][j].c == _A[i][j+3].c &&
                 _A[i][j].c == _A[i][j+4].c) {
-                    return (_A[i][j].c > 0 ? -1 : 1);
+
+                int mode;
+                _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
+
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+1) * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+2) * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+3) * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+4) * 4, TOP + 1 + i * 2, mode);
+
+                return (mode);
                 }
         }
     }
@@ -54,7 +65,17 @@ int TestBoard() {
                 _A[i][j].c == _A[i+2][j].c &&
                 _A[i][j].c == _A[i+3][j].c &&
                 _A[i][j].c == _A[i+4][j].c) {
-                    return (_A[i][j].c > 0 ? -1 : 1);
+
+                int mode;
+                _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
+
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + (i+1) * 2, mode);
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + (i+2) * 2, mode);
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + (i+3) * 2, mode);
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + (i+4) * 2, mode);
+
+                    return (mode);
                 }
         }
     }
@@ -67,7 +88,17 @@ int TestBoard() {
                _A[i][j].c == _A[i+2][j+2].c &&
                _A[i][j].c == _A[i+3][j+3].c &&
                _A[i][j].c == _A[i+4][j+4].c) {
-                return (_A[i][j].c > 0 ? -1 : 1);
+
+                int mode;
+                _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
+
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+1) * 4, TOP + 1 + (i+1) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+2) * 4, TOP + 1 + (i+2) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+3) * 4, TOP + 1 + (i+3) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j+4) * 4, TOP + 1 + (i+4) * 2, mode);
+
+                return (mode);
                }
         }
     }
@@ -80,10 +111,21 @@ int TestBoard() {
                _A[i][j].c == _A[i+2][j-2].c &&
                _A[i][j].c == _A[i+3][j-3].c &&
                _A[i][j].c == _A[i+4][j-4].c) {
-                return (_A[i][j].c > 0 ? -1 : 1);
+
+                int mode;
+                _A[i][j].c > 0 ? (mode = -1) : (mode = 1);
+
+                nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j - 1) * 4, TOP + 1 + (i + 1) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j - 2) * 4, TOP + 1 + (i + 2) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j - 3) * 4, TOP + 1 + (i + 3) * 2, mode);
+                nhapnhayXO(LEFT + 2 + (j - 4) * 4, TOP + 1 + (i + 4) * 2, mode);
+
+                return (mode);
                }
         }
     }
+
     // k co gi thi tiep
     return 2;
 }
