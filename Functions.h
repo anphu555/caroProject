@@ -97,8 +97,10 @@ int CheckBoard(int, int);
 void backgroundMusicSound();
 void enterXOSound();
 void winSound();
-
 void newGameSound();
+void pickSound();
+void exitSound();
+//void moveSound();
 
 
 #endif

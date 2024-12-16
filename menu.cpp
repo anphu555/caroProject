@@ -119,11 +119,16 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 				break;
 			case 1:
 				SFXmode = !SFXmode; // doi mode
+				pickSound();
 				break;
 			case 2: // exit
+				pickSound();
 				return;
 			}
+
+			break;
 		case 27: // exit with esc
+			pickSound();
 			return;
 		}
 	}
@@ -147,7 +152,6 @@ void MenuHandler() {
 		backgroundMusicSound();
 
 		MenuLogo1(70, 14);
-		/*CaroLogo(40, 1);*/
 		IngameLogo4(10, 5);
 		MenuLogo2(10, 14);
 
@@ -182,13 +186,15 @@ void MenuHandler() {
 			break;
 
 		case 13: // enter
+			pickSound();
+
 			switch (selectedItem) {
 			case 0: // New Game
 				system("cls");
-				StartGame();
 
 				newGameSound();
 
+				StartGame();
 				GameMove();
 				return;
 
@@ -208,6 +214,9 @@ void MenuHandler() {
 				Guide();
 				cout << "Press any key to return to menu...";
 				getch();
+
+				pickSound();
+
 				break;
 
 			case 4: // About
@@ -215,15 +224,22 @@ void MenuHandler() {
 				About();
 				cout << "Press any key to return to menu...";
 				getch();
+
+				pickSound();
+
 				break;
 
 			case 5: // Exit
+				exitSound();
+
 				ExitGame();
 				exit(0);
 			}
 			break;
 
 		case 27:
+			exitSound();
+
 			ExitGame();
 			exit(0);
 			break;
@@ -276,6 +292,8 @@ void InGameMenu() {
 			break;
 
 		case 13: // enter
+			pickSound();
+
 			switch (selectedItem) {
 			case 0: // Continue
 				system("cls");
@@ -318,6 +336,7 @@ void InGameMenu() {
 			break;
 
 		case 27:
+			pickSound();
 
 			system("cls");
 			DrawBoard();
@@ -440,6 +459,7 @@ string SelectSaveFile(bool isSaving) {
 
 		case 13:
 			if (selectedFile == 0) {
+				pickSound();
 				return "BACK";
 			}
 			if (isSaving && selectedFile == 1) {
@@ -456,6 +476,7 @@ string SelectSaveFile(bool isSaving) {
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
 
 		case 27: // exit with esc
+			pickSound();
 			return "BACK";
 		}
 	}
@@ -511,6 +532,8 @@ void saveGame() {
 			break;
 
 		case 13: // enter
+			pickSound();
+
 			if (selectedOption == 0) {
 				AppearCursor();
 				// save to new

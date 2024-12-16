@@ -20,3 +20,15 @@ void newGameSound()
 {
 	(SFXmode) ? PlaySound(TEXT("newgame.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
+void pickSound()
+{
+	(SFXmode) ? PlaySound(TEXT("picksound.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
+}
+void exitSound()
+{
+	(SFXmode) ? PlaySound(TEXT("exitsound.wav"), NULL, SND_FILENAME | SND_SYNC) : PlaySound(0, 0, 0);
+}
+//void moveSound()
+//{
+//	(SFXmode) ? PlaySound(TEXT("move.wav"), NULL, SND_FILENAME | SND_SYNC) : PlaySound(0, 0, 0);
+//}
