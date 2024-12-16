@@ -85,7 +85,8 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		int toadoY1 = 15; // tọa đọ test vị trsi settings
 
 		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-			GotoXY(10, toadoY1 + i * 2);
+			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
+
 
 			if (i == selectedItem) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -185,6 +186,9 @@ void MenuHandler() {
 			case 0: // New Game
 				system("cls");
 				StartGame();
+
+				newGameSound();
+
 				GameMove();
 				return;
 
@@ -370,7 +374,10 @@ string SelectSaveFile(bool isSaving) {
 		 }*/
 
 
+		// đây là lúc lưu file
+
 		if (isSaving) {
+
 			if (selectedFile == 1) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> New Save <<" << endl;
@@ -383,6 +390,11 @@ string SelectSaveFile(bool isSaving) {
 
 
 		for (int i = 0; i < saveFiles.size(); i++) {
+
+			int toadoY1 = 15; // toa độ kiểm thử
+			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+
+
 			if (i + (isSaving ? 2 : 1) == selectedFile) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> " << saveFiles[i] << " <<" << endl;
@@ -395,11 +407,22 @@ string SelectSaveFile(bool isSaving) {
 		}
 
 		if (selectedFile == 0) {
+
+
+			int toadoY1 = 15; // toa độ kiểm thử
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 25); 
+
+
 			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 			cout << ">> Back <<" << endl;
 			cout << COLOR_RESET;
 		}
 		else {
+
+			int toadoY1 = 15; // toa độ kiểm thử
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
+
+
 			cout << "   Back" << endl;
 		}
 
@@ -461,6 +484,10 @@ void saveGame() {
 
 		// display menu with highlights
 		for (int i = 0; i < 2; i++) {
+
+			int toadoY1 = 15; // toa độ kiểm thử
+			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+
 			if (i == selectedOption) {
 				cout << ">> " << saveOptions[i] << " <<\n";
 			}

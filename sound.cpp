@@ -16,3 +16,7 @@ void winSound()
 {
 	(SFXmode) ? PlaySound(TEXT("gameWin.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
+void newGameSound()
+{
+	(SFXmode) ? PlaySound(TEXT("newgame.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
+}

@@ -98,5 +98,7 @@ void backgroundMusicSound();
 void enterXOSound();
 void winSound();
 
+void newGameSound();
+
 
 #endif
