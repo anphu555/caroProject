@@ -271,6 +271,51 @@ void nhapnhayXO(int x, int y, int mode) // mode -1 o, 1 x, 0draw
 	}
 }
 
+void XLogo(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	// Tạo biến ông già Noel
+	wstring logo[7] = {
+		L"    ██╗░░██╗",
+		L"    ╚██╗██╔╝",
+		L"    ░╚███╔╝░",
+		L"    ░██╔██╗░",
+		L"    ██╔╝╚██╗",
+		L"    ╚═╝░░╚═╝"
+	};
+
+	for (int i = 0; i < 11; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
+void OLogo(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring logo[7] = {
+		L"    ░█████╗░",
+		L"    ██╔══██╗",
+		L"    ██║░░██║",
+		L"    ██║░░██║",
+		L"    ╚█████╔╝",
+		L"    ░╚════╝░"
+	};
+
+	for (int i = 0; i < 11; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
 //void openingScreen(int x, int y)
 //{
 //	CaroLogo(50, 50);
