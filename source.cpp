@@ -17,10 +17,10 @@ bool SFXmode = true; // false off, true on
 int main() {
     
     //test
-    system("pause");
-    AnimatedSquare(10, 80, 3, 4, 20);
+    //system("pause");
+    AnimatedSquare(10, 30, 3, 8, 2);
     GotoXY(70, 20);
-    system("pause");
+    //system("pause");
 
     system("color f0");
     setConsoleSize(120, 30);
