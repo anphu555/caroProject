@@ -116,7 +116,7 @@ void IngameLogo4(int x, int y) {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_RED << COLOR_BOLD << logo[i] << " " << COLOR_RESET;
+		wcout << COLOR_RED  << logo[i] << " " << COLOR_RESET;
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }

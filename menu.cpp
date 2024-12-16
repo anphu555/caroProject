@@ -155,7 +155,7 @@ void MenuHandler() {
 		IngameLogo4(10, 5);
 		MenuLogo2(10, 14);
 
-		system("color f0");
+		//system("color f0");
 		// display menu with highlights
 
 		// vị trí các ô chức năng
