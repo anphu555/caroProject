@@ -100,6 +100,7 @@ int TestBoard();
 int CheckBoard(int, int);
 
 // Sound
+void introSound();
 void backgroundMusicSound();
 void enterXOSound();
 void winSound();

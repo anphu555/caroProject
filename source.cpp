@@ -19,20 +19,19 @@ int main() {
     //test
     //BorderSquareLine(20, 40, 3, 5, 1);
     //BorderSquare(10, 20, 6, 10, 1);
-    
-    //GotoXY(0, 0); cout << BACKGROUND_BLUE << " ";
-    //GotoXY(0, 15); cout << BACKGROUND_RED << " ";
 
-    //system("pause");
+    intro1(30, 10);
+    introLoading();
 
-    system("color f0");
-
+    //system("color f0");
+    cout << COLOR_RESET;
    
 
     setConsoleSize(120, 30);
     FixConsoleWindow();
     HideCursor();
 
+    //Group10Logo(1, 2);
     // openingscreen
 
     MenuHandler();
