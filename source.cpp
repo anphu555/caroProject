@@ -31,7 +31,10 @@ int main() {
 
 
     intro1(30, 11);
+    //GotoXY(50, 28);
+    //system("pause");
     introLoading();
+    
 
     //system("color f0");
     cout << COLOR_RESET;

@@ -194,8 +194,8 @@ void MenuNewGame()
 	const int NUM_NEWGAME_ITEMS = 3;
 	const char* newgameItems[NUM_NEWGAME_ITEMS] = {
 		"OFFLINE",
-		"ONLINE",
-		" BACK"
+		" ONLAN ",
+		" BACK "
 	};
 	BorderSquareLine(48, 70, 12, 22, 0);
 	int selectedItem = 5;

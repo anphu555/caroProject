@@ -66,7 +66,7 @@ void introLoading() {
 
 	IngameLogo4(14, 9);
 
-	GotoXY(52, 19);
+	GotoXY(56, 19);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Loading..." );
 	BorderSquare(30, 90, 20, 20, 16);
 	cout << COLOR_RESET;
