@@ -68,10 +68,10 @@ void introLoading() {
 
 	GotoXY(52, 19);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Loading..." );
-	BorderSquare(30, 90, 20, 20, 17);
+	BorderSquare(30, 90, 20, 20, 16);
 	cout << COLOR_RESET;
 
-	Sleep(400);
+	Sleep(500);
 
 	return;
 }

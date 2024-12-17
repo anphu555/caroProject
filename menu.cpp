@@ -75,16 +75,6 @@ void Guide() {
 	GotoXY(70, 14);
 	printf("Enter");
 
-	//printf("  Player X (WASD):\n");
-	//printf("    W : Move up\n");
-	//printf("    A : Move left\n");
-	//printf("    D : Move right\n");
-	//printf("    S : Move down\n\n");
-	//printf("  Player O (Arrow Keys):\n");
-	//printf("    UP    : Move up\n");
-	//printf("    LEFT  : Move left\n");
-	//printf("    RIGHT : Move right\n");
-	//printf("    DOWN  : Move down\n\n");
 
 	BorderSquareLine(27, 92, 17, 23, 3);
 
@@ -98,18 +88,15 @@ void Guide() {
 	printf("  your opponent. Achieving 4 unblocked moves also wins.");
 	
 	GotoXY(43, 27);
-	//printf("Tips:\n");
-	//printf("  - Plan ahead and block your opponent's moves.\n");
-	//printf("  - Use strategies from online resources to improve.\n");
-	//printf("=======================================================\n\n");
 }
 
 void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
 	// cais này sẽ chỉnh thành logo sau
 	system("cls");
 	HideCursor();
-	
-	/*cout << "=======Settings======\n\n";*/
+
+	SettingLogo(30, 3);
+	BorderSquareLine(36, 73, 13, 21, 4);
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -117,9 +104,6 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"SFX: ON",
 		"Back"
 	};
-
-	SettingLogo(30, 3);
-	BorderSquareLine(36, 73, 13, 21, 4);
 	
 	int selectedItem = 5;
 
@@ -149,7 +133,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		}
 
 		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 15 + i * 2);
 
 
 			if (i == selectedItem) {
