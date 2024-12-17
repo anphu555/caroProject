@@ -607,10 +607,12 @@ vector<string> GetSaveFiles() {
 
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
-	int selectedFile = 0;
+	int selectedFile = 6;
+	
 
 	while (true) {
 		system("cls");
+		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
 		cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
 
 		if (isSaving) {
@@ -824,8 +826,8 @@ void saveGame() {
 					cout << "Press any key to continue...";
 					HideCursor();
 					getch();
-
-					return;
+					break;
+					//return;
 				}
 				else {
 					printf("Error: Unable to save the file.\n");
