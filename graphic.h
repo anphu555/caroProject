@@ -16,6 +16,7 @@ void MenuLogo2(int x, int y);
 
 void AboutLogo(int x, int y);
 void SettingLogo(int x, int y);
+void GuideLogo(int x, int y);
 
 void WinEffect(int x, int y, int Mode);
 void IngameLogo(int x, int y);

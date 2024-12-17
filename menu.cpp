@@ -26,7 +26,9 @@ void About() {
 }
 
 void Guide() {
-	printf("\n======================== GUIDE ========================\n");
+	GuideLogo(40, 1);
+	printf("\n");
+	/*printf("\n======================== GUIDE ========================\n");*/
 	//GotoXY(0, 0);//
 	printf("Controls:\n");
 	printf("  Player X (WASD):\n");
