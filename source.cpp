@@ -29,13 +29,14 @@ int main() {
 
     // test============================
 
-    intro2(10, 1);
+    //intro2(10, 1);
     //intro1(30, 11);
     
     //GotoXY(50, 28);
     //system("pause");
-
-
+    
+    //intro ====================
+    intro1(30, 11);
     introLoading();
     
     //GotoXY(50, 28);
@@ -48,9 +49,6 @@ int main() {
     setConsoleSize(120, 30);
     FixConsoleWindow();
     HideCursor();
-
-    //Group10Logo(1, 2);
-    // openingscreen
 
     MenuHandler();
 

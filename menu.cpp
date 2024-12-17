@@ -95,8 +95,11 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	system("cls");
 	HideCursor();
 
-	SettingLogo(30, 3);
+
+	SettingLogo(34, 3);
 	BorderSquareLine(42, 78, 13, 21, 0);
+	//SettingLogo(30, 3);
+	//BorderSquareLine(42, 78, 13, 21, 0);
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -105,8 +108,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"Back"
 	};
 
-		SettingLogo(34, 3);
-	BorderSquareLine(42, 78, 13, 21, 0);
+
 
 		int selectedItem = 5;
 
@@ -606,27 +608,14 @@ vector<string> GetSaveFiles() {
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 6;
-	BorderSquareLine(48, 70, 12, 27, 0);
+	
 
 	while (true) {
-
 		system("cls");
-
+		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
 		cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
 
-
-		/* if (selectedFile == 0) {
-			 cout << ">> Back <<" << endl;
-		 }
-		 else {
-			 cout << "   Back" << endl;
-		 }*/
-
-
-		 // đây là lúc lưu file
-
 		if (isSaving) {
-
 			if (selectedFile == 1) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> New Save <<" << endl;
@@ -636,97 +625,88 @@ string SelectSaveFile(bool isSaving) {
 				cout << "   New Save" << endl;
 			}
 		}
-		BorderSquareLine(48, 70, 12, 27, 0);
+		else {
+			for (int i = 0; i < saveFiles.size(); i++) {
+				int toadoY1 = 15;
+				GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
 
-
-		for (int i = 0; i < saveFiles.size(); i++) {
-
-			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
-
-
-			if (i + (isSaving ? 2 : 1) == selectedFile) {
-				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-				cout << ">> " << saveFiles[i] << " <<" << endl;
-				cout << COLOR_RESET;
-
-			}
-			else {
-				cout << "   " << saveFiles[i] << endl;
+				if (i + 1 == selectedFile) {
+					cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+					cout << ">> " << saveFiles[i] << " <<" << endl;
+					cout << COLOR_RESET;
+				}
+				else {
+					cout << "   " << saveFiles[i] << endl;
+				}
 			}
 		}
 
 		if (selectedFile == 0) {
-
-
-			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
-
-
+			int toadoY1 = 15;
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
 			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-			cout << " >> " << COLOR_RED  "Back" << COLOR_RESET;
-			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-			cout << " << " << endl;
+			cout << ">> Back <<" << endl;
 			cout << COLOR_RESET;
 		}
 		else {
-
-			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
-
-
-			cout << COLOR_RED "    Back   " << COLOR_RESET << endl;
+			int toadoY1 = 15;
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
+			cout << "   Back" << endl;
 		}
 
 		int ch = getch();
 		switch (ch) {
-		case 'W': case 'w': case 72:
-			selectedFile = (selectedFile - 1 + saveFiles.size() + (isSaving ? 2 : 1))
-				% (saveFiles.size() + (isSaving ? 2 : 1));
+		case 'W': case 'w': case 72: // Up
+			if (selectedFile > 0) {
+				selectedFile--;
+			}
+			else { // Nếu đang ở đầu danh sách, vòng về cuối
+				selectedFile = isSaving ? 1 : saveFiles.size();
+			}
 			break;
 
-		case 'S': case 's': case 80:
-			selectedFile = (selectedFile + 1)
-				% (saveFiles.size() + (isSaving ? 2 : 1));
+		case 'S': case 's': case 80: // Down
+			if (isSaving && selectedFile < 1) {
+				selectedFile++;
+			}
+			else if (!isSaving && selectedFile < saveFiles.size()) {
+				selectedFile++;
+			}
+			else { // Nếu đang ở cuối danh sách, vòng về đầu
+				selectedFile = 0;
+			}
 			break;
 
-		case 13: // enter
+		case 13: // Enter
 			pickSound();
-
-			if (selectedFile == 0) {
+			if (selectedFile == 0) { // Back option
 				return "BACK";
 			}
-			if (isSaving && selectedFile == 1) {
-				// New Save
+			if (isSaving && selectedFile == 1) { // New Save option
 				system("cls");
 				cout << "Enter save name: ";
-				AppearCursor();
 				string filename;
 				getline(cin, filename);
 
 				if (filename.empty()) {
 					cout << "File name cannot be empty! Please try again.\n";
 					cout << "Press any key to continue...";
-					HideCursor();
 					getch();
 					break;
 				}
 				else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
 					filename += ".txt";
 				}
-
 				return filename;
 			}
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
 
-		case 27: // exit with esc
+		case 27: // ESC
 			pickSound();
-
 			return "BACK";
 		}
 	}
 }
-
 
 void saveGame() {
 	HideCursor();
@@ -750,19 +730,14 @@ void saveGame() {
 		system("cls");
 		cout << "Save Game Options:\n\n";
 
-		// display menu with highlights
 		for (int i = 0; i < 3; i++) {
-
-			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+			int toadoY1 = 15;
+			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
 
 			if (i == selectedOption) {
-
-				//==================================
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> " << saveOptions[i] << " <<";
 				cout << COLOR_RESET;
-
 			}
 			else {
 				cout << "   " << saveOptions[i];
@@ -771,109 +746,86 @@ void saveGame() {
 
 		int ch = getch();
 		switch (ch) {
-		case 'W':
-		case 'w':
-		case 72: // up arrow
+		case 'W': case 'w': case 72:
 			selectedOption = (selectedOption - 1 + 3) % 3;
 			break;
 
-		case 'S':
-		case 's':
-		case 80: // down arrow
+		case 'S': case 's': case 80:
 			selectedOption = (selectedOption + 1) % 3;
 			break;
 
-		case 13: // enter
+		case 13:
 			pickSound();
 			if (selectedOption == 2) {
 				return;
 			}
 			if (selectedOption == 0) {
+
 				AppearCursor();
-				// save to new
-				string filename = SelectSaveFile(true);
-				if (filename == "BACK") { // user canceled (Back)
+				string filename = SelectSaveFile(true); // Gọi hàm SelectSaveFile để chọn file mới
+				if (filename == "BACK") {
 					HideCursor();
-					break;			// break de nhay khoi switch ko phai return
+					break;
 				}
-
-
 				FILE* outFile = fopen(filename.c_str(), "w");
 				if (outFile) {
-					// lưu trạng thái của bảng!!!
+					// Save game state
 					for (int i = 0; i < BOARD_SIZE; i++) {
 						for (int j = 0; j < BOARD_SIZE; j++) {
 							fprintf(outFile, "%d ", _A[i][j].c);
 						}
 						fprintf(outFile, "\n");
 					}
-					// save lượt chơi
 					fprintf(outFile, "%d\n", _TURN);
-					// save tọa độ
 					fprintf(outFile, "%d %d\n", _X, _Y);
 
 					printf("Game state saved to: %s\n", filename.c_str());
 					fclose(outFile);
 
-					// am thanh save file tahnh cong
 					saveSound();
-					deleteOldestSaveFile();
+					deleteOldestSaveFile(); // Xóa file cũ nếu có
 					cout << "Press any key to continue...";
 					HideCursor();
 					getch();
 
-					fclose(outFile);
-
 					break;
 				}
-				/*	else if (filename.length() == 0 && filename.substr(filename.length() - 4) != ".txt") {
-						cout << "Invalid file name!" << endl;
-						cout << "Press any key to continue...";
-						getch();
-					}*/
 				else {
 					printf("Error: Unable to save the file.\n");
 					cout << "Press any key to continue...";
 					HideCursor();
 					getch();
 					break;
-					//return;
 				}
 			}
-			else {
+			if (selectedOption == 1) {
 
-				string filename = SelectSaveFile(false);
-				if (filename == "BACK") break; // user canceled (Back)
-
-				FILE* outFile = fopen(filename.c_str(), "w");
+				AppearCursor();
+				string filename = SelectSaveFile(false); // Chọn file đã tồn tại
+				if (filename == "BACK") { // user canceled (Back)
+					HideCursor();
+					break;
+				}
+				FILE* outFile = fopen(filename.c_str(), "w"); // Mở file với chế độ ghi đè
 				if (outFile) {
-					// lưu trạng thái của bảng!!!
+					// Save game state
 					for (int i = 0; i < BOARD_SIZE; i++) {
 						for (int j = 0; j < BOARD_SIZE; j++) {
 							fprintf(outFile, "%d ", _A[i][j].c);
 						}
 						fprintf(outFile, "\n");
 					}
-					// save lượt chơi
 					fprintf(outFile, "%d\n", _TURN);
-					// save tọa độ
 					fprintf(outFile, "%d %d\n", _X, _Y);
 
 					printf("Game state saved to: %s\n", filename.c_str());
-					/*fclose(outFile);*/
+					fclose(outFile);
 
-
-					// am thanh save file tahnh cong
 					saveSound();
-					deleteOldestSaveFile();
-
-
+					deleteOldestSaveFile(); // Xóa file cũ nếu có
 					cout << "Press any key to continue...";
 					HideCursor();
 					getch();
-
-					fclose(outFile);
-
 					break;
 					//return;
 				}
@@ -889,15 +841,13 @@ void saveGame() {
 
 		case 27:
 			pickSound();
-
 			return;
 		}
 	}
 }
 
-
 void loadGame() {
-
+	//LoadLogo(70, 30);
 	HideCursor();
 
 	string filename = SelectSaveFile(false);
@@ -988,3 +938,4 @@ void deleteOldestSaveFile() {
 		fs::remove(saveFiles.front());
 	}
 }
+
