@@ -320,7 +320,7 @@ void OLogo(int x, int y)
 //	CaroLogo(50, 50);
 //
 //}
-void AnimatedSquare(int xleft, int xright, int ytop, int ybottom, int speed = 0)
+void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed = 0)
 {
 	for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
 	{

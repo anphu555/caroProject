@@ -134,6 +134,151 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	}
 }
 
+void MenuNewGame()
+{
+	const int NUM_NEWGAME_ITEMS = 3;
+	const char* newgameItems[NUM_NEWGAME_ITEMS] = {
+		"OFFLINE",
+		"ONLINE",
+		"BACK"
+	};
+
+	int selectedItem = 5;
+
+	while (1) {
+		// hien thi menu
+		system("cls");
+
+		int toadoY1 = 15; // toa do kiemm thu
+		for (int i = 0; i < NUM_NEWGAME_ITEMS; i++)
+		{
+			GotoXY(((RIGHT - LEFT) / 2 - 15), toadoY1 + i*2); //*2 de moi dong cach 1 o
+			if (i == selectedItem)
+			{
+				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+				cout << ">> " << newgameItems[i] << " <<";
+				cout << COLOR_RESET;
+			}
+			else
+			{
+				cout << "   " << newgameItems[i];
+			}
+		}
+		
+		// lua chon
+		int choice = getch();
+		switch (choice)
+		{
+		case 'W': case 'w': case 72: //up
+			selectedItem = (selectedItem - 1 + NUM_NEWGAME_ITEMS) % NUM_NEWGAME_ITEMS;
+			break;
+
+		case 'S': case 's': case 80: // down
+			selectedItem = (selectedItem + 1) % NUM_NEWGAME_ITEMS;
+			break;
+		case 13: // enter
+			pickSound();
+			switch (selectedItem)
+			{
+			case 0:
+				// che do offline
+				MenuOffline();
+
+				break;
+			case 1:
+				// che do online
+
+				// am thanh ghep dau ==========
+
+				break;
+			case 2: //back
+				return;
+			}
+			break;
+
+		case 27: // back with esc
+			pickSound();
+			return;
+		}
+	}
+
+}
+
+void MenuOffline()
+{
+	const int NUM_OFFLINE_ITEMS = 3;
+	const char* offlineItems[NUM_OFFLINE_ITEMS] = {
+		"PvE",
+		"PvP",
+		"BACK"
+	};
+
+	int selectedItem = 5;
+
+	while (1) {
+		// hien thi menu
+		system("cls");
+
+		int toadoY1 = 15; // toa do kiemm thu
+		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
+		{
+			GotoXY(((RIGHT - LEFT) / 2 - 15), toadoY1 + i * 2); //*2 de moi dong cach 1 o
+			if (i == selectedItem)
+			{
+				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+				cout << ">> " << offlineItems[i] << " <<";
+				cout << COLOR_RESET;
+			}
+			else
+			{
+				cout << "   " << offlineItems[i];
+			}
+		}
+
+		// lua chon
+		int choice = getch();
+		switch (choice)
+		{
+		case 'W': case 'w': case 72: //up
+			selectedItem = (selectedItem - 1 + NUM_OFFLINE_ITEMS) % NUM_OFFLINE_ITEMS;
+			break;
+
+		case 'S': case 's': case 80: // down
+			selectedItem = (selectedItem + 1) % NUM_OFFLINE_ITEMS;
+			break;
+		case 13: // enter
+			pickSound();
+			switch (selectedItem)
+			{
+			case 0:
+				// PvE
+				newGameSound();
+
+				// ham che do pve ======================================================
+
+
+				break;
+			case 1:
+				// PvP
+				newGameSound();
+
+				StartGame();
+				GameMove();
+				break;
+			case 2: //back
+				return;
+			}
+			break;
+
+		case 27: // back with esc
+			pickSound();
+			return;
+		}
+	}
+
+}
+
+
 void MenuHandler() {
 	const int NUM_MENU_ITEMS = 6;
 	const char* menuItems[NUM_MENU_ITEMS] = {
@@ -192,11 +337,14 @@ void MenuHandler() {
 			case 0: // New Game
 				system("cls");
 
-				newGameSound();
+				// offline pve pvp, onlline, back
+				// offline pvp
 
-				StartGame();
-				GameMove();
-				return;
+				MenuNewGame();
+
+				//StartGame();
+				//GameMove();
+				break;
 
 			case 1: // Load Game
 				system("cls");
@@ -213,8 +361,8 @@ void MenuHandler() {
 				system("cls");
 				Guide();
 				cout << "Press any key to return to menu...";
-				/*getch();*/
-				system("pause");
+				getch();
+
 				pickSound();
 
 				break;
@@ -501,7 +649,7 @@ void saveGame() {
 		"Overwrite Existing Save",
 		"Back"
 	};
-	int selectedOption = 0;
+	int selectedOption = 5;
 
 	while (true) {
 		system("cls");

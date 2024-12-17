@@ -81,6 +81,10 @@ void loadGame();
 void saveGame();
 void Guide();
 void Settings();
+
+void MenuNewGame();
+void MenuOffline();
+
 void InGameMenu();
 vector<string> GetSaveFiles();
 string SelectSaveFile(bool);
