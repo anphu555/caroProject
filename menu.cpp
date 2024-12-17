@@ -431,6 +431,7 @@ void MenuHandler() {
 				system("cls");
 				Guide();
 				cout << "Press any key to return to menu...";
+				HideCursor();
 				getch();
 
 				pickSound();
@@ -441,6 +442,7 @@ void MenuHandler() {
 				system("cls");
 				About();
 				cout << "Press any key to return to menu...";
+				HideCursor();
 				getch();
 
 				pickSound();
@@ -695,12 +697,14 @@ string SelectSaveFile(bool isSaving) {
 				// New Save
 				system("cls");
 				cout << "Enter save name: ";
+				AppearCursor();
 				string filename;
 				getline(cin, filename);
 				
 				if (filename.empty()) {
 					cout << "File name cannot be empty! Please try again.\n";
 					cout << "Press any key to continue...";
+					HideCursor();
 					getch();
 					break;
 				}
@@ -727,6 +731,7 @@ void saveGame() {
 	if (_X == 0 && _Y == 0) {
 		printf("Cannot save game before starting!\n");
 		cout << "Press any key to continue...";
+		HideCursor();
 		getch();
 		return;
 	}
@@ -784,7 +789,11 @@ void saveGame() {
 				AppearCursor();
 				// save to new
 				string filename = SelectSaveFile(true);
-				if (filename == "BACK")		break; // user canceled (Back) , break de nhay khoi switch ko phai return
+				if (filename == "BACK") { // user canceled (Back)
+					HideCursor();
+					break;			// break de nhay khoi switch ko phai return
+				}
+					 
 
 				FILE* outFile = fopen(filename.c_str(), "w");
 				if (outFile) {
@@ -807,11 +816,12 @@ void saveGame() {
 					saveSound();
 					deleteOldestSaveFile();
 					cout << "Press any key to continue...";
+					HideCursor();
 					getch();
 
 					fclose(outFile);
 
-					return;
+					break;
 				}
 			/*	else if (filename.length() == 0 && filename.substr(filename.length() - 4) != ".txt") {
 					cout << "Invalid file name!" << endl;
@@ -821,8 +831,10 @@ void saveGame() {
 				else {
 					printf("Error: Unable to save the file.\n");
 					cout << "Press any key to continue...";
+					HideCursor();
 					getch();
-					return;
+					break;
+					//return;
 				}
 			}
 			else {
@@ -854,18 +866,18 @@ void saveGame() {
 
 
 					cout << "Press any key to continue...";
+					HideCursor();
 					getch();
 
 					fclose(outFile);
 
-					
-
-
-					return;
+					break;
+					//return;
 				}
 				else {
 					printf("Error: Unable to save the file.\n");
 					cout << "Press any key to continue...";
+					HideCursor();
 					getch();
 					return;
 				}

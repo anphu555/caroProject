@@ -27,6 +27,7 @@ void CaroLogo(int x, int y)
 
 // intro
 void intro1(int x, int y) {
+	system("color 0f");
 	HideCursor();
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // Đổi chế độ ghi Unicode
 
