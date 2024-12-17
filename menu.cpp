@@ -14,15 +14,41 @@ extern bool SFXmode; // false off, true on
 void About() {
 	/*printf("\n======================== ABOUT ========================\n");*/
 	AboutLogo(40, 2);
-	printf("\n");
-	printf("				A small caro project developed by a group of randoms chill boyz \n");
-	printf("Developers: \n");
-	printf("24127494: Vo An Phu\n");
-	printf("24127074: Nguyen Le Duy Loc\n");
-	printf("24127011: Nguyen Tuan An\n");
-	printf("24127375: Nguyen Tai Hoan\n");
-	printf("24127420: Pham Dinh Gia Khanh\n");
-	printf("\n======================================================\n");
+
+	GotoXY(30, 9);
+	printf("A small caro project developed by a group of randoms chill boyz");
+
+
+	BorderSquareLine(42, 72, 11, 15, 4);
+
+	GotoXY(52, 12);
+	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Instructor:" COLOR_RESET);
+
+	GotoXY(46, 14);
+	printf("PhD. Truong Toan Thinh");
+
+
+	BorderSquareLine(40, 77, 17, 25, 4);
+
+	GotoXY(52, 18);
+	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Developers:" COLOR_RESET);
+
+	GotoXY(44, 20);
+	printf("24127011 - Nguyen Tuan An");
+
+	GotoXY(44, 21);
+	printf("24127074 - Nguyen Le Duy Loc");
+
+	GotoXY(44, 22);
+	printf("24127375 - Nguyen Tai Hoan");
+
+	GotoXY(44, 23);
+	printf("24127420 - Pham Dinh Gia Khanh");
+
+	GotoXY(44, 24);
+	printf("24127494 - Vo An Phu");
+
+	GotoXY(44, 27);
 }
 
 void Guide() {
