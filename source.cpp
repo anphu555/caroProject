@@ -20,7 +20,7 @@ int main() {
     //BorderSquareLine(20, 40, 3, 5, 1);
     //BorderSquare(10, 20, 6, 10, 1);
 
-    intro1(30, 10);
+    intro1(30, 11);
     introLoading();
 
     //system("color f0");

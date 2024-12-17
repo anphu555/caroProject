@@ -54,7 +54,7 @@ void intro1(int x, int y) {
 	
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	Sleep(1500);
+	Sleep(1600);
 
 	return;
 }
@@ -67,7 +67,7 @@ void introLoading() {
 
 	GotoXY(52, 19);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Loading..." );
-	BorderSquare(30, 90, 20, 20, 10);
+	BorderSquare(30, 90, 20, 20, 17);
 	cout << COLOR_RESET;
 
 	Sleep(400);
