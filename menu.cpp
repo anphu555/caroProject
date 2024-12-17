@@ -152,7 +152,7 @@ void MenuNewGame()
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_NEWGAME_ITEMS; i++)
 		{
-			GotoXY(((RIGHT - LEFT) / 2 - 15), toadoY1 + i*2); //*2 de moi dong cach 1 o
+			GotoXY(((RIGHT + LEFT) / 2 - 15), toadoY1 + i*2); //*2 de moi dong cach 1 o
 			if (i == selectedItem)
 			{
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -222,7 +222,7 @@ void MenuOffline()
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
 		{
-			GotoXY(((RIGHT - LEFT) / 2 - 15), toadoY1 + i * 2); //*2 de moi dong cach 1 o
+			GotoXY(((RIGHT + LEFT) / 2 - 15), toadoY1 + i * 2); //*2 de moi dong cach 1 o
 			if (i == selectedItem)
 			{
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
