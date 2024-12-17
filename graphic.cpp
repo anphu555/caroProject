@@ -61,17 +61,17 @@ void MenuLogo2(int x, int y)
 
 	// Tạo biến ông già Noel
 	wstring logo[11] = {
-	L"	_.█████████████████",
-L"_ ██████████████████",
-L"████████████████████",
-L"█████████████████████",
-L"_█_________▄▄▄▄_ ▄▄▄▄_█",
-L"_█__█████_▐▓▓▌_▐▓▓▌_█",
-L"_█__█████_▐▓▓▌_▐▓▓▌_█",
-L"_█__█████_▐▓▓▌_▐▓▓▌_█",
-L"_█__█████_▀▀▀▀_ ▀▀▀▀ █✿ ✿",
-L"_█__█████_____________ █(\\|/)",
-L"_____________██ _____________██"
+	L"	_.█████████████████			 ",
+	L"_ ██████████████████			 ",
+	L"████████████████████			 ",
+	L"█████████████████████			 ",
+	L"_█_________▄▄▄▄_ ▄▄▄▄_█	 	 ",
+	L"_█__█████_▐▓▓▌_▐▓▓▌_█		 	 ",
+	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
+	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
+	L"_█__█████_▀▀▀▀_ ▀▀▀▀ █  ✿ ✿ ✿",
+	L"_█__█████_____________ █(\\|/) ",
+	L"_____________██ _____________██"
     };
 
 	// In ông già Noel
@@ -276,18 +276,18 @@ void XLogo(int x, int y)
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	wstring logo[7] = {
-		L"    ██╗░░██╗",
-		L"    ╚██╗██╔╝",
-		L"    ░╚███╔╝░",
-		L"    ░██╔██╗░",
-		L"    ██╔╝╚██╗",
-		L"    ╚═╝░░╚═╝"
+		L"██╗░░██╗",
+		L"╚██╗██╔╝",
+		L"░╚███╔╝░",
+		L"░██╔██╗░",
+		L"██╔╝╚██╗",
+		L"╚═╝░░╚═╝"
 	};
 
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_RED << logo[i];
+		wcout << /*COLOR_RED <<*/ logo[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -298,18 +298,18 @@ void OLogo(int x, int y)
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	wstring logo[7] = {
-		L"    ░█████╗░",
-		L"    ██╔══██╗",
-		L"    ██║░░██║",
-		L"    ██║░░██║",
-		L"    ╚█████╔╝",
-		L"    ░╚════╝░"
+		L"░█████╗░",
+		L"██╔══██╗",
+		L"██║░░██║",
+		L"██║░░██║",
+		L"╚█████╔╝",
+		L"░╚════╝░"
 	};
 
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_BLUE << logo[i];
+		wcout << /*COLOR_BLUE <<*/ logo[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);

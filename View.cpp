@@ -149,7 +149,18 @@ void DrawBoard() // pSize = BOARD_SIZE
     }
     
     cout << COLOR_RESET;
-   
+
+    // ve them x o o 2 ben
+    if (_TURN)
+    {
+        cout << COLOR_RED;
+        XLogo(4, 4); 
+        cout << COLOR_RESET;
+
+        cout << COLOR_WHITE COLOR_DARK;
+        OLogo(100, 4);
+        cout << COLOR_RESET;
+    }
 }
 
 int ProcessFinish(int pWhoWin)
@@ -174,6 +185,27 @@ int ProcessFinish(int pWhoWin)
             WinEffect(50, 5, pWhoWin);
     }
 
+    // ve lai x o voi mau theo luot
+    if (_TURN)  // luot x
+    {
+        cout << COLOR_RED;
+        XLogo(4, 4);
+        cout << COLOR_RESET;
+
+        cout << COLOR_WHITE COLOR_DARK;
+        OLogo(100, 4);
+        cout << COLOR_RESET;
+    }
+    else
+    {   
+        cout << COLOR_WHITE COLOR_DARK;
+        XLogo(4, 4);
+        cout << COLOR_RESET;
+
+        cout << COLOR_BLUE;
+        OLogo(100, 4);
+        cout << COLOR_RESET;
+	}
 
     GotoXY(_X, _Y);
     return pWhoWin;
