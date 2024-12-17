@@ -200,11 +200,13 @@ void MenuNewGame()
 		" BACK "
 	};
 	BorderSquareLine(48, 70, 12, 22, 0);
+	OfflineMode(13, 5);
 	int selectedItem = 5;
 
 	while (1) {
 		// hien thi menu
 		system("cls");
+		OfflineMode(13, 5); 
 		BorderSquareLine(48, 70, 12, 22, 0);
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_NEWGAME_ITEMS; i++)
@@ -608,7 +610,7 @@ vector<string> GetSaveFiles() {
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 6;
-	
+	BorderSquareLine(48, 70, 12, 27, 0);
 
 	while (true) {
 		system("cls");
@@ -628,7 +630,7 @@ string SelectSaveFile(bool isSaving) {
 		else {
 			for (int i = 0; i < saveFiles.size(); i++) {
 				int toadoY1 = 15;
-				GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
+				GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
 
 				if (i + 1 == selectedFile) {
 					cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -640,17 +642,18 @@ string SelectSaveFile(bool isSaving) {
 				}
 			}
 		}
+		BorderSquareLine(48, 70, 12, 27, 0);
 
 		if (selectedFile == 0) {
 			int toadoY1 = 15;
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
 			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 			cout << ">> Back <<" << endl;
 			cout << COLOR_RESET;
 		}
 		else {
 			int toadoY1 = 15;
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
 			cout << "   Back" << endl;
 		}
 
