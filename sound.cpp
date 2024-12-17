@@ -7,10 +7,6 @@ void introSound()
 {
 	PlaySound(TEXT("introloading.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
-//void introSound()
-//{
-//	PlaySound(TEXT("introsound.wav"), NULL, SND_FILENAME | SND_ASYNC);
-//}
 void backgroundMusicSound()
 {
 	(backgroundMusicmode) ? mciSendString(L"play \"music1.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
