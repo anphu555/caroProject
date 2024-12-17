@@ -25,7 +25,7 @@ void CaroLogo(int x, int y)
     int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-// intro
+// intro =====================================
 void intro1(int x, int y) {
 	system("color 0f");
 	HideCursor();
@@ -75,7 +75,7 @@ void introLoading() {
 
 	return;
 }
-
+// ===========================================
 
 void MenuLogo1(int x, int y)
 {
@@ -349,11 +349,6 @@ void OLogo(int x, int y)
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-//void openingScreen(int x, int y)
-//{
-//	CaroLogo(50, 50);
-//
-//}
 
 void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed)
 {
@@ -416,6 +411,16 @@ void BorderSquareLine(int xleft, int xright, int ytop, int ybottom, int speed)
 	}
 }
 
+void BorderSquareFILL(int xleft, int xright, int ytop, int ybottom)
+{
+	for (int i = ytop; i <= ybottom; i++)
+	{
+		for (int j = xleft; j <= xright; j++) // để cho nó chạy từ 0
+		{
+			GotoXY(j, i); cout << ' ';//char(219);
+		}
+	}
+}
 
 void SettingLogo(int x, int y)
 {
