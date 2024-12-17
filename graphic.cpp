@@ -530,3 +530,21 @@ void PauseLogo(int x, int y)
 
 
 
+void OfflineMode(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring logo[4] = {
+		L"░█▀▀█ ░█─░█ ░█▀▀▀█ ░█▀▀▀█ ░█▀▀▀█ ░█▀▀▀ 　 ░█  ░█ ░█▀▀▀█ ░█ ░█ ░█▀▀█ 　 ░█▀▄▀█ ░█▀▀▀█ ░█▀▀▄ ░█▀▀▀",
+		L"░█─── ░█▀▀█ ░█──░█ ░█──░█ ─▀▀▀▄▄ ░█▀▀▀ 　 ░█▄▄▄█ ░█──░█ ░█ ░█ ░█▄▄▀ 　 ░█░█░█ ░█──░█ ░█─░█ ░█▀▀▀",
+		L"░█▄▄█ ░█─░█ ░█▄▄▄█ ░█▄▄▄█ ░█▄▄▄█ ░█▄▄▄ 　  ─░█ ─ ░█▄▄▄█  ▀▄▄▀ ░█─░█ 　 ░█──░█ ░█▄▄▄█ ░█▄▄▀ ░█▄▄▄"
+	};
+
+	for (int i = 0; i < 4; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+}

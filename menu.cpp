@@ -86,7 +86,7 @@ void Guide() {
 	printf("  a straight line, diagonal, or horizontal line faster than");
 	GotoXY(30, 22);
 	printf("  your opponent. Achieving 4 unblocked moves also wins.");
-	
+
 	GotoXY(43, 27);
 }
 
@@ -96,7 +96,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	HideCursor();
 
 	SettingLogo(30, 3);
-	BorderSquareLine(36, 73, 13, 21, 4);
+	BorderSquareLine(42, 78, 13, 21, 0);
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -104,11 +104,14 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"SFX: ON",
 		"Back"
 	};
-	
-	int selectedItem = 5;
+
+		SettingLogo(34, 3);
+	BorderSquareLine(42, 78, 13, 21, 0);
+
+		int selectedItem = 5;
 
 	while (1) {
-		
+
 		if (backgroundMusicmode) {   // music is on
 			settingsItems[0] = "Music: \u001b[32m\u001b[1mON\u001b[0m\u001b[107m\u001b[30m";
 		}
@@ -128,22 +131,26 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		int toadoY1 = 15; // tọa đọ test vị trsi settings
 
 		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 15 + i * 2);
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 15 + i * 2);
 			cout << "                        "; // Xóa dòng menu cũ
 		}
 
 		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 15 + i * 2);
+
+				GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
+		
+				GotoXY(((RIGHT + LEFT) / 2) - 7, 15 + i * 2);
+			
 
 
-			if (i == selectedItem) {
-				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-				cout << ">> " << settingsItems[i] << " <<";
-				cout << COLOR_RESET;
-			}
-			else {
-				cout << "   " << settingsItems[i];
-			}
+				if (i == selectedItem) {
+					cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+					cout << ">> " << settingsItems[i] << " <<";
+					cout << COLOR_RESET;
+				}
+				else {
+					cout << "   " << settingsItems[i];
+				}
 		}
 
 		// lựa chọn các item
@@ -188,19 +195,19 @@ void MenuNewGame()
 	const char* newgameItems[NUM_NEWGAME_ITEMS] = {
 		"OFFLINE",
 		"ONLINE",
-		"BACK"
+		" BACK"
 	};
-
+	BorderSquareLine(48, 70, 12, 22, 0);
 	int selectedItem = 5;
 
 	while (1) {
 		// hien thi menu
 		system("cls");
-
+		BorderSquareLine(48, 70, 12, 22, 0);
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_NEWGAME_ITEMS; i++)
 		{
-			GotoXY(((RIGHT + LEFT) / 2 - 15), toadoY1 + i*2); //*2 de moi dong cach 1 o
+			GotoXY(((RIGHT + LEFT) / 2 - 7), toadoY1 + i * 2); //*2 de moi dong cach 1 o
 			if (i == selectedItem)
 			{
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -212,7 +219,7 @@ void MenuNewGame()
 				cout << "   " << newgameItems[i];
 			}
 		}
-		
+
 		// lua chon
 		int choice = getch();
 		switch (choice)
@@ -261,16 +268,22 @@ void MenuOffline()
 		"BACK"
 	};
 
+	system("cls");
+
+	OfflineMode(13, 5);
+	BorderSquareLine(48, 70, 12, 22, 0);
 	int selectedItem = 5;
 
 	while (1) {
 		// hien thi menu
 		system("cls");
-
+		HideCursor();
+		OfflineMode(13, 5);
+		BorderSquareLine(48, 70, 12, 22, 0);
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
 		{
-			GotoXY(((RIGHT + LEFT) / 2 - 15), toadoY1 + i * 2); //*2 de moi dong cach 1 o
+			GotoXY(((RIGHT + LEFT) / 2 - 6), toadoY1 + i * 2); //*2 de moi dong cach 1 o
 			if (i == selectedItem)
 			{
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -337,15 +350,15 @@ void MenuHandler() {
 		"   About  ",
 		"   Exit   "
 	};
-	
+
 	int selectedItem = 11;
 	while (true) {
 		system("cls");
 
 		backgroundMusicSound();
 
-		MenuLogo1(70, 14);
-		IngameLogo4(10, 5);
+		MenuLogo1(85, 14);
+		IngameLogo4(13.5, 5);
 		MenuLogo2(10, 14);
 
 		//system("color f0");
@@ -355,13 +368,13 @@ void MenuHandler() {
 		int toadoY1 = 15;  // bien test ========================================== 
 
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
+			GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
 			cout << "                        "; // Xóa dòng menu cũ
 		}
 
 
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+			GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
 
 			if (i == selectedItem) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -465,7 +478,7 @@ void InGameMenu() {
 
 	system("cls");
 	PauseLogo(40, 2);
-	BorderSquareLine(47, 67, 12, 22, 4);
+	BorderSquareLine(47, 67, 12, 22, 0);
 
 	while (true) {
 		system("cls");
@@ -593,9 +606,12 @@ vector<string> GetSaveFiles() {
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 6;
+	BorderSquareLine(48, 70, 12, 27, 0);
 
 	while (true) {
+
 		system("cls");
+
 		cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
 
 
@@ -607,7 +623,7 @@ string SelectSaveFile(bool isSaving) {
 		 }*/
 
 
-		// đây là lúc lưu file
+		 // đây là lúc lưu file
 
 		if (isSaving) {
 
@@ -620,12 +636,13 @@ string SelectSaveFile(bool isSaving) {
 				cout << "   New Save" << endl;
 			}
 		}
+		BorderSquareLine(48, 70, 12, 27, 0);
 
 
 		for (int i = 0; i < saveFiles.size(); i++) {
 
 			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
+			GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
 
 
 			if (i + (isSaving ? 2 : 1) == selectedFile) {
@@ -643,20 +660,22 @@ string SelectSaveFile(bool isSaving) {
 
 
 			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 25); 
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
 
 
 			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-			cout << ">> Back <<" << endl;
+			cout << " >> " << COLOR_RED  "Back" << COLOR_RESET;
+			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+			cout << " << " << endl;
 			cout << COLOR_RESET;
 		}
 		else {
 
 			int toadoY1 = 15; // toa độ kiểm thử
-			GotoXY(((RIGHT + LEFT) / 2) - 15, 25);
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
 
 
-			cout << "   Back" << endl;
+			cout << COLOR_RED "    Back   " << COLOR_RESET << endl;
 		}
 
 		int ch = getch();
@@ -684,7 +703,7 @@ string SelectSaveFile(bool isSaving) {
 				AppearCursor();
 				string filename;
 				getline(cin, filename);
-				
+
 				if (filename.empty()) {
 					cout << "File name cannot be empty! Please try again.\n";
 					cout << "Press any key to continue...";
@@ -695,7 +714,7 @@ string SelectSaveFile(bool isSaving) {
 				else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
 					filename += ".txt";
 				}
-		
+
 				return filename;
 			}
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
@@ -743,7 +762,7 @@ void saveGame() {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> " << saveOptions[i] << " <<";
 				cout << COLOR_RESET;
-				
+
 			}
 			else {
 				cout << "   " << saveOptions[i];
@@ -777,7 +796,7 @@ void saveGame() {
 					HideCursor();
 					break;			// break de nhay khoi switch ko phai return
 				}
-					 
+
 
 				FILE* outFile = fopen(filename.c_str(), "w");
 				if (outFile) {
@@ -807,11 +826,11 @@ void saveGame() {
 
 					break;
 				}
-			/*	else if (filename.length() == 0 && filename.substr(filename.length() - 4) != ".txt") {
-					cout << "Invalid file name!" << endl;
-					cout << "Press any key to continue...";
-					getch();
-				}*/
+				/*	else if (filename.length() == 0 && filename.substr(filename.length() - 4) != ".txt") {
+						cout << "Invalid file name!" << endl;
+						cout << "Press any key to continue...";
+						getch();
+					}*/
 				else {
 					printf("Error: Unable to save the file.\n");
 					cout << "Press any key to continue...";
@@ -933,7 +952,7 @@ void loadGame() {
 		GotoXY(_X, _Y);
 		GameMove();
 	}
-	
+
 	// ko can else vi phai nay co xoa duoc dau?
 
 	//else {
