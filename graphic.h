@@ -30,6 +30,7 @@ void XLogo(int x, int y);
 void OLogo(int x, int y);
 
 void BorderSquare(int, int, int, int, int);
+void BorderSquareLine(int, int, int, int, int);
 
 //void openingScreen(int x, int y);
 

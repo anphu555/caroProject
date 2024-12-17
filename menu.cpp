@@ -27,28 +27,57 @@ void About() {
 
 void Guide() {
 	GuideLogo(40, 1);
-	printf("\n");
-	/*printf("\n======================== GUIDE ========================\n");*/
-	//GotoXY(0, 0);//
-	printf("Controls:\n");
-	printf("  Player X (WASD):\n");
-	printf("    W : Move up\n");
-	printf("    A : Move left\n");
-	printf("    D : Move right\n");
-	printf("    S : Move down\n\n");
-	printf("  Player O (Arrow Keys):\n");
-	printf("    UP    : Move up\n");
-	printf("    LEFT  : Move left\n");
-	printf("    RIGHT : Move right\n");
-	printf("    DOWN  : Move down\n\n");
-	printf("Game Rules:\n");
-	printf("  The goal of the game is to align 5 cells consecutively in\n");
-	printf("  a straight line, diagonal, or horizontal line faster than\n");
-	printf("  your opponent. Achieving 4 unblocked moves also wins.\n\n");
-	printf("Tips:\n");
-	printf("  - Plan ahead and block your opponent's moves.\n");
-	printf("  - Use strategies from online resources to improve.\n");
-	printf("=======================================================\n\n");
+
+	BorderSquareLine(55-15-7, 55+15+15, 9, 15, 5);
+
+	GotoXY(55, 10);
+	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Controls:" COLOR_RESET);
+
+	// rut gon noi dung
+	GotoXY(55-15, 12);
+	printf(COLOR_UNDERLINE COLOR_RED COLOR_BOLD "Player X:" COLOR_RESET);
+
+	GotoXY(55 - 15, 13);
+	printf("W A S D");
+
+	GotoXY(55+15, 12);
+	printf(COLOR_UNDERLINE COLOR_BLUE COLOR_BOLD "Player O:" COLOR_RESET);
+
+	GotoXY(55 + 15, 13);
+	printf("Arrow keys");
+
+	GotoXY(55-15 , 14);
+	printf("Enter");
+	GotoXY(55+15, 14);
+	printf("Enter");
+
+	//printf("  Player X (WASD):\n");
+	//printf("    W : Move up\n");
+	//printf("    A : Move left\n");
+	//printf("    D : Move right\n");
+	//printf("    S : Move down\n\n");
+	//printf("  Player O (Arrow Keys):\n");
+	//printf("    UP    : Move up\n");
+	//printf("    LEFT  : Move left\n");
+	//printf("    RIGHT : Move right\n");
+	//printf("    DOWN  : Move down\n\n");
+
+	BorderSquareLine(55 - 15 - 13, 55 + 15 + 15 + 7, 17, 23, 5);
+
+	GotoXY(55, 18);
+	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Game Rules:" COLOR_RESET);
+	GotoXY(30, 20);
+	printf("  The goal of the game is to align 5 cells consecutively in");
+	GotoXY(30, 21);
+	printf("  a straight line, diagonal, or horizontal line faster than");
+	GotoXY(30, 22);
+	printf("  your opponent. Achieving 4 unblocked moves also wins.");
+	
+	GotoXY(55 - 10, 27);
+	//printf("Tips:\n");
+	//printf("  - Plan ahead and block your opponent's moves.\n");
+	//printf("  - Use strategies from online resources to improve.\n");
+	//printf("=======================================================\n\n");
 }
 
 void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ

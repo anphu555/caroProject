@@ -82,7 +82,7 @@ void loadGame();
 void saveGame();
 void Guide();
 void Settings();
-void  deleteOldestSaveFile();
+void deleteOldestSaveFile();
 
 void MenuNewGame();
 void MenuOffline();

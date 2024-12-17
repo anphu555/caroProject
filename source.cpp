@@ -17,9 +17,9 @@ bool SFXmode = true; // false off, true on
 int main() {
     
     //test
-    //system("pause");
-    BorderSquare(10, 30, 3, 8, 2);
-    //GotoXY(70, 20);
+    BorderSquareLine(20, 40, 3, 5, 1);
+    BorderSquare(10, 30, 6, 10, 1);
+    
     //system("pause");
 
     system("color f0");
