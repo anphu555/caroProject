@@ -17,8 +17,6 @@ bool SFXmode = true; // false off, true on
 int main() {
     
     //test
-    //BorderSquareLine(20, 40, 3, 5, 1);
-    //BorderSquare(10, 20, 6, 10, 1);
     setConsoleSize(120, 30);
     cout << BACKGROUND_WHITE;
     BorderSquareFILL(0, 119, 0, 8);
@@ -28,7 +26,6 @@ int main() {
     GotoXY(4, 5); cout << "teset";
     GotoXY(4, 17); cout << "teset";
     system("pause");
-
 
     // test============================
 
