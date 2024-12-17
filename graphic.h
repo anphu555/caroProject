@@ -15,6 +15,9 @@ void MenuLogo1(int x, int y); // logomenu1
 void MenuLogo2(int x, int y);
 
 void intro1(int x, int y);
+
+void intro2(int x, int y);
+
 void introLoading();
 
 void AboutLogo(int x, int y);

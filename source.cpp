@@ -29,12 +29,17 @@ int main() {
 
     // test============================
 
-
-    intro1(30, 11);
+    intro2(10, 1);
+    //intro1(30, 11);
+    
     //GotoXY(50, 28);
     //system("pause");
+
+
     introLoading();
     
+    //GotoXY(50, 28);
+ //system("pause");
 
     //system("color f0");
     cout << COLOR_RESET;
