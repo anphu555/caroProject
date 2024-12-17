@@ -95,8 +95,11 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	system("cls");
 	HideCursor();
 
-	SettingLogo(30, 3);
+
+	SettingLogo(34, 3);
 	BorderSquareLine(42, 78, 13, 21, 0);
+	//SettingLogo(30, 3);
+	//BorderSquareLine(42, 78, 13, 21, 0);
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -105,8 +108,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"Back"
 	};
 
-		SettingLogo(34, 3);
-	BorderSquareLine(42, 78, 13, 21, 0);
+
 
 		int selectedItem = 5;
 
