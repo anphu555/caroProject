@@ -25,6 +25,57 @@ void CaroLogo(int x, int y)
     int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
+// intro
+void intro1(int x, int y) {
+	HideCursor();
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // Đổi chế độ ghi Unicode
+
+	// Tạo biến logo chiến thắng
+	wstring Group10[6] = {
+		L" ██████╗ ██████╗  █████╗ ██╗   ██╗██████╗    ███╗   █████╗ ",
+		L"██╔════╝ ██╔══██╗██╔══██╗██║   ██║██╔══██╗  ████║  ██╔══██╗",
+		L"██║  ██╗ ██████╔╝██║  ██║██║   ██║██████╔╝ ██╔██║  ██║  ██║",
+		L"██║  ╚██╗██╔══██╗██║  ██║██║   ██║██╔═══╝  ╚═╝██║  ██║  ██║",
+		L"╚██████╔╝██║  ██║╚█████╔╝╚██████╔╝██║      ███████╗╚█████╔╝",
+		L" ╚═════╝ ╚═╝  ╚═╝ ╚════╝  ╚═════╝ ╚═╝      ╚══════╝ ╚════╝ "
+	};
+		
+	// Phát intro sound
+	introSound();
+
+	Sleep(320);
+
+	// Hiển thị logo
+	for (int i = 0; i < 6; i++) {
+		GotoXY(x, y + i);
+		wcout << COLOR_WHITE << Group10[i];
+	}
+	// Dừng lại một khoảng thời gian
+	
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	Sleep(1500);
+
+	return;
+}
+void introLoading() {
+	system("cls");
+	system("color f0");
+	HideCursor();
+
+	IngameLogo4(14, 9);
+
+	GotoXY(52, 19);
+	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Loading..." );
+	BorderSquare(30, 90, 20, 20, 10);
+	cout << COLOR_RESET;
+
+	Sleep(400);
+
+	return;
+}
+
+
 void MenuLogo1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
@@ -305,42 +356,65 @@ void OLogo(int x, int y)
 
 void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed)
 {
-	for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
+	if (ytop == ybottom)
 	{
-		GotoXY(i, ytop); cout << char(220); // 220
-		GotoXY((xright - i) + xleft, ybottom); cout << char(223);//223
-		Sleep(speed);
+		for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
+		{
+			GotoXY(i, ytop); cout << char(220);
+			Sleep(speed);
+		}
 	}
-	for (int i = (ytop + 1); i <= (ybottom - 1); i++) // để cho nó chạy từ 0
+	else
 	{
-		GotoXY(xleft, (ybottom - i) + ytop); cout << char(219);
-		GotoXY(xright, i); cout << char(219);
-		Sleep(speed);
+		for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
+		{
+			GotoXY(i, ytop); cout << char(220); // 220
+			GotoXY((xright - i) + xleft, ybottom); cout << char(223);//223
+			Sleep(speed);
+		}
+		for (int i = (ytop + 1); i <= (ybottom - 1); i++) // để cho nó chạy từ 0
+		{
+			GotoXY(xleft, (ybottom - i) + ytop); cout << char(219);
+			GotoXY(xright, i); cout << char(219);
+			Sleep(speed);
+		}
 	}
 }
 
 void BorderSquareLine(int xleft, int xright, int ytop, int ybottom, int speed)
 {
-	for (int i = xleft + 1; i <= (xright - 1); i++) // để cho nó chạy từ 0, ko in ngay góc
+	if (ytop == ybottom)
 	{
-		GotoXY(i, ytop); cout << char(205); 
-		GotoXY((xright - i) + xleft, ybottom); cout << char(205);
-		Sleep(speed);
+		for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
+		{
+			GotoXY(i, ytop); cout << char(205);
+			Sleep(speed);
+		}
 	}
-
-	GotoXY(xright, ytop); cout << char(187);
-	GotoXY(xleft, ybottom); cout << char(200);
-
-	for (int i = (ytop + 1); i <= (ybottom - 1); i++) // để cho nó chạy từ 0
+	else
 	{
-		GotoXY(xleft, (ybottom - i) + ytop); cout << char(186);
-		GotoXY(xright, i); cout << char(186);
-		Sleep(speed);
-	}
+		for (int i = xleft + 1; i <= (xright - 1); i++) // để cho nó chạy từ 0, ko in ngay góc
+		{
+			GotoXY(i, ytop); cout << char(205);
+			GotoXY((xright - i) + xleft, ybottom); cout << char(205);
+			Sleep(speed);
+		}
 
-	GotoXY(xleft, ytop); cout << char(201);
-	GotoXY(xright, ybottom); cout << char(188);
+		GotoXY(xright, ytop); cout << char(187);
+		GotoXY(xleft, ybottom); cout << char(200);
+
+		for (int i = (ytop + 1); i <= (ybottom - 1); i++) // để cho nó chạy từ 0
+		{
+			GotoXY(xleft, (ybottom - i) + ytop); cout << char(186);
+			GotoXY(xright, i); cout << char(186);
+			Sleep(speed);
+		}
+
+		GotoXY(xleft, ytop); cout << char(201);
+		GotoXY(xright, ybottom); cout << char(188);
+	}
 }
+
 
 void SettingLogo(int x, int y)
 {
