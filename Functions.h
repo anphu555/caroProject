@@ -27,6 +27,7 @@
 #include <vector>
 #include <fstream>
 #include <experimental/filesystem>
+#include <algorithm>
 
 #pragma comment (lib, "winmm.lib") // de them hieu ung am thanh
 
@@ -81,6 +82,7 @@ void loadGame();
 void saveGame();
 void Guide();
 void Settings();
+void  deleteOldestSaveFile();
 
 void MenuNewGame();
 void MenuOffline();

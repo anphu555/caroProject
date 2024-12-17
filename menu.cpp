@@ -617,9 +617,17 @@ string SelectSaveFile(bool isSaving) {
 				cout << "Enter save name: ";
 				string filename;
 				getline(cin, filename);
-				if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
+				
+				if (filename.empty()) {
+					cout << "File name cannot be empty! Please try again.\n";
+					cout << "Press any key to continue...";
+					getch();
+					break;
+				}
+				else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
 					filename += ".txt";
 				}
+		
 				return filename;
 			}
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
@@ -718,7 +726,7 @@ void saveGame() {
 
 					// am thanh save file tahnh cong
 					saveSound();
-
+					deleteOldestSaveFile();
 					cout << "Press any key to continue...";
 					getch();
 
@@ -726,6 +734,11 @@ void saveGame() {
 
 					return;
 				}
+			/*	else if (filename.length() == 0 && filename.substr(filename.length() - 4) != ".txt") {
+					cout << "Invalid file name!" << endl;
+					cout << "Press any key to continue...";
+					getch();
+				}*/
 				else {
 					printf("Error: Unable to save the file.\n");
 					cout << "Press any key to continue...";
@@ -753,12 +766,12 @@ void saveGame() {
 					fprintf(outFile, "%d %d\n", _X, _Y);
 
 					printf("Game state saved to: %s\n", filename.c_str());
-					fclose(outFile);
+					/*fclose(outFile);*/
 
 
 					// am thanh save file tahnh cong
 					saveSound();
-
+					deleteOldestSaveFile();
 
 
 					cout << "Press any key to continue...";
@@ -856,4 +869,28 @@ void loadGame() {
 	//}
 
 	fclose(inFile);
+}
+namespace fs = std::experimental::filesystem;
+
+// Hàm xóa file cũ nhất khi vượt quá giới hạn
+void deleteOldestSaveFile() {
+	std::vector<std::string> saveFiles;
+
+	// Duyệt tất cả file .txt trong thư mục hiện tại
+	for (const auto& entry : fs::directory_iterator(fs::current_path())) {
+		if (entry.path().extension() == ".txt") {
+			saveFiles.push_back(entry.path().string());
+		}
+	}
+
+	// Kiểm tra nếu vượt quá 5 file
+	if (saveFiles.size() > 5) {
+		// Sắp xếp theo thời gian sửa đổi
+		std::sort(saveFiles.begin(), saveFiles.end(), [](const std::string& a, const std::string& b) {
+			return fs::last_write_time(a) < fs::last_write_time(b);
+			});
+
+		// Xóa file cũ nhất
+		fs::remove(saveFiles.front());
+	}
 }
