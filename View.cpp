@@ -127,8 +127,6 @@ void DrawBoard() // pSize = BOARD_SIZE
     GotoXY(RIGHT, TOP);     cout << char(203);
     GotoXY(RIGHT, BOTTOM);  cout << char(202);
 
-    // khoảng cách từ rìa bàn cờ tới mép ngoài hiện là 33
-
     // vẽ rộng ra 2 bên bàn cờ
     GotoXY(LEFT - 33 - 1, TOP);      cout << char(201);  // goc ria ngoai
     GotoXY(LEFT - 33 - 1, BOTTOM);   cout << char(200);
