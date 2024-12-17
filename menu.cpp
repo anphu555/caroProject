@@ -99,7 +99,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	while (1) {
 
 		system("cls");
-		SettingLogo(30, 8);
+		SettingLogo(30, 3);
 		if (backgroundMusicmode) {   // music is on
 			settingsItems[0] = "Music: ON";
 		}
