@@ -303,7 +303,7 @@ void OLogo(int x, int y)
 //
 //}
 
-void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed = 0)
+void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed)
 {
 	for (int i = xleft; i <= xright; i++) // để cho nó chạy từ 0
 	{
@@ -319,7 +319,7 @@ void BorderSquare(int xleft, int xright, int ytop, int ybottom, int speed = 0)
 	}
 }
 
-void BorderSquareLine(int xleft, int xright, int ytop, int ybottom, int speed = 0)
+void BorderSquareLine(int xleft, int xright, int ytop, int ybottom, int speed)
 {
 	for (int i = xleft + 1; i <= (xright - 1); i++) // để cho nó chạy từ 0, ko in ngay góc
 	{
@@ -358,7 +358,7 @@ void SettingLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << /*COLOR_BLUE <<*/ logo[i];
+		wcout << logo[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -380,7 +380,7 @@ void AboutLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << /*COLOR_BLUE <<*/ logo[i];
+		wcout << logo[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -402,7 +402,29 @@ void GuideLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << /*COLOR_BLUE <<*/ logo[i];
+		wcout << logo[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+}
+
+void PauseLogo(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring logo[7] = {
+		L"██████╗░░█████╗░██╗░░░██╗░██████╗███████╗",
+		L"██╔══██╗██╔══██╗██║░░░██║██╔════╝██╔════╝",
+		L"██████╔╝███████║██║░░░██║╚█████╗░█████╗░░",
+		L"██╔═══╝░██╔══██║██║░░░██║░╚═══██╗██╔══╝░░",
+		L"██║░░░░░██║░░██║╚██████╔╝██████╔╝███████╗",
+		L"╚═╝░░░░░╚═╝░░╚═╝░╚═════╝░╚═════╝░╚══════╝"
+	};
+		
+	for (int i = 0; i < 7; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);

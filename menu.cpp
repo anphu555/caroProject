@@ -50,7 +50,7 @@ void About() {
 }
 
 void Guide() {
-	GuideLogo(40, 1);
+	GuideLogo(40, 2);
 
 	BorderSquareLine(33, 85, 9, 15, 3);
 
@@ -477,13 +477,22 @@ void InGameMenu() {
 
 	int selectedItem = 9;
 
+	system("cls");
+	PauseLogo(40, 2);
+	BorderSquareLine(47, 67, 12, 22, 4);
+
 	while (true) {
 		system("cls");
 		HideCursor();
-		cout << "====================== PAUSING ======================" << "\n" << "\n";
+		PauseLogo(40, 2);
+
+		BorderSquareLine(47, 67, 12, 22, 0);
 
 		// display menu with highlights
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
+
+			GotoXY(50, 13 + i * 2);
+
 			if (i == selectedItem) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> " << menuItems[i] << " <<" << endl;
@@ -710,7 +719,6 @@ string SelectSaveFile(bool isSaving) {
 		}
 	}
 }
-
 
 
 void saveGame() {
