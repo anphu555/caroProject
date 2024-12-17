@@ -17,15 +17,15 @@ bool SFXmode = true; // false off, true on
 int main() {
     
     //test
-    setConsoleSize(120, 30);
-    cout << BACKGROUND_WHITE;
-    BorderSquareFILL(0, 119, 0, 8);
-    cout << BACKGROUND_CYAN;
-    BorderSquareFILL(0, 119, 9, 30);
+    //setConsoleSize(120, 30);
+    //cout << BACKGROUND_WHITE;
+    //BorderSquareFILL(0, 119, 0, 8);
+    //cout << BACKGROUND_CYAN;
+    //BorderSquareFILL(0, 119, 9, 30);
 
-    GotoXY(4, 5); cout << "teset";
-    GotoXY(4, 17); cout << "teset";
-    system("pause");
+    //GotoXY(4, 5); cout << "teset";
+    //GotoXY(4, 17); cout << "teset";
+    //system("pause");
 
     // test============================
 
