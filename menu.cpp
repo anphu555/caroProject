@@ -26,7 +26,7 @@ void About() {
 	printf("PhD. Truong Toan Thinh");
 
 
-	BorderSquareLine(40, 77, 17, 25, 4);
+	BorderSquareLine(38, 77, 17, 25, 4);
 
 	GotoXY(52, 18);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Developers:" COLOR_RESET);
