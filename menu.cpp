@@ -117,24 +117,26 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"SFX: ON",
 		"Back"
 	};
-	BorderSquareLine(36, 73, 13, 21, 4);
+
 	SettingLogo(30, 3);
+	BorderSquareLine(36, 73, 13, 21, 4);
+	
 	int selectedItem = 5;
 
 	while (1) {
 		
 		if (backgroundMusicmode) {   // music is on
-			settingsItems[0] = "Music: ON";
+			settingsItems[0] = "Music: \u001b[32m\u001b[1mON\u001b[0m\u001b[107m\u001b[30m";
 		}
 		else {
-			settingsItems[0] = "Music: OFF";
+			settingsItems[0] = "Music: \u001b[1mOFF\u001b[0m\u001b[107m\u001b[30m";
 		}
 
 		if (SFXmode) {      //sfx is on
-			settingsItems[1] = "SFX: ON";
+			settingsItems[1] = "SFX: \u001b[32m\u001b[1mON\u001b[0m\u001b[107m\u001b[30m";
 		}
 		else {
-			settingsItems[1] = "SFX: OFF";
+			settingsItems[1] = "SFX: \u001b[1mOFF\u001b[0m\u001b[107m\u001b[30m";
 		}
 
 		// Hiển thị menu cài đặt
