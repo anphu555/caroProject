@@ -28,27 +28,27 @@ void About() {
 void Guide() {
 	GuideLogo(40, 1);
 
-	BorderSquareLine(55-15-7, 55+15+15, 9, 15, 5);
+	BorderSquareLine(33, 85, 9, 15, 4);
 
 	GotoXY(55, 10);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Controls:" COLOR_RESET);
 
 	// rut gon noi dung
-	GotoXY(55-15, 12);
+	GotoXY(40, 12);
 	printf(COLOR_UNDERLINE COLOR_RED COLOR_BOLD "Player X:" COLOR_RESET);
 
-	GotoXY(55 - 15, 13);
+	GotoXY(40, 13);
 	printf("W A S D");
 
-	GotoXY(55+15, 12);
+	GotoXY(70, 12);
 	printf(COLOR_UNDERLINE COLOR_BLUE COLOR_BOLD "Player O:" COLOR_RESET);
 
-	GotoXY(55 + 15, 13);
+	GotoXY(70, 13);
 	printf("Arrow keys");
 
-	GotoXY(55-15 , 14);
+	GotoXY(40, 14);
 	printf("Enter");
-	GotoXY(55+15, 14);
+	GotoXY(70, 14);
 	printf("Enter");
 
 	//printf("  Player X (WASD):\n");
@@ -62,7 +62,7 @@ void Guide() {
 	//printf("    RIGHT : Move right\n");
 	//printf("    DOWN  : Move down\n\n");
 
-	BorderSquareLine(55 - 15 - 13, 55 + 15 + 15 + 7, 17, 23, 5);
+	BorderSquareLine(27, 92, 17, 23, 5);
 
 	GotoXY(55, 18);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Game Rules:" COLOR_RESET);
@@ -73,7 +73,7 @@ void Guide() {
 	GotoXY(30, 22);
 	printf("  your opponent. Achieving 4 unblocked moves also wins.");
 	
-	GotoXY(55 - 10, 27);
+	GotoXY(43, 27);
 	//printf("Tips:\n");
 	//printf("  - Plan ahead and block your opponent's moves.\n");
 	//printf("  - Use strategies from online resources to improve.\n");
