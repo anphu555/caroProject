@@ -18,7 +18,7 @@ int main() {
     
     //test
     BorderSquareLine(20, 40, 3, 5, 1);
-    BorderSquare(10, 30, 6, 10, 1);
+    BorderSquare(10, 20, 6, 10, 1);
     
     //system("pause");
 

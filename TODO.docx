@@ -1,10 +1,6 @@
 Chức năng còn thiếu:
 
-nhận dạng đồ họa lượt đánh x hay o
 sắp xếp tên trong load game
-sửa lỗi save game ko tên
-
-thêm mcuj online offline
 
 ((- Chức năng thêm tên khi khởi tạo trò chơi mới)
 
@@ -19,3 +15,6 @@ thêm mcuj online offline
 - Bổ sung menu, menu ingame (chức năng setting)
 - Giao diện chọn y/n khi thắng game
 - Nhận biết thắng thua (chưa nhận dạng được tại sao thắng)
+thêm mcuj online offline
+nhận dạng đồ họa lượt đánh x hay o
+sửa lỗi save game ko tên

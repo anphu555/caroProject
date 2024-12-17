@@ -9,10 +9,8 @@ extern int _X, _Y;
 extern bool backgroundMusicmode;
 extern bool SFXmode; // false off, true on
 
-// TAM THOI DE MAU TIM ===================================
 
 void About() {
-	/*printf("\n======================== ABOUT ========================\n");*/
 	AboutLogo(40, 2);
 
 	GotoXY(30, 9);
@@ -28,7 +26,7 @@ void About() {
 	printf("PhD. Truong Toan Thinh");
 
 
-	BorderSquareLine(40, 77, 17, 25, 4);
+	BorderSquareLine(38, 77, 17, 25, 4);
 
 	GotoXY(52, 18);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Developers:" COLOR_RESET);
@@ -54,7 +52,7 @@ void About() {
 void Guide() {
 	GuideLogo(40, 1);
 
-	BorderSquareLine(33, 85, 9, 15, 4);
+	BorderSquareLine(33, 85, 9, 15, 3);
 
 	GotoXY(55, 10);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Controls:" COLOR_RESET);
@@ -88,7 +86,7 @@ void Guide() {
 	//printf("    RIGHT : Move right\n");
 	//printf("    DOWN  : Move down\n\n");
 
-	BorderSquareLine(27, 92, 17, 23, 5);
+	BorderSquareLine(27, 92, 17, 23, 3);
 
 	GotoXY(55, 18);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Game Rules:" COLOR_RESET);
