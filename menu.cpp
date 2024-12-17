@@ -12,8 +12,10 @@ extern bool SFXmode; // false off, true on
 // TAM THOI DE MAU TIM ===================================
 
 void About() {
-	printf("\n======================== ABOUT ========================\n");
-	printf("A small caro project developed by a bunch of randoms \n");
+	/*printf("\n======================== ABOUT ========================\n");*/
+	AboutLogo(40, 2);
+	printf("\n");
+	printf("				A small caro project developed by a group of randoms chill boyz \n");
 	printf("Developers: \n");
 	printf("24127494: Vo An Phu\n");
 	printf("24127074: Nguyen Le Duy Loc\n");
@@ -51,7 +53,8 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	// cais này sẽ chỉnh thành logo sau
 	system("cls");
 	HideCursor();
-	cout << "=======Settings======\n\n";
+	
+	/*cout << "=======Settings======\n\n";*/
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -65,7 +68,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	while (1) {
 
 		system("cls");
-
+		SettingLogo(30, 8);
 		if (backgroundMusicmode) {   // music is on
 			settingsItems[0] = "Music: ON";
 		}
@@ -870,11 +873,11 @@ void loadGame() {
 
 	fclose(inFile);
 }
-namespace fs = std::experimental::filesystem;
+namespace fs = experimental::filesystem;
 
 // Hàm xóa file cũ nhất khi vượt quá giới hạn
 void deleteOldestSaveFile() {
-	std::vector<std::string> saveFiles;
+	vector<string> saveFiles;
 
 	// Duyệt tất cả file .txt trong thư mục hiện tại
 	for (const auto& entry : fs::directory_iterator(fs::current_path())) {
@@ -886,7 +889,7 @@ void deleteOldestSaveFile() {
 	// Kiểm tra nếu vượt quá 5 file
 	if (saveFiles.size() > 5) {
 		// Sắp xếp theo thời gian sửa đổi
-		std::sort(saveFiles.begin(), saveFiles.end(), [](const std::string& a, const std::string& b) {
+		sort(saveFiles.begin(), saveFiles.end(), [](const string& a, const string& b) {
 			return fs::last_write_time(a) < fs::last_write_time(b);
 			});
 

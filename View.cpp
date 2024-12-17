@@ -154,11 +154,11 @@ void DrawBoard() // pSize = BOARD_SIZE
     if (_TURN)
     {
         cout << COLOR_RED;
-        XLogo(4, 4); 
+        XLogo(15, 4); 
         cout << COLOR_RESET;
 
         cout << COLOR_WHITE COLOR_DARK;
-        OLogo(100, 4);
+        OLogo(98, 4);
         cout << COLOR_RESET;
     }
 }
@@ -189,21 +189,21 @@ int ProcessFinish(int pWhoWin)
     if (_TURN)  // luot x
     {
         cout << COLOR_RED;
-        XLogo(4, 4);
+        XLogo(15, 4);
         cout << COLOR_RESET;
 
         cout << COLOR_WHITE COLOR_DARK;
-        OLogo(100, 4);
+        OLogo(98, 4);
         cout << COLOR_RESET;
     }
     else
     {   
         cout << COLOR_WHITE COLOR_DARK;
-        XLogo(4, 4);
+        XLogo(15, 4);
         cout << COLOR_RESET;
 
         cout << COLOR_BLUE;
-        OLogo(100, 4);
+        OLogo(98, 4);
         cout << COLOR_RESET;
 	}
 
