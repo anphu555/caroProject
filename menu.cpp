@@ -119,13 +119,12 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"SFX: ON",
 		"Back"
 	};
-
+	BorderSquareLine(36, 73, 13, 21, 4);
+	SettingLogo(30, 3);
 	int selectedItem = 5;
 
 	while (1) {
-
-		system("cls");
-		SettingLogo(30, 3);
+		
 		if (backgroundMusicmode) {   // music is on
 			settingsItems[0] = "Music: ON";
 		}
@@ -143,6 +142,11 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		// Hiển thị menu cài đặt
 
 		int toadoY1 = 15; // tọa đọ test vị trsi settings
+
+		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
+			GotoXY(((RIGHT + LEFT) / 2) - 15, 15 + i * 2);
+			cout << "                        "; // Xóa dòng menu cũ
+		}
 
 		for (int i = 0; i < NUM_SETTINGS_ITEMS; i++) {
 			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
@@ -349,7 +353,7 @@ void MenuHandler() {
 		"   About  ",
 		"   Exit   "
 	};
-
+	
 	int selectedItem = 11;
 	while (true) {
 		system("cls");
@@ -365,6 +369,12 @@ void MenuHandler() {
 
 		// vị trí các ô chức năng
 		int toadoY1 = 15;  // bien test ========================================== 
+
+		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
+			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
+			cout << "                        "; // Xóa dòng menu cũ
+		}
+
 
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
 			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2); // *2 thì giữa 2 chức năng có 1 khoảng cách
@@ -530,6 +540,7 @@ void InGameMenu() {
 			case 2: // Load Game
 				system("cls");
 				loadGame();
+
 				break;
 
 			case 3: // Settings
