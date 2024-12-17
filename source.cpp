@@ -36,8 +36,8 @@ int main() {
     //system("pause");
     
     //intro ====================
-    //intro1(30, 11);
-    //introLoading();
+    intro1(30, 11);
+    introLoading();
     
     //GotoXY(50, 28);
  //system("pause");
