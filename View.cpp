@@ -240,7 +240,7 @@ int ProcessFinish(int pWhoWin)
     }
 
     else if (pWhoWin == 0) {
-            WinEffect(50, 5, pWhoWin);
+            WinEffect(43, 5, pWhoWin);
     }
 
     // ve lai x o voi mau theo luot
