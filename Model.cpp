@@ -1,5 +1,6 @@
 ﻿#include "Functions.h"
 #include "graphic.h"
+#include "color.h"
 
 extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
@@ -380,5 +381,5 @@ void AIPlay() {
     _Y = _A[0][cx][cy].y;
     CheckBoard(_X, _Y, 0);
     GotoXY(_X, _Y);
-    cout << "O";
+    cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
 }
