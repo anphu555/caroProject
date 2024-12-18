@@ -467,7 +467,7 @@ void MenuHandler() {
 		int toadoY1 = 15;  // bien test ========================================== 
 
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
+			GotoXY(((RIGHT + LEFT) / 2) - 6, toadoY1 + i * 2);
 			cout << "                        "; // Xóa dòng menu cũ
 		}
 
