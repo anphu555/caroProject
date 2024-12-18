@@ -716,8 +716,13 @@ string SelectSaveFile(bool isSaving) {
 	while (true) {
 		system("cls");
 		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
-		cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
-
+		LoadLogo(22, 2);
+                cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
+                int borderTop = 13;
+                int borderBottom = 27;
+                int borderLeft = (RIGHT + LEFT) / 2 - 20; 
+                int borderRight = (RIGHT + LEFT) / 2 + 20; 
+                BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom,2);
 		if (isSaving) {
 			if (selectedFile == 1) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
