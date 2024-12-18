@@ -4,7 +4,7 @@
 #include "graphic.h"
 
 
-extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
+extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
@@ -216,7 +216,7 @@ void DrawBoard() // pSize = BOARD_SIZE
 
 int ProcessFinish(int pWhoWin)
 {
-    GotoXY(0, _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y + 2);
+    GotoXY(0, _A[0][BOARD_SIZE - 1][BOARD_SIZE - 1].y + 2);
     if (pWhoWin == 2) // chưa có ai thắng hoặc hòa
     {
         _TURN = !_TURN;

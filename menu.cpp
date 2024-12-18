@@ -1,7 +1,7 @@
 #include "Functions.h"
 #include "Color.h"
 #include "graphic.h"
-extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
+extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
@@ -409,6 +409,11 @@ void MenuOffline()
 				// PvE
 				newGameSound();
 
+				system("cls");
+				// Add a flag or global variable to indicate AI mode
+				StartGame();
+				// Modify moveWASD to handle AI play
+				moveWASDAI();
 				// ham che do pve ======================================================
 
 
@@ -628,11 +633,11 @@ void InGameMenu() {
 				// redraw existing X and O 
 				for (int i = 0; i < BOARD_SIZE; i++) {
 					for (int j = 0; j < BOARD_SIZE; j++) {
-						GotoXY(_A[i][j].x, _A[i][j].y);
-						if (_A[i][j].c == -1) {
+						GotoXY(_A[0][i][j].x, _A[0][i][j].y);
+						if (_A[0][i][j].c == -1) {
 							cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
 						}
-						else if (_A[i][j].c == 1) {
+						else if (_A[0][i][j].c == 1) {
 							cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
 						}
 					}
@@ -675,11 +680,11 @@ void InGameMenu() {
 
 			for (int i = 0; i < BOARD_SIZE; i++) {
 				for (int j = 0; j < BOARD_SIZE; j++) {
-					GotoXY(_A[i][j].x, _A[i][j].y);
-					if (_A[i][j].c == -1) {
+					GotoXY(_A[0][i][j].x, _A[0][i][j].y);
+					if (_A[0][i][j].c == -1) {
 						cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
 					}
-					else if (_A[i][j].c == 1) {
+					else if (_A[0][i][j].c == 1) {
 						cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
 					}
 				}
@@ -890,7 +895,7 @@ void saveGame() {
 					// Save game state
 					for (int i = 0; i < BOARD_SIZE; i++) {
 						for (int j = 0; j < BOARD_SIZE; j++) {
-							fprintf(outFile, "%d ", _A[i][j].c);
+							fprintf(outFile, "%d ", _A[0][i][j].c);
 						}
 						fprintf(outFile, "\n");
 					}
@@ -929,7 +934,7 @@ void saveGame() {
 					// Save game state
 					for (int i = 0; i < BOARD_SIZE; i++) {
 						for (int j = 0; j < BOARD_SIZE; j++) {
-							fprintf(outFile, "%d ", _A[i][j].c);
+							fprintf(outFile, "%d ", _A[0][i][j].c);
 						}
 						fprintf(outFile, "\n");
 					}
@@ -983,10 +988,10 @@ void loadGame() {
 		//đọc trạng thái bảng
 		for (int i = 0; i < BOARD_SIZE; i++) {
 			for (int j = 0; j < BOARD_SIZE; j++) {
-				fscanf(inFile, "%d", &_A[i][j].c);
+				fscanf(inFile, "%d", &_A[0][i][j].c);
 
-				_A[i][j].x = 4 * j + LEFT + 2;
-				_A[i][j].y = 2 * i + TOP + 1;
+				_A[0][i][j].x = 4 * j + LEFT + 2;
+				_A[0][i][j].y = 2 * i + TOP + 1;
 			}
 		}
 
@@ -1007,11 +1012,11 @@ void loadGame() {
 		// draw X and O 
 		for (int i = 0; i < BOARD_SIZE; i++) {
 			for (int j = 0; j < BOARD_SIZE; j++) {
-				GotoXY(_A[i][j].x, _A[i][j].y);
-				if (_A[i][j].c == -1) {
+				GotoXY(_A[0][i][j].x, _A[0][i][j].y);
+				if (_A[0][i][j].c == -1) {
 					cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
 				}
-				else if (_A[i][j].c == 1) {
+				else if (_A[0][i][j].c == 1) {
 					cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
 				}
 			}

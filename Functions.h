@@ -17,6 +17,13 @@
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
+//AI related variables
+#define P1 4 //Red
+#define P2 1 //Blue
+#define VX 1
+#define VO 2
+#define _level 2 // AI search depth
+
 #include <conio.h>
 #include <ctype.h>
 #include <cstdio>
@@ -64,6 +71,7 @@ void MoveDown();
 void MoveUp();
 // moi sua ten move wasd thanh gamemove
 void GameMove();
+void moveWASDAI();
 
 //View
 void GotoXY(int, int);
@@ -99,8 +107,19 @@ string SelectSaveFile(bool);
 //Model
 void ResetData();
 //void GarbageCollect();
-int TestBoard();
-int CheckBoard(int, int);
+int TestBoard(int);
+int CheckBoard(int, int, int);
+//Model-AI
+void BoardToBoard(int, int); //copy board1 sang board2
+// AI-related function prototypes
+int AIHori(int, int, int);
+int AIVerti(int, int, int);
+int AIPCross(int, int, int);
+int AIRCross(int, int, int);
+int AIRepeat(int, int, int, int);
+void AIPlay();
+
+
 
 // Sound
 void introSound();
