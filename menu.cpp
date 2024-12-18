@@ -809,13 +809,14 @@ string SelectSaveFile(bool isSaving) {
 			}
 			if (isSaving && selectedFile == 1) { // New Save option
 				system("cls");
-				SaveNewFileLogo(5,12);
+				BorderSquareLine(34, 82, 18, 20, 0);
+				SaveNewFileLogo(7.5,11);
                                 int borderX = 34, borderY = 18; // Vị trí của đường kẻ
                                 GotoXY(borderX + 2, borderY + 1); // Căn giữa dòng nhập trong khung
 				cout << "Enter save name: ";
 				string filename;
 				getline(cin, filename);
-
+				
 				if (filename.empty()) {
 					cout << "File name cannot be empty! Please try again.\n";
 					cout << "Press any key to continue...";
@@ -828,7 +829,7 @@ string SelectSaveFile(bool isSaving) {
 				return filename;
 			}
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
-
+			
 		case 27: // ESC
 			pickSound();
 			return "BACK";
