@@ -15,7 +15,16 @@ bool SFXmode = true; // false off, true on
 
 
 int main() {
-    //test
+    setConsoleSize(120, 30);
+    FixConsoleWindow();
+    HideCursor();
+
+    //intro ====================
+    /*intro1(30, 11);
+    introLoading();*/
+
+
+    // test===============================================
     //setConsoleSize(120, 30);
     //cout << BACKGROUND_WHITE;
     //BorderSquareFILL(0, 119, 0, 8);
@@ -25,27 +34,15 @@ int main() {
     //GotoXY(4, 5); cout << "teset";
     //GotoXY(4, 17); cout << "teset";
     //system("pause");
-
-    // test============================
-
-    //intro2(10, 1);
     
     //GotoXY(50, 28);
     //system("pause");
-    
-    //intro ====================
-    HideCursor();
-    /*intro1(30, 11);
-    introLoading();*/
 
+    // ===================================================
 
     //system("color f0");
+    
     cout << COLOR_RESET;
-   
-
-    setConsoleSize(120, 30);
-    FixConsoleWindow();
-    HideCursor();
 
     MenuHandler();
 
