@@ -839,8 +839,8 @@ void saveGame() {
 
 	while (true) {
 		system("cls");
-		cout << "Save Game Options:\n\n";
-
+		SaveGameLogo(20, 2);
+                BorderSquareLine(40, 77, 12, 22, 0);
 		for (int i = 0; i < 3; i++) {
 			int toadoY1 = 15;
 			GotoXY(((RIGHT + LEFT) / 2) - 15, toadoY1 + i * 2);
