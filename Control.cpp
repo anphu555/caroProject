@@ -10,7 +10,14 @@ extern int _X, _Y;
 extern bool backgroundMusicmode;
 extern bool SFXmode;
 
+int moveXCount = 0;
+int moveOCount = 0;
+
+
 void StartGame() {
+    moveXCount = 0;
+    moveOCount = 0;
+
     system("cls");
     ResetData();
     DrawBoard();
@@ -114,12 +121,18 @@ void GameMove()
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_RED << COLOR_BOLD<< "X" << COLOR_RESET;
                     enterXOSound();
+                    moveXCount++;
+                    GotoXY(10, 12); // Hiển thị dưới bàn cờ
+                    cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
                     break;
                 
                 case 1:
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_BLUE << COLOR_BOLD<< "O" << COLOR_RESET;
                     enterXOSound();
+                    moveOCount++;
+                    GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                    cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
                     break;
                 
                 case 0:
