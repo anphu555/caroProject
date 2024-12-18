@@ -748,7 +748,6 @@ string SelectSaveFile(bool isSaving) {
 				}
 			}
 		}
-		BorderSquareLine(48, 70, 12, 27, 0);
 
 		if (selectedFile == 0) {
 			int toadoY1 = 15;
