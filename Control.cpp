@@ -182,7 +182,9 @@ void moveWASDAI()
             switch (CheckBoard(_X, _Y, 0))
             {
             case -1:
-                cout << "X";
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
+                enterXOSound();
 
                 // AI Play
                 AIPlay();

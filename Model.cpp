@@ -1,5 +1,6 @@
 ﻿#include "Functions.h"
 #include "graphic.h"
+#include "Color.h"
 
 extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
@@ -37,12 +38,12 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
 
     // check ngang
     for (int i = 0; i < BOARD_SIZE; i++) {
-        for (int j = 0; j < BOARD_SIZE - 5; j++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (_A[boardIndex][i][j].c != 0 &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i][j + 1].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i][j + 2].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i][j + 3].c &&
-                _A[boardIndex][i][j].c == _A[boardIndex][i][j + 4].c) {  // j < 8 để j +4 ở dưới không quá (BOARD_SIZE - 1) (vì mảng từ 0 đến boardsize -1
+                _A[boardIndex][i][j].c == _A[boardIndex][i][j + 4].c && j < (BOARD_SIZE - 4)) {  // j < 8 để j +4 ở dưới không quá (BOARD_SIZE - 1) (vì mảng từ 0 đến boardsize -1
 
                 int mode;
                 _A[boardIndex][i][j].c > 0 ? (mode = -1) : (mode = 1);
@@ -60,7 +61,7 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
 
     // check doc
     for (int i = 0; i < BOARD_SIZE; i++) {
-        for (int j = 0; j < BOARD_SIZE - 5; j++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (_A[boardIndex][i][j].c != 0 &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 1][j].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 2][j].c &&
@@ -82,8 +83,8 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
     }
 
     // check cheo tren trai xuogn duoi phai
-    for (int i = 0; i < BOARD_SIZE - 5; i++) {
-        for (int j = 0; j < BOARD_SIZE - 5; j++) {
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (_A[boardIndex][i][j].c != 0 &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 1][j + 1].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 2][j + 2].c &&
@@ -105,8 +106,8 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
     }
 
     // check cheo tu tren phai xuong duoi trai
-    for (int i = 0; i < BOARD_SIZE - 5; i++) {
-        for (int j = 0; j < BOARD_SIZE - 5; j++) {
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (_A[boardIndex][i][j].c != 0 &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 1][j - 1].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 2][j - 2].c &&
@@ -380,5 +381,7 @@ void AIPlay() {
     _Y = _A[0][cx][cy].y;
     CheckBoard(_X, _Y, 0);
     GotoXY(_X, _Y);
-    cout << "O";
+    cout << BACKGROUND_WHITE;
+    cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
+    enterXOSound();
 }
