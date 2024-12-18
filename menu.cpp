@@ -147,7 +147,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 
 				if (i == selectedItem) {
 					cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-					cout << ">> " << settingsItems[i] << " <<";
+					cout << ">> " << settingsItems[i] << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK " <<";
 					cout << COLOR_RESET;
 				}
 				else {
