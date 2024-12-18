@@ -35,8 +35,8 @@ int main() {
     
     //intro ====================
     HideCursor();
-    intro1(30, 11);
-    introLoading();
+    /*intro1(30, 11);
+    introLoading();*/
 
 
     //system("color f0");

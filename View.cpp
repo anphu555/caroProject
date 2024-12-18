@@ -276,8 +276,10 @@ int AskContinue()
     };
 
     int selectedItem = 3;
-
+    BorderSquareLine(42, 59, 14, 16,0); // Khung cho "PLAY AGAIN"
+    BorderSquareLine(67, 78, 14, 16,0); // Khung cho "EXIT"
     while (1) {
+
         if (selectedItem == 0) {
 
             replayItems[selectedItem] = ">> PLAY AGAIN <<";
