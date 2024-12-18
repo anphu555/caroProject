@@ -3,7 +3,7 @@
 #include "Color.h"
 #include "graphic.h"
 
-_POINT _A[BOARD_SIZE][BOARD_SIZE];
+_POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 bool _TURN;
 int _COMMAND;
 int _X, _Y;

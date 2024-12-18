@@ -2,7 +2,7 @@
 #include "graphic.h"
 #include "Color.h"
 
-extern _POINT _A[BOARD_SIZE][BOARD_SIZE];
+extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
@@ -28,7 +28,7 @@ void ExitGame() {
 }
 
 void MoveRight() {
-    if (_X < _A[BOARD_SIZE - 1][BOARD_SIZE - 1].x)
+    if (_X < _A[0][BOARD_SIZE - 1][BOARD_SIZE - 1].x)
     {
         _X += 4;
         GotoXY(_X, _Y);
@@ -36,7 +36,7 @@ void MoveRight() {
 }
 
 void MoveLeft() {
-    if (_X > _A[0][0].x)
+    if (_X > _A[0][0][0].x)
     {
         _X -= 4;
         GotoXY(_X, _Y);
@@ -44,7 +44,7 @@ void MoveLeft() {
 }
 
 void MoveDown() {
-    if (_Y < _A[BOARD_SIZE - 1][BOARD_SIZE - 1].y)
+    if (_Y < _A[0][BOARD_SIZE - 1][BOARD_SIZE - 1].y)
     {
         _Y += 2;
         GotoXY(_X, _Y);
@@ -52,7 +52,7 @@ void MoveDown() {
 }
 
 void MoveUp() {
-    if (_Y > _A[0][0].y)
+    if (_Y > _A[0][0][0].y)
     {
         _Y -= 2;
         GotoXY(_X, _Y);
@@ -107,7 +107,7 @@ void GameMove()
             }
             // press Enter
             case 13: {
-                switch (CheckBoard(_X, _Y)) 
+                switch (CheckBoard(_X, _Y, 0)) 
                 {
                     
                 case -1:
@@ -128,7 +128,7 @@ void GameMove()
                 // check win/lose/draw/continue
                 if (validEnter == true)
                 {
-                    switch (ProcessFinish(TestBoard()))
+                    switch (ProcessFinish(TestBoard(0)))
                     {
                     case -1: case 1: case 0:
                         if (AskContinue() != 'Y')
@@ -144,6 +144,73 @@ void GameMove()
                 }
                 validEnter = true; // unlock
             }
+        }
+    }
+}
+
+
+void moveWASDAI()
+{
+    bool validEnter = true;
+    while (1) {
+        _COMMAND = toupper(getch());
+        // xet tung nut bam
+        switch (_COMMAND) {
+        case 27: { // phim esc la 27
+            InGameMenu();
+            break; // Changed from ExitGame() to open menu
+        }
+               // WASD cho X, mui ten cho O
+               // nut danh luot X (_TURN true)
+        case 'A': {
+            MoveLeft();
+            break;
+        }
+        case 'W': {
+            MoveUp();
+            break;
+        }
+        case 'S': {
+            MoveDown();
+            break;
+        }
+        case 'D': {
+            MoveRight();
+            break;
+        }
+        case 13: {
+            switch (CheckBoard(_X, _Y, 0))
+            {
+            case -1:
+                cout << "X";
+
+                // AI Play
+                AIPlay();
+
+                // check win/lose/draw/continue
+                switch (ProcessFinish(TestBoard(0)))
+                {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y')
+                    {
+                        ExitGame();
+                        return;
+                    }
+                    else
+                        StartGame();
+                    break;
+                case 2:
+                    // continue
+                    break;
+                }
+                _TURN = -1;
+                break;
+
+            case 0:
+                validEnter = false; //danh vao o dah roi
+            }
+            validEnter = true; // unlock
+        }
         }
     }
 }
