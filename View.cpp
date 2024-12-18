@@ -168,6 +168,32 @@ void DrawBoard() // pSize = BOARD_SIZE
         OLogo(98, 4);
         cout << COLOR_RESET;
     }
+
+    BorderSquareLine(16, 20, 14, 16, 0);
+    GotoXY(18, 15); cout << "W";
+
+    BorderSquareLine(16, 20, 16, 18, 0);
+    GotoXY(18, 17); cout << "S";
+
+    BorderSquareLine(12, 16, 16, 18, 0);
+    GotoXY(14, 17); cout << "A";
+
+    BorderSquareLine(20, 24, 16, 18, 0);
+    GotoXY(22, 17); cout << "D";
+
+    GotoXY(16, 16); cout << char(206);
+    GotoXY(20, 16); cout << char(206);
+
+    GotoXY(16, 18); cout << char(202);
+    GotoXY(20, 18); cout << char(202);
+
+    BorderSquareLine(14, 22, 19, 21, 0);
+    GotoXY(16, 20); cout << "ENTER";
+
+
+
+
+
 }
 
 int ProcessFinish(int pWhoWin)

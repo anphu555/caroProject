@@ -29,7 +29,6 @@ int main() {
     // test============================
 
     //intro2(10, 1);
-    //intro1(30, 11);
     
     //GotoXY(50, 28);
     //system("pause");
@@ -38,9 +37,7 @@ int main() {
     HideCursor();
     intro1(30, 11);
     introLoading();
-    
-    //GotoXY(50, 28);
- //system("pause");
+
 
     //system("color f0");
     cout << COLOR_RESET;
