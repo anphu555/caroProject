@@ -29,8 +29,6 @@
 #include <experimental/filesystem>
 #include <algorithm>
 
-#include <cstring>
-
 #pragma comment (lib, "winmm.lib") // de them hieu ung am thanh
 
 using namespace std;
