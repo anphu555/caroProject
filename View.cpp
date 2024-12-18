@@ -193,16 +193,9 @@ void DrawBoard() // pSize = BOARD_SIZE
 
 
     BorderSquareLine(99, 103, 14, 16, 0);
-    GotoXY(101, 15); cout << "W";
-
     BorderSquareLine(99, 103, 16, 18, 0);
-    GotoXY(101, 17); cout << "S";
-
     BorderSquareLine(95, 99, 16, 18, 0);
-    GotoXY(97, 17); cout << "A";
-
     BorderSquareLine(103, 107, 16, 18, 0);
-    GotoXY(105, 17); cout << "D";
 
     GotoXY(99, 16); cout << char(206);
     GotoXY(103, 16); cout << char(206);
@@ -213,7 +206,15 @@ void DrawBoard() // pSize = BOARD_SIZE
     BorderSquareLine(97, 105, 19, 21, 0);
     GotoXY(99, 20); cout << "ENTER";
 
-
+    int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, luu vô để hồi đổi lại
+    GotoXY(101, 15); wcout << L"⮝";
+    GotoXY(101, 17); wcout << L"⮟";
+    GotoXY(97, 17); wcout << L"⮜";
+    GotoXY(105, 17); wcout << L"⮞";
+    //wcout << L"⮜ ⮞ ⮝ ⮟";
+    //⮜ ⮞ ⮝ ⮟
+  
+    int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
 }
 
