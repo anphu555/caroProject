@@ -793,6 +793,9 @@ string SelectSaveFile(bool isSaving) {
 			}
 			if (isSaving && selectedFile == 1) { // New Save option
 				system("cls");
+				SaveNewFileLogo(25,12);
+                                int borderX = 34, borderY = 18; // Vị trí của đường kẻ
+                                GotoXY(borderX + 2, borderY + 1); // Căn giữa dòng nhập trong khung
 				cout << "Enter save name: ";
 				string filename;
 				getline(cin, filename);
