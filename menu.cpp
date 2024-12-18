@@ -712,7 +712,6 @@ string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 6;
 	LoadLogo(22, 2);
-        int selectedFile = 0; 
         int borderTop = 13;
         int borderBottom = 27;
         int borderLeft = (RIGHT + LEFT) / 2 - 20;
