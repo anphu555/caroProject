@@ -559,11 +559,17 @@ void MenuHandler() {
 			break;
 
 		case 27:
-			exitSound();
+			if (sureExit()) // true, exit
+			{
+				exitSound();
 
-			ExitGame();
-			exit(0);
+				ExitGame();
+				exit(0);
+				break;
+			}
+			// false, continue
 			break;
+			exitSound();
 		}
 	}
 }
