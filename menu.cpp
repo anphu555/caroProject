@@ -465,10 +465,10 @@ void MenuHandler() {
 		// vị trí các ô chức năng
 		int toadoY1 = 15;  // bien test ========================================== 
 
-		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-			GotoXY(((RIGHT + LEFT) / 2) - 6, toadoY1 + i * 2);
-			cout << "                        "; // Xóa dòng menu cũ
-		}
+		//for (int i = 0; i < NUM_MENU_ITEMS; i++) {
+		//	GotoXY(((RIGHT + LEFT) / 2) - 6, toadoY1 + i * 2);
+		//	cout << "                        "; // Xóa dòng menu cũ
+		//}
 
 		
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
