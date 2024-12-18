@@ -224,11 +224,18 @@ int ProcessFinish(int pWhoWin)
     else if (pWhoWin == 1)
     {
         // 50,15 là tọa độ kiểm thử
+        BorderSquareFILL(13, 22, 13, 22);
+        cout << COLOR_RED;
+        BorderSquareLine(1, 37, 14, 21, 0);
         WinEffect(2.5, 15, pWhoWin);
+       
     }
     else if (pWhoWin == -1)
     {
         // 50,15 là tọa độ kiểm thử
+        BorderSquareFILL(95,110 , 13, 22);
+        cout << COLOR_BLUE;
+        BorderSquareLine(83, 119, 14, 21, 0);
         WinEffect(84, 15, pWhoWin);
     }
 
