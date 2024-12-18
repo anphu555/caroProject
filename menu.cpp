@@ -711,18 +711,18 @@ vector<string> GetSaveFiles() {
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 6;
-	BorderSquareLine(48, 70, 12, 27, 0);
-
+	LoadLogo(22, 2);
+        int selectedFile = 0; 
+        int borderTop = 13;
+        int borderBottom = 27;
+        int borderLeft = (RIGHT + LEFT) / 2 - 20;
+        int borderRight = (RIGHT + LEFT) / 2 + 20;
 	while (true) {
 		system("cls");
 		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
 		LoadLogo(22, 2);
                 cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
-                int borderTop = 13;
-                int borderBottom = 27;
-                int borderLeft = (RIGHT + LEFT) / 2 - 20; 
-                int borderRight = (RIGHT + LEFT) / 2 + 20; 
-                BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom,2);
+                BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom,0);
 		if (isSaving) {
 			if (selectedFile == 1) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
