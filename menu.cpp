@@ -191,6 +191,36 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	}
 }
 
+
+bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
+	// cais này sẽ chỉnh thành logo sau
+	system("cls");
+	HideCursor();
+
+
+	//SettingLogo(34, 3);
+	BorderSquareLine(42, 78, 13, 21, 0);
+
+
+	const int NUM_SETTINGS_ITEMS = 2;
+	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
+		"M",
+		"SF"
+	};
+
+
+
+	int selectedItem = 4;
+
+	while(1)
+	{
+
+	}
+}
+
+
+
+
 void MenuNewGame()
 {
 	const int NUM_NEWGAME_ITEMS = 3;
