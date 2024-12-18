@@ -205,7 +205,7 @@ void moveWASDAI()
                     // continue
                     break;
                 }
-                _TURN = true;
+                //_TURN = true; ai tu doi turn roi
                 break;
 
             case 0:
