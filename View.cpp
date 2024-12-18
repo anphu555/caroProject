@@ -228,6 +228,9 @@ int ProcessFinish(int pWhoWin)
         cout << COLOR_RED;
         BorderSquareLine(1, 37, 14, 21, 0);
         WinEffect(2.5, 15, pWhoWin);
+
+        _TURN = true;
+        // tranh mat hieu ung x o 2 ben
        
     }
     else if (pWhoWin == -1)
@@ -237,6 +240,8 @@ int ProcessFinish(int pWhoWin)
         cout << COLOR_BLUE;
         BorderSquareLine(83, 119, 14, 21, 0);
         WinEffect(84, 15, pWhoWin);
+
+        _TURN = false;
     }
 
     else if (pWhoWin == 0) {

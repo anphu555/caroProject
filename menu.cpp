@@ -414,7 +414,6 @@ void MenuOffline()
 				StartGame();
 				// Modify moveWASD to handle AI play
 				moveWASDAI();
-				// ham che do pve ======================================================
 
 
 				break;
