@@ -721,7 +721,7 @@ string SelectSaveFile(bool isSaving) {
 		system("cls");
 		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
 		LoadLogo(22, 2);
-                cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
+                // cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
                 BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom,0);
 		if (isSaving) {
 			if (selectedFile == 1) {
