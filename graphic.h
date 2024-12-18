@@ -30,7 +30,10 @@ void IngameLogo(int x, int y);
 void IngameLogo2(int x, int y);
 void IngameLogo3(int x, int y);
 void IngameLogo4(int x, int y);
-
+void LoadLogo(int x, int y);//giao diện màn hình load game
+void SaveNewFileLogo(int x, int y);//giao diện màn hình lưu game
+void PlayAgianLogo(int x, int y);//giao diện màn hình chơi
+void GameModeLogo(int x, int y);
 void nhapnhayXO(int x, int y, int mode);
 
 void XLogo(int x, int y);
