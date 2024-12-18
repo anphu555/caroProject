@@ -203,11 +203,9 @@ void moveWASDAI()
                     break;
                 case 2:
                     // continue
-
-                    //_TURN = -1;
                     break;
                 }
-                //_TURN = true;
+                _TURN = true;
                 break;
 
             case 0:
