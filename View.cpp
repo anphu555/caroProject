@@ -61,7 +61,6 @@ void AppearCursor()
 }
 
 
-
 void DrawBoard() // pSize = BOARD_SIZE
 {
     AppearCursor();
@@ -156,6 +155,16 @@ void DrawBoard() // pSize = BOARD_SIZE
         cout << COLOR_RESET;
 
         cout << COLOR_WHITE COLOR_DARK;
+        OLogo(98, 4);
+        cout << COLOR_RESET;
+    }
+    else
+    {
+        cout << COLOR_WHITE COLOR_DARK;
+        XLogo(15, 4);
+        cout << COLOR_RESET;
+
+        cout << COLOR_BLUE;
         OLogo(98, 4);
         cout << COLOR_RESET;
     }
