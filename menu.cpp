@@ -105,7 +105,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
 		"Music: ON",
 		"SFX: ON",
-		"Back"
+		COLOR_RED_HI "Back" COLOR_RESET
 	};
 
 	int selectedItem = 5;
@@ -442,7 +442,7 @@ void MenuHandler() {
 		"  Settings",
 		"   Guide  ",
 		"   About  ",
-		"   Exit   "
+		"   Exit   " 
 	};
 
 	int selectedItem = 11;
@@ -710,7 +710,7 @@ vector<string> GetSaveFiles() {
 
 string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
-	int selectedFile = 6;
+	int selectedFile = 1;
 	LoadLogo(22, 2);
         int borderTop = 13;
         int borderBottom = 27;
@@ -718,21 +718,28 @@ string SelectSaveFile(bool isSaving) {
         int borderRight = (RIGHT + LEFT) / 2 + 20;
 	while (true) {
 		system("cls");
+		
 		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
-		LoadLogo(22, 2);
+		
                 // cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
-                BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom,0);
+                
+				
 		if (isSaving) {
 			if (selectedFile == 1) {
-				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
-				cout << ">> New Save <<" << endl;
+				system("cls"); 
+				cout << endl;
+				cout <<setw(70) << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK << ">> New Save <<" << endl;
 				cout << COLOR_RESET;
 			}
 			else {
-				cout << "   New Save" << endl;
+				cout << endl;
+				cout <<setw(67)<< COLOR_CYAN "New Save" << endl;
 			}
 		}
 		else {
+			system("cls");
+			LoadLogo(22, 2);
+			BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom, 0);
 			for (int i = 0; i < saveFiles.size(); i++) {
 				int toadoY1 = 15;
 				GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
@@ -758,7 +765,8 @@ string SelectSaveFile(bool isSaving) {
 		else {
 			int toadoY1 = 15;
 			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
-			cout << "   Back" << endl;
+			cout << COLOR_RED_HI "   Back" << endl;
+			cout << COLOR_RESET;
 		}
 
 		int ch = getch();
@@ -791,7 +799,7 @@ string SelectSaveFile(bool isSaving) {
 			}
 			if (isSaving && selectedFile == 1) { // New Save option
 				system("cls");
-				SaveNewFileLogo(25,12);
+				SaveNewFileLogo(5,12);
                                 int borderX = 34, borderY = 18; // Vị trí của đường kẻ
                                 GotoXY(borderX + 2, borderY + 1); // Căn giữa dòng nhập trong khung
 				cout << "Enter save name: ";
@@ -834,7 +842,7 @@ void saveGame() {
 		"Overwrite Existing Save",
 		"Back"
 	};
-	int selectedOption = 5;
+	int selectedOption = 0;
 
 	while (true) {
 		system("cls");
