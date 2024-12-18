@@ -108,9 +108,7 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		"Back"
 	};
 
-
-
-		int selectedItem = 5;
+	int selectedItem = 5;
 
 	while (1) {
 
@@ -193,28 +191,90 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 
 
 bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để tiết kiệm bộ nhớ
-	// cais này sẽ chỉnh thành logo sau
-	system("cls");
 	HideCursor();
 
 
-	//SettingLogo(34, 3);
-	BorderSquareLine(42, 78, 13, 21, 0);
-
-
-	const int NUM_SETTINGS_ITEMS = 2;
-	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
-		"M",
-		"SF"
+	const int NUM_EXIT_ITEMS = 2;
+	const char* exitItems[NUM_EXIT_ITEMS] = {
+		"   YES   ",
+		"   NO   "
 	};
 
+	int selectedItem = 3;
+
+	while (1) {
+		system("cls");
+
+		BorderSquareLine(36, 73, 11, 18, 0);
+
+		GotoXY(52, 12);
+		printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "EXIT" COLOR_RESET);
+
+		GotoXY(40, 14);
+		cout << "Are you sure you want to exit?";
 
 
-	int selectedItem = 4;
+		// hien thi menu;
+		int toadoX1 = ((RIGHT + LEFT) / 2 - 7 - 10);
 
-	while(1)
-	{
 
+		for (int i = 0; i < NUM_EXIT_ITEMS; i++)
+		{
+			toadoX1 = toadoX1 + i * 14;
+			GotoXY(toadoX1, 16); //*2 de moi dong cach 1 o
+
+			if (selectedItem == 0)
+			{
+				exitItems[0] = ">> YES <<";
+				exitItems[1] = "   NO   ";
+			}
+			else if (selectedItem == 1)
+			{
+				exitItems[0] = "   YES   ";
+				exitItems[1] = ">> NO <<";
+			}
+
+			if (i == selectedItem)
+			{
+				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+				cout << exitItems[i];
+				cout << COLOR_RESET;
+			}
+			else
+			{
+				cout << exitItems[i];
+			}
+		}
+
+		// lua chon
+		int choice = getch();
+		switch (choice)
+		{
+		case 'A': case 'a': case 75:
+			selectedItem = (selectedItem - 1 + NUM_EXIT_ITEMS) % NUM_EXIT_ITEMS;
+			break;
+
+		case 'D': case 'd': case 77:
+			selectedItem = (selectedItem + 1) % NUM_EXIT_ITEMS;
+			break;
+
+		case 13: // enter
+			pickSound();
+			switch (selectedItem)
+			{
+			case 0:
+				return true; // exit
+
+				break;
+			case 1:
+				return false; // khong thoat
+			}
+			break;
+
+		case 27: // back with esc
+			pickSound();
+			return false;
+		}
 	}
 }
 
@@ -481,10 +541,16 @@ void MenuHandler() {
 				break;
 
 			case 5: // Exit
-				exitSound();
+				if (sureExit()) // true, exit
+				{
+					exitSound();
 
-				ExitGame();
-				exit(0);
+					ExitGame();
+					exit(0);
+					break;
+				}
+				// false, continue
+				break;
 			}
 			break;
 
@@ -590,9 +656,14 @@ void InGameMenu() {
 				break;
 
 			case 4: // Exit Game
-				ExitGame();
-				MenuHandler(); // Quay lại menu chính
-				return;
+				if (sureExit()) // true, exit
+				{
+					ExitGame();
+					MenuHandler(); // Quay lại menu chính
+					return;
+				}
+				// false, continue
+				break;
 			}
 			break;
 
