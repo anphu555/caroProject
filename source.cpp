@@ -15,7 +15,6 @@ bool SFXmode = true; // false off, true on
 
 
 int main() {
-    
     //test
     //setConsoleSize(120, 30);
     //cout << BACKGROUND_WHITE;
@@ -36,6 +35,7 @@ int main() {
     //system("pause");
     
     //intro ====================
+    HideCursor();
     intro1(30, 11);
     introLoading();
     

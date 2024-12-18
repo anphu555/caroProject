@@ -87,6 +87,8 @@ void deleteOldestSaveFile();
 void MenuNewGame();
 void MenuOffline();
 
+bool sureExit();
+
 void InGameMenu();
 vector<string> GetSaveFiles();
 string SelectSaveFile(bool);
