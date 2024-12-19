@@ -447,7 +447,7 @@ void MenuHandler() {
 		"  Settings",
 		"   Guide  ",
 		"   About  ",
-		"   Exit   " 
+		COLOR_RED_HI "   Exit   " 
 	};
 
 	//backgroundGraphic();
@@ -595,7 +595,7 @@ void InGameMenu() {
 		"Save Game",
 		"Load Game",
 		"Settings",
-		"Exit Game"
+		COLOR_RED_HI "Exit Game"
 	};
 
 	int selectedItem = 9;
@@ -623,6 +623,7 @@ void InGameMenu() {
 			}
 			else {
 				cout << "   " << menuItems[i] << endl;
+				cout << COLOR_RESET;
 			}
 		}
 
