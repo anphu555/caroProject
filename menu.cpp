@@ -468,7 +468,7 @@ void MenuHandler() {
 
 		MenuLogo1(85, 14);
 		IngameLogo4(13.5, 5);
-		//MenuLogo2(10, 14);
+		/*MenuLogo2(10, 14);*/
 		
 		//system("color f0");
 		// display menu with highlights
@@ -899,7 +899,7 @@ void saveGame() {
 	const char* saveOptions[] = {
 		"Save to New File",
 		"Overwrite Existing Save",
-		"Back"
+		COLOR_RED_HI "Back"
 	};
 	int selectedOption = 0;
 
@@ -918,6 +918,7 @@ void saveGame() {
 			}
 			else {
 				cout << "   " << saveOptions[i];
+				cout << COLOR_RESET;
 			}
 		}
 
