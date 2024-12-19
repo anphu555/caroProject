@@ -526,7 +526,7 @@ void MenuHandler() {
 			case 3: // Guide
 				system("cls");
 				Guide();
-				cout << "Press any key to return to menu...";
+				cout << COLOR_RED_HI "Press any key to return to menu..." COLOR_RESET;
 				HideCursor();
 				getch();
 
@@ -537,7 +537,7 @@ void MenuHandler() {
 			case 4: // About
 				system("cls");
 				About();
-				cout << "Press any key to return to menu...";
+				cout << COLOR_RED_HI "Press any key to return to menu..." COLOR_RESET;
 				HideCursor();
 				getch();
 
@@ -784,12 +784,13 @@ string SelectSaveFile(bool isSaving) {
 						GotoXY(38,24 );
 						cout << "File name cannot be empty! Please try again.\n";
 						GotoXY(46, 25);
-						cout << "Press any key to continue...";
+						cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 						getch();
 						continue;
 					}
 					else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
 						filename += ".txt"; 
+						//GotoXY(38, 24);
 					}
 					return filename; 
 				}
@@ -875,7 +876,7 @@ void saveGame() {
 
 	if (_X == 0 && _Y == 0) {
 		printf("Cannot save game before starting!\n");
-		cout << "Press any key to continue...";
+		cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 		HideCursor();
 		getch();
 		return;
@@ -941,20 +942,28 @@ void saveGame() {
 					fprintf(outFile, "%d\n", _TURN);
 					fprintf(outFile, "%d %d\n", _X, _Y);
 
+					GotoXY(41, 24);
+
 					printf("Game state saved to: %s\n", filename.c_str());
 					fclose(outFile);
 
 					saveSound();
 					deleteOldestSaveFile(); // Xóa file cũ nếu có
-					cout << "Press any key to continue...";
+
+					GotoXY(46, 25);
+					cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 					HideCursor();
 					getch();
 
 					break;
 				}
 				else {
+					HideCursor();
+					GotoXY(41, 24);
 					printf("Error: Unable to save the file.\n");
-					cout << "Press any key to continue...";
+
+					GotoXY(46, 25);
+					cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 					HideCursor();
 					getch();
 					break;
@@ -980,12 +989,18 @@ void saveGame() {
 					fprintf(outFile, "%d\n", _TURN);
 					fprintf(outFile, "%d %d\n", _X, _Y);
 
+					//=================
+					GotoXY(43, 24);
+
+
 					printf("Game state saved to: %s\n", filename.c_str());
 					fclose(outFile);
 
 					saveSound();
 					deleteOldestSaveFile(); // Xóa file cũ nếu có
-					cout << "Press any key to continue...";
+
+					GotoXY(46, 25);
+					cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 					HideCursor();
 					getch();
 					break;
@@ -993,7 +1008,7 @@ void saveGame() {
 				}
 				else {
 					printf("Error: Unable to save the file.\n");
-					cout << "Press any key to continue...";
+					cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
 					HideCursor();
 					getch();
 					return;
