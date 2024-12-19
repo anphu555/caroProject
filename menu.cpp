@@ -743,7 +743,8 @@ string SelectSaveFile(bool isSaving) {
 					GotoXY(borderX + 2, borderY + 1);
 					cout << "Enter save name: ";
 					bool escPressed = false;
-					string filename;
+					string filename; 
+					getline(cin, filename);
 					int ch;
 					
 
