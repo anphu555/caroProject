@@ -737,13 +737,15 @@ string SelectSaveFile(bool isSaving) {
 					system("cls");
 					BorderSquareLine(34, 82, 18, 20, 0);
 					SaveNewFileLogo(7.5, 11);
+					GotoXY(48, 22);
+					cout << "PRESS ESC TO GO BACK!";
 					int borderX = 34, borderY = 18;
 					GotoXY(borderX + 2, borderY + 1);
 					cout << "Enter save name: ";
-
+					bool escPressed = false;
 					string filename;
 					int ch;
-					bool escPressed = false;
+					
 
 					while (true) {
 						ch = getch();
