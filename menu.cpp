@@ -723,31 +723,64 @@ string SelectSaveFile(bool isSaving) {
 	vector<string> saveFiles = GetSaveFiles();
 	int selectedFile = 1;
 	LoadLogo(22, 2);
-        int borderTop = 13;
-        int borderBottom = 27;
-        int borderLeft = (RIGHT + LEFT) / 2 - 20;
-        int borderRight = (RIGHT + LEFT) / 2 + 20;
+	int borderTop = 13;
+	int borderBottom = 27;
+	int borderLeft = (RIGHT + LEFT) / 2 - 20;
+	int borderRight = (RIGHT + LEFT) / 2 + 20;
+
 	while (true) {
 		system("cls");
-		
-		//BorderSquareLine(48, 70, 12, 27, 0);  ===========================
-		
-                // cout << (isSaving ? "Select Save File:" : "Select Load File:") << endl;
-                
-				
+
 		if (isSaving) {
 			if (selectedFile == 1) {
-				system("cls"); 
-				cout << endl;
-				cout <<setw(70) << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK << ">> New Save <<" << endl;
-				cout << COLOR_RESET;
-			}
-			else {
-				cout << endl;
-				cout <<setw(67)<< COLOR_CYAN "New Save" << endl;
+				while (true) {
+					system("cls");
+					BorderSquareLine(34, 82, 18, 20, 0);
+					SaveNewFileLogo(7.5, 11);
+					int borderX = 34, borderY = 18;
+					GotoXY(borderX + 2, borderY + 1);
+					cout << "Enter save name: ";
+
+					string filename;
+					int ch;
+					bool escPressed = false;
+
+					while (true) {
+						ch = getch();
+						if (ch == 27) { 
+							escPressed = true;
+							break;
+						}
+						else if (ch == '\r') { // Phím Enter
+							break;
+						}
+						else {
+							cout << (char)ch; 
+							filename += ch;  
+						}
+					}
+
+					if (escPressed) {
+						return "BACK"; 
+					}
+
+					if (filename.empty()) {
+						GotoXY(LEFT + 1, BOTTOM - 1);
+						cout << "\nFile name cannot be empty! Please try again.\n";
+						cout << "Press any key to continue...";
+						getch();
+						continue;
+					}
+					else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
+						filename += ".txt"; 
+					}
+					return filename; 
+				}
+				continue; 
 			}
 		}
 		else {
+
 			system("cls");
 			LoadLogo(22, 2);
 			BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom, 0);
@@ -782,55 +815,37 @@ string SelectSaveFile(bool isSaving) {
 
 		int ch = getch();
 		switch (ch) {
-		case 'W': case 'w': case 72: // Up
+		case 'W': case 'w': case 72: // Lên
 			if (selectedFile > 0) {
 				selectedFile--;
 			}
-			else { // Nếu đang ở đầu danh sách, vòng về cuối
+			else { // Vòng về cuối danh sách
 				selectedFile = isSaving ? 1 : saveFiles.size();
 			}
 			break;
 
-		case 'S': case 's': case 80: // Down
+		case 'S': case 's': case 80: // Xuống
 			if (isSaving && selectedFile < 1) {
 				selectedFile++;
 			}
 			else if (!isSaving && selectedFile < saveFiles.size()) {
 				selectedFile++;
 			}
-			else { // Nếu đang ở cuối danh sách, vòng về đầu
+			else { // Vòng về đầu danh sách
 				selectedFile = 0;
 			}
 			break;
 
 		case 13: // Enter
 			pickSound();
-			if (selectedFile == 0) { // Back option
+			if (selectedFile == 0) { 
 				return "BACK";
 			}
-			if (isSaving && selectedFile == 1) { // New Save option
-				system("cls");
-				BorderSquareLine(34, 82, 18, 20, 0);
-				SaveNewFileLogo(7.5,11);
-                                int borderX = 34, borderY = 18; // Vị trí của đường kẻ
-                                GotoXY(borderX + 2, borderY + 1); // Căn giữa dòng nhập trong khung
-				cout << "Enter save name: ";
-				string filename;
-				getline(cin, filename);
-				
-				if (filename.empty()) {
-					cout << "File name cannot be empty! Please try again.\n";
-					cout << "Press any key to continue...";
-					getch();
-					break;
-				}
-				else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
-					filename += ".txt";
-				}
-				return filename;
+			if (isSaving && selectedFile == 1) { 
+				continue; 
 			}
 			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
-			
+
 		case 27: // ESC
 			pickSound();
 			return "BACK";
