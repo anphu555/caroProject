@@ -741,31 +741,44 @@ string SelectSaveFile(bool isSaving) {
 					cout << "PRESS ESC TO GO BACK!";
 					int borderX = 34, borderY = 18;
 					GotoXY(borderX + 2, borderY + 1);
-					cout << "Enter save name: ";
 					string filename; 
-					getline(cin, filename);
+					cout << "Enter save name: ";
+					/*int cursorPos = 0;*/
+					/*getline(cin, filename);*/
 					int ch;
 					
-					bool escPressed = false;
+					/*bool escPressed = false;*/
 					while (true) {
 						
 						ch = getch();
 						if (ch == 27) { 
-							escPressed = true;
-							break;
+							/*escPressed = true;
+							break;*/
+							return "BACK";
 						}
 						else if (ch == '\r') { // Phím Enter
+
 							break;
 						}
+						else if (ch == 8) { // Nhấn Backspace để xóa ký tự cuối
+							if (!filename.empty()) {
+								filename.pop_back(); // Xóa ký tự cuối trong chuỗi
+								cout << "\b \b"; // Xóa ký tự trên màn hình
+							}
+						}
+						else if (ch == -32 || ch == 224) { // Phím mũi tên (Windows)
+							getch(); // Bỏ qua mã phím tiếp theo (phím điều hướng gửi mã kép)
+						}
 						else {
+							filename += ch;
 							cout << (char)ch; 
-							filename += ch;  
+							 
 						}
 					}
 
-					if (escPressed) {
+				/*	if (escPressed) {
 						return "BACK"; 
-					}
+					}*/
 
 					if (filename.empty()) {
 						GotoXY(38,24 );
