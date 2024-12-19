@@ -23,6 +23,7 @@
 //#define COLOR_WHITE_HI			"\u001b[97m" 
 
 // 2 Reset
+//#define COLOR_RESET         "\u001b[0m\u001b[106m\u001b[30m"
 #define COLOR_RESET         "\u001b[0m\u001b[107m\u001b[30m"
 //#define COLOR_RESET         "\u001b[0m" chỉnh cho thành nền trắng chữ đen
 
