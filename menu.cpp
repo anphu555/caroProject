@@ -196,8 +196,8 @@ bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 
 	const int NUM_EXIT_ITEMS = 2;
 	const char* exitItems[NUM_EXIT_ITEMS] = {
-		"   YES   ",
-		"   NO   "
+		COLOR_RED_HI "   YES   " /*COLOR_RESET*/,
+		COLOR_BLUE_HI "   NO   " COLOR_RESET
 	};
 
 	int selectedItem = 3;
@@ -222,16 +222,17 @@ bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		{
 			toadoX1 = toadoX1 + i * 14;
 			GotoXY(toadoX1, 16); //*2 de moi dong cach 1 o
-
 			if (selectedItem == 0)
 			{
 				exitItems[0] = ">> YES <<";
-				exitItems[1] = "   NO   ";
+				exitItems[1] = COLOR_BLUE_HI "   NO   " COLOR_RESET ;
+				cout << COLOR_RESET;
 			}
 			else if (selectedItem == 1)
 			{
-				exitItems[0] = "   YES   ";
+				exitItems[0] = COLOR_RED_HI "   YES   ";
 				exitItems[1] = ">> NO <<";
+				cout << COLOR_RESET;
 			}
 
 			if (i == selectedItem)
@@ -287,7 +288,7 @@ void MenuNewGame()
 	const char* newgameItems[NUM_NEWGAME_ITEMS] = {
 		"OFFLINE",
 		" ONLAN ",
-		" BACK "
+		 " BACK "
 	};
 	BorderSquareLine(48, 70, 12, 22, 0);
 	OfflineMode(13, 5);
