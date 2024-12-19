@@ -468,8 +468,12 @@ void MenuHandler() {
 
 		MenuLogo1(85, 14);
 		IngameLogo4(13.5, 5);
+
+		
 		
 		CreeperMini(10, 14);
+
+		DiamondPickaxe(19, 13);
 
 		//MenuLogo2(10, 14);
 		
