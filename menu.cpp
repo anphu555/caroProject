@@ -288,7 +288,7 @@ void MenuNewGame()
 	const char* newgameItems[NUM_NEWGAME_ITEMS] = {
 		"OFFLINE",
 		" ONLAN ",
-		 " BACK "
+		 " \u001b[91mBACK\u001b[30m "
 	};
 	BorderSquareLine(48, 70, 12, 22, 0);
 	OfflineMode(13, 5);
@@ -360,7 +360,7 @@ void MenuOffline()
 	const char* offlineItems[NUM_OFFLINE_ITEMS] = {
 		"PvE",
 		"PvP",
-		"BACK"
+		"\u001b[91mBACK\u001b[30m"
 	};
 
 	system("cls");
