@@ -135,7 +135,7 @@ void introLoading() {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(14, 9 + i);
-		wcout << COLOR_RED << logo[i] << " " << COLOR_RESET;
+		wcout << COLOR_RED COLOR_BOLD << logo[i] << " " << COLOR_RESET;
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
@@ -186,28 +186,20 @@ void MenuLogo2(int x, int y)
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	// Tạo biến ông già Noel
-	wstring logo[11] = {
-	L"	_.█████████████████			 ",
-	L"_ ██████████████████			 ",
-	L"████████████████████			 ",
-	L"█████████████████████			 ",
-	L"_█_________▄▄▄▄_ ▄▄▄▄_█	 	 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█		 	 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
-	L"_█__█████_▀▀▀▀_ ▀▀▀▀ █  ✿ ✿ ✿",
-	L"_█__█████_____________ █(\\|/) ",
-	L"_____________██ _____________██"
+	wstring logo[3] = {
+	L"	  ██████████      ",
+	L" ██████████████████ "
     };
 
 	// In ông già Noel
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " " << COLOR_RESET; 
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
 void IngameLogo(int x, int y) {

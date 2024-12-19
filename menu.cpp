@@ -902,7 +902,7 @@ void saveGame() {
 	const char* saveOptions[] = {
 		"Save to New File",
 		"Overwrite Existing Save",
-		"Back"
+		COLOR_RED_HI "Back"
 	};
 	int selectedOption = 0;
 
@@ -921,6 +921,7 @@ void saveGame() {
 			}
 			else {
 				cout << "   " << saveOptions[i];
+				cout << COLOR_RESET;
 			}
 		}
 
