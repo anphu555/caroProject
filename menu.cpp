@@ -290,8 +290,6 @@ void MenuNewGame()
 		" ONLAN ",
 		 " \u001b[91mBACK\u001b[30m "
 	};
-	BorderSquareLine(48, 70, 12, 22, 0);
-	OfflineMode(13, 5);
 	int selectedItem = 5;
 
 	while (1) {
@@ -299,6 +297,11 @@ void MenuNewGame()
 		system("cls");
 		OfflineMode(13, 5); 
 		BorderSquareLine(48, 70, 12, 22, 0);
+
+
+		//DiamondSword(1, 15);
+
+
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_NEWGAME_ITEMS; i++)
 		{
@@ -469,11 +472,14 @@ void MenuHandler() {
 		MenuLogo1(85, 14);
 		IngameLogo4(13.5, 5);
 
+		DiamondSword(1, 17);
 		
 		
 		CreeperMini(10, 14);
 
 		DiamondPickaxe(19, 13);
+
+		
 
 		//MenuLogo2(10, 14);
 		
