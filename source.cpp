@@ -20,8 +20,8 @@ int main() {
     HideCursor();
 
     //intro ====================
-    /*intro1(30, 11);
-    introLoading();*/
+    intro1(30, 11);
+    introLoading();
 
 
     //backgroundGraphic();
@@ -46,8 +46,6 @@ int main() {
     // ===================================================
 
     system("color b0");
-    cout << BACKGROUND_GREEN;
-    BorderSquareFILL(0, 119, 28, 29);
     
     //cout << COLOR_RESET;
 
