@@ -767,8 +767,9 @@ string SelectSaveFile(bool isSaving) {
 					}
 
 					if (filename.empty()) {
-						GotoXY(LEFT + 1, BOTTOM - 1);
-						cout << "\nFile name cannot be empty! Please try again.\n";
+						GotoXY(38,24 );
+						cout << "File name cannot be empty! Please try again.\n";
+						GotoXY(46, 25);
 						cout << "Press any key to continue...";
 						getch();
 						continue;
