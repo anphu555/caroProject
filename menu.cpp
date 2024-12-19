@@ -466,7 +466,7 @@ void MenuHandler() {
 		// BorderSquareLine(51, 73, 12, 16, 0);
 		backgroundMusicSound();
 
-		//MenuLogo1(85, 14);
+		MenuLogo1(85, 14);
 		IngameLogo4(13.5, 5);
 		//MenuLogo2(10, 14);
 		
