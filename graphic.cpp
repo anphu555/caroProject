@@ -241,6 +241,30 @@ void CreeperMini(int x, int y) {
 
 }
 
+void DiamondPickaxe(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[7];
+	logo[0] = L"\u001b[34m  ▄█████▄▄\u001b[33m▄ ";
+	logo[1] = L"\u001b[34m   ▀▀▀▀████ ";
+	logo[2] = L"\u001b[33m     ▄██\u001b[34m▀███";
+	logo[3] = L"\u001b[33m   ▄██▀  \u001b[34m███";
+	logo[4] = L"\u001b[33m ▄██▀    \u001b[34m▀█▀";
+	logo[5] = L"\u001b[33m██▀         ";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 7; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << BACKGROUND_CYAN COLOR_BLACK;
+
+}
 
 void IngameLogo4(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
