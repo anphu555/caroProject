@@ -452,7 +452,7 @@ void MenuHandler() {
 	int selectedItem = 11;
 	while (true) {
 		system("cls");
-		BorderSquareLine(51, 73, 12, 16, 0);
+		// BorderSquareLine(51, 73, 12, 16, 0);
 		backgroundMusicSound();
 
 		MenuLogo1(85, 14);
