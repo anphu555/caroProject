@@ -224,7 +224,7 @@ void IngameLogo4(int x, int y) {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_RED  << logo[i] << " " << COLOR_RESET;
+		wcout << COLOR_RED  << logo[i] << " " << COLOR_RESET BACKGROUND_CYAN;
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
@@ -702,5 +702,15 @@ void SaveGameLogo(int x, int y) {
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+}
+
+void backgroundGraphic()
+{
+	cout << BACKGROUND_CYAN;
+	BorderSquareFILL(0, 119, 0, 27);
+	
+	cout << BACKGROUND_GREEN;
+	BorderSquareFILL(0, 119, 28, 29);
 
 }

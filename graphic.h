@@ -45,4 +45,6 @@ void BorderSquare(int, int, int, int, int);
 void BorderSquareLine(int, int, int, int, int);
 void BorderSquareFILL(int xleft, int xright, int ytop, int ybottom);
 
+void backgroundGraphic();
+
 #endif

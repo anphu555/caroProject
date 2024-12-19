@@ -24,6 +24,11 @@ int main() {
     introLoading();*/
 
 
+    //backgroundGraphic();
+
+    //GotoXY(1, 10);
+    //system("pause");
+
     // test===============================================
     //setConsoleSize(120, 30);
     //cout << BACKGROUND_WHITE;
@@ -40,9 +45,11 @@ int main() {
 
     // ===================================================
 
-    //system("color f0");
+    system("color b0");
+    cout << BACKGROUND_GREEN;
+    BorderSquareFILL(0, 119, 28, 29);
     
-    cout << COLOR_RESET;
+    //cout << COLOR_RESET;
 
     MenuHandler();
 

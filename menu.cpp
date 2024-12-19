@@ -449,16 +449,26 @@ void MenuHandler() {
 		"   About  ",
 		"   Exit   " 
 	};
-	
+
+	//backgroundGraphic();
+
 	int selectedItem = 11;
 	while (true) {
 		system("cls");
+
+		system("color b0");
+
+		//backgroundGraphic();
+		cout << BACKGROUND_GREEN;
+		BorderSquareFILL(0, 119, 28, 29);
+		cout << BACKGROUND_CYAN;
+
 		// BorderSquareLine(51, 73, 12, 16, 0);
 		backgroundMusicSound();
 
-		MenuLogo1(85, 14);
+		//MenuLogo1(85, 14);
 		IngameLogo4(13.5, 5);
-		MenuLogo2(10, 14);
+		//MenuLogo2(10, 14);
 		
 		//system("color f0");
 		// display menu with highlights
@@ -478,9 +488,10 @@ void MenuHandler() {
 			if (i == selectedItem) {
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
 				cout << ">> " << menuItems[i] << " <<";
-				cout << COLOR_RESET;
+				cout << COLOR_RESET BACKGROUND_CYAN;
 			}
 			else {
+				cout << BACKGROUND_CYAN;
 				cout << "   " << menuItems[i];
 			}
 		}
@@ -498,6 +509,8 @@ void MenuHandler() {
 
 		case 13: // enter
 			pickSound();
+
+			system("color f0");
 
 			switch (selectedItem) {
 			case 0: // New Game
