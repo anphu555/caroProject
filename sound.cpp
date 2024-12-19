@@ -9,7 +9,7 @@ void introSound()
 }
 void backgroundMusicSound()
 {
-	(backgroundMusicmode) ? mciSendString(L"play \"music1.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
+	(backgroundMusicmode) ? mciSendString(L"play \"BRO.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
 }
 void enterXOSound()
 {
