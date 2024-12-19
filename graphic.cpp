@@ -228,6 +228,28 @@ void IngameLogo(int x, int y) {
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
+
+void CreeperMini(int x, int y) {
+	cout << BACKGROUND_GREEN;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[4];
+	logo[0] = L"        ";
+	logo[1] = L" \u001b[30m██  ██ ";
+	logo[2] = L"  \u001b[30m▄██▄  ";
+	logo[3] = L"  \u001b[30m█▀▀█  ";
+
+	for (int i = 0; i < 4; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << BACKGROUND_CYAN;
+
+}
+
+
 void IngameLogo4(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[6];
