@@ -742,13 +742,13 @@ string SelectSaveFile(bool isSaving) {
 					int borderX = 34, borderY = 18;
 					GotoXY(borderX + 2, borderY + 1);
 					cout << "Enter save name: ";
-					bool escPressed = false;
 					string filename; 
 					getline(cin, filename);
 					int ch;
 					
-
+					bool escPressed = false;
 					while (true) {
+						
 						ch = getch();
 						if (ch == 27) { 
 							escPressed = true;
