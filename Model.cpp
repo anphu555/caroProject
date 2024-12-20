@@ -250,8 +250,8 @@ int AIPCross(int x, int y, int cboard)
 	m = min(BOARD_SIZE, BOARD_SIZE);
 	for (int i = 1;i <= m; i++)
 	{
-		if (_A[cboard][y - i][x + i].c == player) count++;
-		else if (_A[cboard][y - i][x + i].c != 0)
+		if (_A[cboard][y + i][x - i].c == player) count++;
+		else if (_A[cboard][y + i][x - i].c != 0)
 		{
 			opcount++;
 			break;
