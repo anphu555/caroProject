@@ -11,8 +11,8 @@
 
 void CaroLogo(int x, int y);
 
-void MenuLogo1(int x, int y); // logomenu1
-void MenuLogo2(int x, int y);
+void MenuLogoTree1(int x, int y); 
+void MenuCloud1(int x, int y);
 
 void intro1(int x, int y);
 
@@ -51,8 +51,8 @@ void CreeperMini(int x, int y);
 void DiamondPickaxe(int x, int y);
 void DiamondSword(int x, int y);
 void DiamondSword2(int x, int y);
-void MenuCloud(int x, int y);
-void MenuLogoTree(int x, int y);
+void MenuCloud2(int x, int y);
+void MenuLogoTree2(int x, int y);
 
 void RedMushroom(int x, int y);
 

@@ -303,6 +303,7 @@ void MenuNewGame()
 		// hien thi menu
 		system("cls");
 		OfflineMode(13, 5); 
+
 		DiamondSword(20, 14);
 
 		DiamondSword2(80, 14);
@@ -377,9 +378,7 @@ void MenuOffline()
 		"\u001b[91mBACK\u001b[30m"
 	};
 
-	system("cls");
 
-	OfflineMode(13, 5);
 	BorderSquareLine(48, 70, 12, 22, 0);
 	int selectedItem = 5;
 
@@ -388,6 +387,12 @@ void MenuOffline()
 		system("cls");
 		HideCursor();
 		OfflineMode(13, 5);
+
+		DiamondSword(20, 14);
+
+		DiamondSword2(80, 14);
+
+
 		BorderSquareLine(48, 70, 12, 22, 0);
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
@@ -486,8 +491,8 @@ void MenuHandler() {
 
 		backgroundMusicSound();
 
-		MenuLogo1(85, 19);
-		MenuLogoTree(102, 15);
+		MenuLogoTree1(85, 19);
+		MenuLogoTree2(102, 15);
 		IngameLogo4(13.5, 5);
 
 		DiamondSword(6, 18);
@@ -497,9 +502,9 @@ void MenuHandler() {
 
 		RedMushroom(3, 25);
 
-		MenuLogo2(9, 1);
-		MenuLogo2(52, 2);
-		MenuCloud(92, 1);
+		MenuCloud1(9, 1);
+		MenuCloud1(52, 2);
+		MenuCloud2(92, 1);
 		
 		//system("color f0");
 		// display menu with highlights
@@ -631,14 +636,16 @@ void InGameMenu() {
 
 	int selectedItem = 9;
 
-	system("cls");
-	PauseLogo(40, 2);
 	BorderSquareLine(47, 67, 12, 22, 0);
 
 	while (true) {
 		system("cls");
 		HideCursor();
 		PauseLogo(40, 2);
+
+		DiamondSword(20, 14);
+
+		DiamondSword2(80, 14);
 
 		BorderSquareLine(47, 67, 12, 22, 0);
 

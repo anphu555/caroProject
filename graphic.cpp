@@ -151,7 +151,7 @@ void introLoading() {
 }
 // ===========================================
 
-void MenuLogo1(int x, int y)
+void MenuLogoTree1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
@@ -181,7 +181,7 @@ void MenuLogo1(int x, int y)
 	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
-void MenuLogoTree(int x, int y)
+void MenuLogoTree2(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
@@ -215,7 +215,7 @@ void MenuLogoTree(int x, int y)
 }
 
 
-void MenuLogo2(int x, int y)
+void MenuCloud1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
@@ -235,7 +235,7 @@ void MenuLogo2(int x, int y)
 	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
-void MenuCloud(int x, int y)
+void MenuCloud2(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
