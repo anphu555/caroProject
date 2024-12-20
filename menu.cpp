@@ -13,7 +13,7 @@ extern bool SFXmode; // false off, true on
 void About() {
 	AboutLogo(40, 2);
 
-	EnderMan(15, 11);
+	CreeperMini(15, 11);
 	cout << BACKGROUND_WHITE;
 
 	CreeperMini(96, 11);
@@ -59,10 +59,10 @@ void About() {
 void Guide() {
 	GuideLogo(40, 2);
 
-	CreeperMini(15, 10);
+	EnderMan(15, 10);
 	cout << BACKGROUND_WHITE;
 
-	CreeperMini(96, 10);
+	EnderMan(96, 10);
 	cout << BACKGROUND_WHITE;
 
 	BorderSquareLine(33, 85, 9, 15, 3);

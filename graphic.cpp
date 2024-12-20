@@ -839,7 +839,7 @@ void GuideLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout <<COLOR_BLACK_HI << logo[i] << COLOR_RESET;
+		wcout <<COLOR_YELLOW COLOR_DARK << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -882,7 +882,7 @@ void LoadLogo(int x, int y) {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_CYAN COLOR_DARK << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
