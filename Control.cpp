@@ -216,41 +216,43 @@ void moveWASDAI()
                     }
                     else
                     {
+                        //return;
                         StartGame();
-                        moveWASDAI();
+                        _TURN = true;
+                        //moveWASDAI();
                     }
                     break;
                 case 2:
                     // continue
+                    
+                    // AI Play
+                    AIPlay();
+                    moveOCount++;
+                    GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                    cout << COLOR_BLUE "   Moves Bot: " << moveOCount << COLOR_RESET;
+                    // check win/lose/draw/continue
+                    switch (ProcessFinish(TestBoard(0)))
+                    {
+                    case -1: case 1: case 0:
+                        if (AskContinue() != 'Y')
+                        {
+                            ExitGame();
+                            return;
+                        }
+                        else
+                        {
+                            StartGame();
+                            //moveWASDAI();
+                        }
+                        break;
+                    case 2:
+                        // continue
+                        break;
+                    }
                     break;
                 }
-
-
-                // AI Play
-                AIPlay();
-                moveOCount++;
-                GotoXY(93, 12); // Hiển thị dưới bàn cờ
-                cout << COLOR_BLUE "   Moves Bot: " << moveOCount << COLOR_RESET;
-                // check win/lose/draw/continue
-                switch (ProcessFinish(TestBoard(0)))
-                {
-                case -1: case 1: case 0:
-                    if (AskContinue() != 'Y')
-                    {
-                        ExitGame();
-                        return;
-                    }
-                    else
-                    {
-                        StartGame();
-                        moveWASDAI();
-                    }
-                    break;
-                case 2:
-                    // continue
-                    break;
-                }
-                //_TURN = true; ai tu doi turn roi
+                
+                _TURN = true; //ai tu doi turn roi
                 break;
 
             case 0:
