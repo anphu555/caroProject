@@ -222,9 +222,8 @@ void EnderMan(int x, int y)
 	wstring tree[13] = {
 		L"        ",
 		L"        ",
-		L"\u001b[94m█\u001b[35m█\u001b[94m█  \u001b[94m█\u001b[35m█\u001b[94m█",
+		L"\u001b[38;5;218m█\u001b[95m█\u001b[38;5;218m█  \u001b[38;5;218m█\u001b[95m█\u001b[38;5;218m█",
 	    L"        ",
-		L"        ",
 	};
 
 	for (int i = 0; i < 13; i++)
@@ -343,6 +342,52 @@ void DiamondPickaxe(int x, int y) {
 
 	cout << COLOR_BLACK;
 }
+void DiamondPickaxe2(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"\u001b[33m ▄\u001b[96m▄▄█████▄";
+	logo[1] = L"\u001b[96m ████▀▀▀▀";
+	logo[2] = L"\u001b[96m███▀\u001b[33m██▄     ";
+	logo[3] = L"\u001b[96m███  \u001b[33m▀██▄   ";
+	logo[4] = L"\u001b[96m▀█▀    \u001b[33m▀██▄ ";
+	logo[5] = L"         \u001b[33m▀██";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
+void DiamondPickaxe3(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"\u001b[96m  ▄█████▄▄\u001b[33m▄";
+	logo[1] = L"\u001b[96m   ▀▀▀▀████";
+	logo[2] = L"\u001b[33m     ▄██\u001b[96m▀███";
+	logo[3] = L"\u001b[33m   ▄██▀  \u001b[96m███";
+	logo[4] = L"\u001b[33m ▄██▀    \u001b[96m▀█▀";
+	logo[5] = L"\u001b[33m██▀";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
 
 void DiamondSword(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
@@ -373,14 +418,14 @@ void DiamondSword(int x, int y) {
 void DiamondSword2(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[8];
-	logo[0] = L"\u001b[36m███▄      ";
-	logo[1] = L"\u001b[36m▀████▄    ";
-	logo[2] = L"\u001b[36m  ▀████▄      ";
-	logo[3] = L"\u001b[36m    ▀████▄ ▄██ ";
-	logo[4] = L"\u001b[36m      ▀██████ ";
-	logo[5] = L"\u001b[36m       ▄██\u001b[33m██▄ ";
-	logo[6] = L"\u001b[36m     ██▀▀ \u001b[33m▀██\u001b[36m▄ ";
-	logo[7] = L"\u001b[36m            ▀▀ ";
+	logo[0] = L"\u001b[96m███▄      ";
+	logo[1] = L"\u001b[96m▀████▄    ";
+	logo[2] = L"\u001b[96m  ▀████▄      ";
+	logo[3] = L"\u001b[96m    ▀████▄ ▄██ ";
+	logo[4] = L"\u001b[96m      ▀██████ ";
+	logo[5] = L"\u001b[96m       ▄██\u001b[33m██▄ ";
+	logo[6] = L"\u001b[96m     ██▀▀ \u001b[33m▀██\u001b[96m▄ ";
+	logo[7] = L"\u001b[96m            ▀▀ ";
 
 	//▄█▀▀
 
@@ -398,14 +443,14 @@ void DiamondSword2(int x, int y) {
 void DiamondSword3(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[8];
-	logo[0] = L"\u001b[36m           ▄███";
-	logo[1] = L"\u001b[36m         ▄████▀";
-	logo[2] = L"\u001b[36m       ▄████▀";
-	logo[3] = L"\u001b[36m ██▄ ▄████▀";
-	logo[4] = L"\u001b[36m  ██████▀";
-	logo[5] = L"\u001b[36m  \u001b[33m▄██\u001b[36m██▄";
-	logo[6] = L"\u001b[36m ▄\u001b[33m██▀ \u001b[36m▀▀██";
-	logo[7] = L"\u001b[36m ▀▀";
+	logo[0] = L"\u001b[96m           ▄███";
+	logo[1] = L"\u001b[96m         ▄████▀";
+	logo[2] = L"\u001b[96m       ▄████▀";
+	logo[3] = L"\u001b[96m ██▄ ▄████▀";
+	logo[4] = L"\u001b[96m  ██████▀";
+	logo[5] = L"\u001b[96m  \u001b[33m▄██\u001b[96m██▄";
+	logo[6] = L"\u001b[96m ▄\u001b[33m██▀ \u001b[96m▀▀██";
+	logo[7] = L"\u001b[96m ▀▀";
 
 	//▄█▀▀
 
@@ -750,7 +795,7 @@ void SettingLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_BLUE << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -772,7 +817,7 @@ void AboutLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout <<COLOR_GREEN_HI << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -794,7 +839,7 @@ void GuideLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout <<COLOR_BLACK_HI << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);

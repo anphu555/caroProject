@@ -11,9 +11,12 @@
 #define COLOR_MAGNETA		"\u001b[35m"
 #define COLOR_CYAN          "\u001b[36m" 
 #define COLOR_WHITE         "\u001b[37m" 
+#define COLOR_PINK			"\u001b[38;5;218m"
+#define COLOR_PINK_DARK    "\u001b[38;5;125m"
+#define COLOR_PINK2        "\u001b[38;5;200m" 
 
 //// High intesity colors
-// #define COLOR_BLACK_HI       "\u001b[90m"   
+ #define COLOR_BLACK_HI       "\u001b[90m"   
 #define COLOR_RED_HI			"\u001b[91m"    
 #define COLOR_GREEN_HI			"\u001b[92m"
 #define COLOR_YELLOW_HI			"\u001b[93m"
@@ -44,7 +47,8 @@
 
 // ========chua biet sai ==============
 // High intensty background 
-#define BACKGROUND_BLACK		"\u001b[100m"
+#define BACKGROUND_GRAY		"\u001b[100m"
+#define BACKGROUND_BLACK "\u001b[40m"
 #define BACKGROUND_RED			"\u001b[101m"
 #define BACKGROUND_RED_DARK		"\u001b[41m"
 #define BACKGROUND_GREEN		"\u001b[102m"

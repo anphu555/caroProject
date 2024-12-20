@@ -50,6 +50,8 @@ void CreeperMini(int x, int y);
 void EnderMan(int x, int y);
 
 void DiamondPickaxe(int x, int y);
+void DiamondPickaxe2(int x, int y);
+void DiamondPickaxe3(int x, int y);
 void DiamondSword(int x, int y);
 void DiamondSword2(int x, int y);
 void MenuCloud2(int x, int y);
