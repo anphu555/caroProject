@@ -244,7 +244,7 @@ void Chicken(int x, int y)
 
 	wstring tree[6] = {
 		L"            ",
-		L"  \u001b[30m █▌  ▐█   ",
+		L"  \u001b[30m ██  ██   ",
 		L"  \u001b[33m ██████   ",
 		L"  \u001b[33m\u001b[2m ██████   ",
 		L"    \u001b[31m▐██▌    ",
