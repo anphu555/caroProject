@@ -531,7 +531,7 @@ void MenuHandler() {
 		IngameLogo4(13.5, 5);
 
 		DiamondSword(6, 17);
-		CreeperMini(32, 18);
+		CreeperMini(31, 17);
 		cout << BACKGROUND_CYAN;
 		DiamondPickaxe(14, 13);
 
@@ -541,7 +541,7 @@ void MenuHandler() {
 		MenuCloud1(52, 2);
 		MenuCloud2(92, 1);
 		Chicken(30, 22);
-		EnderMan(32, 14);
+		EnderMan(32, 13);
 		cout << COLOR_RESET;
 		//system("color f0");
 		// display menu with highlights

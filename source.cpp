@@ -20,8 +20,8 @@ int main() {
     HideCursor();
 
     //intro ====================
-  /*  intro1(30, 11);
-    introLoading();*/
+    intro1(30, 11);
+    introLoading();
 
 
     //backgroundGraphic();

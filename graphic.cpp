@@ -243,14 +243,14 @@ void Chicken(int x, int y)
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	wstring tree[6] = {
-		L"             ",
-		L"  \u001b[30m ██   ██   ",
-		L"  \u001b[33m ███████   ",
-		L"  \u001b[33m\u001b[2m ███████   ",
-		L"     \u001b[31m███     ",
-		L"     \u001b[31m███     "
+		L"            ",
+		L"  \u001b[30m █▌  ▐█   ",
+		L"  \u001b[33m ██████   ",
+		L"  \u001b[33m\u001b[2m ██████   ",
+		L"    \u001b[31m▐██▌    ",
+		L"    \u001b[31m▐██▌    "
 	};
-
+	//▌▐
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
@@ -328,13 +328,14 @@ void IngameLogo(int x, int y) {
 void CreeperMini(int x, int y) {
 	cout << BACKGROUND_GREEN;
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	wstring logo[4];
-	logo[0] = L"        ";
-	logo[1] = L" \u001b[30m██  ██ ";
-	logo[2] = L"  \u001b[30m▄██▄  ";
-	logo[3] = L"  \u001b[30m█▀▀█  ";
+	wstring logo[5];
+	logo[0] = L"          ";
+	logo[1] = L" \u001b[30m ██  ██  ";
+	logo[2] = L"  \u001b[30m ▄██▄   ";
+	logo[3] = L"  \u001b[30m █▀▀█   ";
+	logo[4] = L"          ";
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		GotoXY(x, y + i);
 		wcout << logo[i];
