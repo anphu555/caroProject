@@ -493,7 +493,18 @@ void MenuHandler() {
 		//backgroundGraphic();
 		cout << BACKGROUND_GREEN;
 		BorderSquareFILL(0, 119, 28, 29);
-		cout << BACKGROUND_CYAN;
+
+		for (int i = 0; i < 120; i++)
+		{
+			GotoXY(i, 29);
+			if (i % 2 == 0)
+				cout << BACKGROUND_GREEN COLOR_YELLOW COLOR_DARK << char(219);
+			else
+				cout << BACKGROUND_GREEN COLOR_YELLOW COLOR_DARK << char(220);
+		}
+		cout << COLOR_RESET;
+		cout << BACKGROUND_CYAN COLOR_BLACK;
+
 
 		 BorderSquareLine(51, 71, 14, 16, 0);
 		 BorderSquareLine(51, 71, 16, 18, 0);
@@ -566,12 +577,8 @@ void MenuHandler() {
 				system("cls");
 
 				// offline pve pvp, onlline, back
-				// offline pvp
 
 				MenuNewGame();
-
-				//StartGame();
-				//GameMove();
 				break;
 
 			case 1: // Load Game
