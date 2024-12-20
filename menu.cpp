@@ -512,6 +512,16 @@ void MenuHandler() {
 		 BorderSquareLine(51, 71, 20, 22, 0);
 		 BorderSquareLine(51, 71, 22, 24, 0);
 		 BorderSquareLine(51, 71, 24, 26, 0);
+		 GotoXY(51, 16); cout << char(204);
+		 GotoXY(71, 16); cout << char(185);
+		 GotoXY(51, 18); cout << char(204);
+		 GotoXY(71, 18); cout << char(185);
+		 GotoXY(51, 20); cout << char(204);
+		 GotoXY(71, 20); cout << char(185);
+		 GotoXY(51, 22); cout << char(204);
+		 GotoXY(71, 22); cout << char(185);
+		 GotoXY(51, 24); cout << char(204);
+		 GotoXY(71, 24); cout << char(185);
 
 		backgroundMusicSound();
 
