@@ -64,6 +64,7 @@ void Guide() {
 
 	EnderMan(96, 10);
 	cout << BACKGROUND_WHITE;
+	cout << COLOR_RESET;
 
 	BorderSquareLine(33, 85, 9, 15, 3);
 
@@ -529,17 +530,19 @@ void MenuHandler() {
 		MenuLogoTree2(102, 15);
 		IngameLogo4(13.5, 5);
 
-		DiamondSword(6, 18);
-		CreeperMini(15, 15);
+		DiamondSword(6, 17);
+		CreeperMini(32, 18);
 		cout << BACKGROUND_CYAN;
-		DiamondPickaxe(25, 14);
+		DiamondPickaxe(14, 13);
 
 		RedMushroom(3, 25);
-
+		
 		MenuCloud1(9, 1);
 		MenuCloud1(52, 2);
 		MenuCloud2(92, 1);
-		
+		Chicken(30, 22);
+		EnderMan(32, 14);
+		cout << COLOR_RESET;
 		//system("color f0");
 		// display menu with highlights
 
@@ -976,9 +979,12 @@ void saveGame() {
 		system("cls");
 		SaveGameLogo(20, 2);
 		IngameLogo(4, 10);
-		IngameLogo(24,15);
+		Chicken(24,15);
 		IngameLogo(13,23 );
-		Chicken(78, 10);
+		Chicken(80, 10);
+		IngameLogo(90, 18);
+		IngameLogo(107, 7);
+		Chicken(56, 23);
                 BorderSquareLine(40, 77, 12, 22, 0);
 		for (int i = 0; i < 3; i++) {
 			int toadoY1 = 15;
