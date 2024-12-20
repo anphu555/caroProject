@@ -214,6 +214,31 @@ void MenuLogoTree2(int x, int y)
 	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
+void EnderMan(int x, int y)
+{
+	cout << BACKGROUND_BLACK;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring tree[13] = {
+		L"        ",
+		L"        ",
+		L"\u001b[94m█\u001b[35m█\u001b[94m█  \u001b[94m█\u001b[35m█\u001b[94m█",
+	    L"        ",
+		L"        ",
+	};
+
+	for (int i = 0; i < 13; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET BACKGROUND_CYAN;
+}
+
+
 
 void MenuCloud1(int x, int y)
 {

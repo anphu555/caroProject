@@ -47,6 +47,7 @@ void BorderSquareFILL(int xleft, int xright, int ytop, int ybottom);
 
 void backgroundGraphic();
 void CreeperMini(int x, int y);
+void EnderMan(int x, int y);
 
 void DiamondPickaxe(int x, int y);
 void DiamondSword(int x, int y);
