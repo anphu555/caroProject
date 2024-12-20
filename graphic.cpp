@@ -186,21 +186,41 @@ void MenuLogo2(int x, int y)
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	// Tạo biến ông già Noel
-	wstring logo[3] = {
-	L"	  ██████████      ",
-	L" ██████████████████ "
+	wstring logo[2] = {
+	L"▁▂▃▄▅▆▇▇▆▅▄▃▂▃▄▆▇▇▆▅▄▇▆▅▄▃▁▂"
     };
 
 	// In ông già Noel
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " " << COLOR_RESET; 
+		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " " ; 
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 	cout << COLOR_RESET BACKGROUND_CYAN;
 }
+
+void MenuCloud(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	// Tạo biến ông già Noel
+	wstring logo[2] = {
+	L"▁▂▃▄▆▇▇▆▅▄▇▆▅▄▃▁▂"
+	};
+
+	// In ông già Noel
+	for (int i = 0; i < 2; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " ";
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	cout << COLOR_RESET BACKGROUND_CYAN;
+}
+
 
 void IngameLogo(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);

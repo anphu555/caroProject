@@ -466,22 +466,27 @@ void MenuHandler() {
 		BorderSquareFILL(0, 119, 28, 29);
 		cout << BACKGROUND_CYAN;
 
-		// BorderSquareLine(51, 73, 12, 16, 0);
+		 BorderSquareLine(51, 71, 14, 16, 0);
+		 BorderSquareLine(51, 71, 16, 18, 0);
+		 BorderSquareLine(51, 71, 18, 20, 0);
+		 BorderSquareLine(51, 71, 20, 22, 0);
+		 BorderSquareLine(51, 71, 22, 24, 0);
+		 BorderSquareLine(51, 71, 24, 26, 0);
+
 		backgroundMusicSound();
 
-		MenuLogo1(85, 14);
+		MenuLogo1(85, 19);
 		IngameLogo4(13.5, 5);
 
-		DiamondSword(1, 17);
-		
-		
-		CreeperMini(10, 14);
-
-		DiamondPickaxe(19, 13);
+		DiamondSword(6, 18);
+		CreeperMini(15, 15);
+		DiamondPickaxe(25, 14);
 
 		
 
-		//MenuLogo2(10, 14);
+		MenuLogo2(9, 1);
+		MenuLogo2(52, 2);
+		MenuCloud(92, 1);
 		
 		//system("color f0");
 		// display menu with highlights
