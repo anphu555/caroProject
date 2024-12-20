@@ -476,6 +476,7 @@ void MenuHandler() {
 		backgroundMusicSound();
 
 		MenuLogo1(85, 19);
+		MenuLogoTree(102, 15);
 		IngameLogo4(13.5, 5);
 
 		DiamondSword(6, 18);

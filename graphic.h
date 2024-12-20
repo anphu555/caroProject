@@ -51,5 +51,6 @@ void CreeperMini(int x, int y);
 void DiamondPickaxe(int x, int y);
 void DiamondSword(int x, int y);
 void MenuCloud(int x, int y);
+void MenuLogoTree(int x, int y);
 
 #endif

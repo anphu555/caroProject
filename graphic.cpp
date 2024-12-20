@@ -181,6 +181,40 @@ void MenuLogo1(int x, int y)
 	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
+void MenuLogoTree(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	// Tạo biến cây thông
+	wstring tree[13] = {
+		L"      \u001b[32m█████     ",
+		L"   ███████████   ",
+		L"  █████████████  ",
+		L" ███████████████  ",
+		L"█████████████████ ",
+		L" ███████████████",
+		L"  █████████████",
+		L"       \u001b[2;33m███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      "
+	};
+
+	// In cây thông
+	for (int i = 0; i < 13; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET BACKGROUND_CYAN;
+}
+
+
 void MenuLogo2(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại

@@ -64,7 +64,8 @@ void AppearCursor()
 void DrawBoard() // pSize = BOARD_SIZE
 {
     AppearCursor();
-
+    GotoXY(52, 27);
+    cout << COLOR_GREEN "Press ESC to pause!";
     cout << COLOR_GREEN << COLOR_BOLD; // tao mau cho toan bang
 
     // ve canh tren, khong ve 4 goc
@@ -281,6 +282,8 @@ int AskContinue()
 
     //GotoXY(80, 50);
     HideCursor();
+    GotoXY(52, 27);
+    cout << "                                       ";
     const int NUM_REPLAY_ITEMS = 2;
     const char* replayItems[NUM_REPLAY_ITEMS] = {
         "   PLAY AGAIN   ",
