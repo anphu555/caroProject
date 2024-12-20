@@ -346,6 +346,27 @@ void DiamondSword(int x, int y) {
 
 }
 
+void RedMushroom(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[3];
+	logo[0] = L"\u001b[31m ▄██▄";
+	logo[1] = L"\u001b[31m██████";
+	logo[2] = L"\u001b[37m  ██";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 3; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << BACKGROUND_CYAN COLOR_BLACK;
+
+}
+
 
 void IngameLogo4(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);

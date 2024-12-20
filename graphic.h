@@ -53,4 +53,6 @@ void DiamondSword(int x, int y);
 void MenuCloud(int x, int y);
 void MenuLogoTree(int x, int y);
 
+void RedMushroom(int x, int y);
+
 #endif

@@ -483,7 +483,7 @@ void MenuHandler() {
 		CreeperMini(15, 15);
 		DiamondPickaxe(25, 14);
 
-		
+		RedMushroom(3, 25);
 
 		MenuLogo2(9, 1);
 		MenuLogo2(52, 2);
