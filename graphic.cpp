@@ -316,7 +316,7 @@ void DiamondPickaxe(int x, int y) {
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	cout << BACKGROUND_CYAN COLOR_BLACK;
+	cout << COLOR_BLACK;
 
 }
 
@@ -342,7 +342,7 @@ void DiamondSword(int x, int y) {
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	cout << BACKGROUND_CYAN COLOR_BLACK;
+	cout <<  COLOR_BLACK;
 
 }
 

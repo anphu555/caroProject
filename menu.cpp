@@ -97,6 +97,10 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 
 
 	SettingLogo(34, 3);
+
+	DiamondPickaxe(20, 14);
+	DiamondPickaxe(85, 14);
+
 	BorderSquareLine(42, 78, 13, 21, 0);
 	//SettingLogo(30, 3);
 	//BorderSquareLine(42, 78, 13, 21, 0);
