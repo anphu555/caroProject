@@ -317,9 +317,9 @@ void MenuNewGame()
 		system("cls");
 		OfflineMode(13, 5); 
 
-		DiamondSword(20, 14);
+		DiamondSword2(20, 14);
 
-		DiamondSword2(80, 14);
+		DiamondSword3(84, 14);
 
 		BorderSquareLine(48, 70, 12, 22, 0);
 
@@ -401,9 +401,9 @@ void MenuOffline()
 		HideCursor();
 		OfflineMode(13, 5);
 
-		DiamondSword(20, 14);
+		DiamondSword3(20, 14);
 
-		DiamondSword2(80, 14);
+		DiamondSword2(84, 14);
 
 
 		BorderSquareLine(48, 70, 12, 22, 0);
@@ -656,9 +656,9 @@ void InGameMenu() {
 		HideCursor();
 		PauseLogo(40, 2);
 
-		DiamondSword(20, 14);
+		DiamondSword2(20, 14);
 
-		DiamondSword2(80, 14);
+		DiamondSword3(80, 14);
 
 		BorderSquareLine(47, 67, 12, 22, 0);
 
@@ -866,6 +866,8 @@ string SelectSaveFile(bool isSaving) {
 
 			system("cls");
 			LoadLogo(22, 2);
+			RedMushroom(50, 10);
+			RedMushroom(64, 10);
 			BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom, 0);
 			for (int i = 0; i < saveFiles.size(); i++) {
 				int toadoY1 = 15;
