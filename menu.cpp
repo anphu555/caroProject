@@ -99,7 +99,10 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	SettingLogo(34, 3);
 
 	DiamondPickaxe(20, 14);
-	DiamondPickaxe(85, 14);
+	//DiamondPickaxe(85, 14);
+
+	GoldOre(90, 14);
+	cout << BACKGROUND_WHITE;
 
 	BorderSquareLine(42, 78, 13, 21, 0);
 	//SettingLogo(30, 3);
@@ -300,6 +303,10 @@ void MenuNewGame()
 		// hien thi menu
 		system("cls");
 		OfflineMode(13, 5); 
+		DiamondSword(20, 14);
+
+		DiamondSword2(80, 14);
+
 		BorderSquareLine(48, 70, 12, 22, 0);
 
 
