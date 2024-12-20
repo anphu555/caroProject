@@ -957,7 +957,6 @@ string SelectSaveFile(bool isSaving) {
 
 void saveGame() {
 	HideCursor();
-
 	if (_X == 0 && _Y == 0) {
 		printf("Cannot save game before starting!\n");
 		cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
@@ -976,6 +975,9 @@ void saveGame() {
 	while (true) {
 		system("cls");
 		SaveGameLogo(20, 2);
+		IngameLogo(4, 10);
+		IngameLogo(24,15);
+		IngameLogo(13,23 );
                 BorderSquareLine(40, 77, 12, 22, 0);
 		for (int i = 0; i < 3; i++) {
 			int toadoY1 = 15;

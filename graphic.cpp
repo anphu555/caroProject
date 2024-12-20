@@ -239,6 +239,8 @@ void EnderMan(int x, int y)
 
 
 
+
+
 void MenuCloud1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
