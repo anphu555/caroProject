@@ -112,7 +112,7 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 1][j - 1].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 2][j - 2].c &&
                 _A[boardIndex][i][j].c == _A[boardIndex][i + 3][j - 3].c &&
-                _A[boardIndex][i][j].c == _A[boardIndex][i + 4][j - 4].c) {
+                _A[boardIndex][i][j].c == _A[boardIndex][i + 4][j - 4].c && j < (BOARD_SIZE - 4) && (j - 4) >= 0) {
 
                 int mode;
                 _A[boardIndex][i][j].c > 0 ? (mode = -1) : (mode = 1);
