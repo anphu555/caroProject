@@ -485,6 +485,7 @@ void MenuHandler() {
 
 		DiamondSword(6, 18);
 		CreeperMini(15, 15);
+		cout << BACKGROUND_CYAN;
 		DiamondPickaxe(25, 14);
 
 		RedMushroom(3, 25);

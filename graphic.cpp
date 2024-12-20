@@ -291,7 +291,7 @@ void CreeperMini(int x, int y) {
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	cout << BACKGROUND_CYAN;
+	//cout << BACKGROUND_CYAN;
 
 }
 
