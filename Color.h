@@ -16,7 +16,7 @@
 // #define COLOR_BLACK_HI       "\u001b[90m"   
 #define COLOR_RED_HI			"\u001b[91m"    
 //#define COLOR_GREEN_HI			"\u001b[92m"
-//#define COLOR_YELLOW_HI			"\u001b[93m"
+#define COLOR_YELLOW_HI			"\u001b[93m"
 #define COLOR_BLUE_HI			"\u001b[94m" 
 //#define COLOR_MAGNETA_HI			"\u001b[95m"
 #define COLOR_CYAN_HI			"\u001b[96m" 

@@ -348,14 +348,39 @@ void DiamondSword(int x, int y) {
 void DiamondSword2(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[8];
-	logo[0] = L"\u001b[34m           ▄███";
-	logo[1] = L"\u001b[34m         ▄████▀";
-	logo[2] = L"\u001b[34m       ▄████▀";
-	logo[3] = L"\u001b[34m ██▄ ▄████▀";
-	logo[4] = L"\u001b[34m  ██████▀";
-	logo[5] = L"\u001b[34m  \u001b[33m▄██\u001b[34m██▄";
-	logo[6] = L"\u001b[34m ▄\u001b[33m██▀ \u001b[34m▀▀██";
-	logo[7] = L"\u001b[34m ▀▀";
+	logo[0] = L"\u001b[36m███▄      ";
+	logo[1] = L"\u001b[36m▀████▄    ";
+	logo[2] = L"\u001b[36m  ▀████▄      ";
+	logo[3] = L"\u001b[36m    ▀████▄ ▄██ ";
+	logo[4] = L"\u001b[36m      ▀██████ ";
+	logo[5] = L"\u001b[36m       ▄██\u001b[33m██▄ ";
+	logo[6] = L"\u001b[36m     ██▀▀ \u001b[33m▀██\u001b[36m▄ ";
+	logo[7] = L"\u001b[36m            ▀▀ ";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+
+}
+void DiamondSword3(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[8];
+	logo[0] = L"\u001b[36m           ▄███";
+	logo[1] = L"\u001b[36m         ▄████▀";
+	logo[2] = L"\u001b[36m       ▄████▀";
+	logo[3] = L"\u001b[36m ██▄ ▄████▀";
+	logo[4] = L"\u001b[36m  ██████▀";
+	logo[5] = L"\u001b[36m  \u001b[33m▄██\u001b[36m██▄";
+	logo[6] = L"\u001b[36m ▄\u001b[33m██▀ \u001b[36m▀▀██";
+	logo[7] = L"\u001b[36m ▀▀";
 
 	//▄█▀▀
 
@@ -376,7 +401,7 @@ void RedMushroom(int x, int y) {
 	wstring logo[3];
 	logo[0] = L"\u001b[31m ▄██▄";
 	logo[1] = L"\u001b[31m██████";
-	logo[2] = L"\u001b[37m  ██";
+	logo[2] = L"\u001b[93m  ██";
 
 	//▄█▀▀
 
@@ -388,7 +413,8 @@ void RedMushroom(int x, int y) {
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	cout << BACKGROUND_CYAN COLOR_BLACK;
+	cout <<  COLOR_BLACK;
+
 
 }
 
@@ -771,23 +797,6 @@ void PauseLogo(int x, int y)
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-/*
-	⠀⠀⠀⠀⠀     ⠀⠀⠀⢠⣶⣶⣶⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-	⠀⠀ ⠀⠀⠀⠀⢀⣴⣾⣿⣷⣄⢀⣸⣿⣿⣿⣿⣄⠀⣴⣿⣿⣶⣄⠀⠀⠀⠀⠀
-	⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀
-	⠀⠀⢀⣴⣦⣤⣠⣾⣿⣿⣿⠟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⣤⣤⡄⠀
-	⠀⠀⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⢙⣿⣿⣿⣿⣿⡿⠋⢹⣿⣿⣿⣿⣿⣿⣿⡆
-	⠀⠀⠉⠻⣿⣿⣿⡿⠁⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⠃⠀⠻⠿⠃⣿⣿⣿⣿⠋⠀
-	⣡⣀⣀⣼⣿⣿⣿⡇⠀⠀⣠⡟⠉⠙⢿⣿⣿⡿⠉⠀⢀⣨⣤⣴⣿⣿⣿⣿⣀⣀
-	⢸⣿⣿⣿⣿⣿⣿⣷⣠⣾⣿⣿⣦⡄⣠⡿⠃⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-	⠼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⣠⡾⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-	⠀⠀⠀⢙⣿⣿⣿⣿⣿⠿⠿⠟⠁⠀⣠⣾⣧⡀⠀⠈⠻⣿⣿⣿⣿⣿⣿⡏⠀⠀
-	⠀⠀⣵⣿⣿⣿⣿⣿⠁⣾⡀⠀⢠⣾⣿⣿⣿⣿⣦⡀⠀⠈⢻⣿⣿⣿⣿⣿⣶⡀
-	⠀⠀⢻⣿⣿⣿⣿⣿⣼⣿⡟⠀⣼⣿⣿⣿⣿⣿⣿⣿⣦⣤⣾⣿⣿⣿⣿⣿⣿⠃
-	⠀⠀⠀⠙⠉⠁⠈⣻⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠉⠙⠁⠀
-	⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀
-	⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⠏⠀⠀⢸⣿⣿⣿⣿⠀⠀⠘⠿⠿⠛⠁⠀⠀⠀⠀
-*/
 void LoadLogo(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[6] = {

@@ -53,7 +53,7 @@ void DiamondSword(int x, int y);
 void DiamondSword2(int x, int y);
 void MenuCloud2(int x, int y);
 void MenuLogoTree2(int x, int y);
-
+void DiamondSword3(int x, int y);
 void RedMushroom(int x, int y);
 
 void GoldOre(int x, int y);
