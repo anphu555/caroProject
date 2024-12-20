@@ -204,6 +204,28 @@ void moveWASDAI()
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
 
+
+                // check win/lose/draw/continue
+                switch (ProcessFinish(TestBoard(0)))
+                {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y')
+                    {
+                        ExitGame();
+                        return;
+                    }
+                    else
+                    {
+                        StartGame();
+                        moveWASDAI();
+                    }
+                    break;
+                case 2:
+                    // continue
+                    break;
+                }
+
+
                 // AI Play
                 AIPlay();
                 moveOCount++;
@@ -219,7 +241,10 @@ void moveWASDAI()
                         return;
                     }
                     else
+                    {
                         StartGame();
+                        moveWASDAI();
+                    }
                     break;
                 case 2:
                     // continue
