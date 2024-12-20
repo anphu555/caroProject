@@ -978,6 +978,7 @@ void saveGame() {
 		IngameLogo(4, 10);
 		IngameLogo(24,15);
 		IngameLogo(13,23 );
+		Chicken(78, 10);
                 BorderSquareLine(40, 77, 12, 22, 0);
 		for (int i = 0; i < 3; i++) {
 			int toadoY1 = 15;

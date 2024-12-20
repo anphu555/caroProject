@@ -234,9 +234,33 @@ void EnderMan(int x, int y)
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	cout << COLOR_RESET BACKGROUND_CYAN;
+	/*cout << COLOR_RESET BACKGROUND_CYAN*/;
 }
 
+void Chicken(int x, int y)
+{
+	cout << BACKGROUND_RED;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring tree[13] = {
+		L"                 ",
+		L"  \u001b[30m ██   ██    ",
+		L"  \u001b[33m ███████	  ",
+		L"  \u001b[33m\u001b[2m ███████   ",
+		L"     \u001b[31m███      ",
+		L"	   \u001b[31m███      "
+	};
+
+	for (int i = 0; i < 13; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET;
+}
 
 
 

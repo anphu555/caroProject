@@ -23,7 +23,7 @@
 #define COLOR_BLUE_HI			"\u001b[94m" 
 #define COLOR_MAGNETA_HI			"\u001b[95m"
 #define COLOR_CYAN_HI			"\u001b[96m" 
-//#define COLOR_WHITE_HI			"\u001b[97m" 
+#define COLOR_WHITE_HI			"\u001b[97m" 
 
 // 2 Reset
 //#define COLOR_RESET         "\u001b[0m\u001b[106m\u001b[30m"
@@ -60,6 +60,7 @@
 #define BACKGROUND_CYAN			"\u001b[106m"
 #define BACKGROUND_WHITE		"\u001b[107m"
 #define BACKGROUND_GREEN_DARK       "\u001b[42m"
+#define BACKGROUND_WHITE_SOFT     "\u001b[48;5;255m"  // Trắng nhẹ
 
 //\e[40m	Black
 //\e[41m	Red
