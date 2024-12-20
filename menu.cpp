@@ -98,7 +98,7 @@ void Guide() {
 	GotoXY(30, 21);
 	printf("  a straight line, diagonal, or horizontal line faster than");
 	GotoXY(30, 22);
-	printf("  your opponent. Achieving 4 unblocked moves also wins.");
+	printf("  your opponent. ");
 
 	GotoXY(43, 27);
 }
