@@ -13,6 +13,13 @@ extern bool SFXmode; // false off, true on
 void About() {
 	AboutLogo(40, 2);
 
+	CreeperMini(15, 11);
+	cout << BACKGROUND_WHITE;
+
+	CreeperMini(96, 11);
+	cout << BACKGROUND_WHITE;
+
+
 	GotoXY(30, 9);
 	printf("A small caro project developed by a group of randoms chill boyz");
 
@@ -51,6 +58,12 @@ void About() {
 
 void Guide() {
 	GuideLogo(40, 2);
+
+	CreeperMini(15, 10);
+	cout << BACKGROUND_WHITE;
+
+	CreeperMini(96, 10);
+	cout << BACKGROUND_WHITE;
 
 	BorderSquareLine(33, 85, 9, 15, 3);
 
