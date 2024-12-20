@@ -491,16 +491,16 @@ void MenuHandler() {
 		system("color b0");
 
 		//backgroundGraphic();
-		cout << BACKGROUND_GREEN;
+		cout << BACKGROUND_GREEN_DARK;
 		BorderSquareFILL(0, 119, 28, 29);
 
 		for (int i = 0; i < 120; i++)
 		{
 			GotoXY(i, 29);
 			if (i % 2 == 0)
-				cout << BACKGROUND_GREEN COLOR_YELLOW COLOR_DARK << char(219);
+				cout << BACKGROUND_GREEN_DARK COLOR_YELLOW COLOR_DARK << char(219);
 			else
-				cout << BACKGROUND_GREEN COLOR_YELLOW COLOR_DARK << char(220);
+				cout << BACKGROUND_GREEN_DARK COLOR_YELLOW COLOR_DARK << char(220);
 		}
 		cout << COLOR_RESET;
 		cout << BACKGROUND_CYAN COLOR_BLACK;

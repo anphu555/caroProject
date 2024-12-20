@@ -15,7 +15,7 @@
 //// High intesity colors
 // #define COLOR_BLACK_HI       "\u001b[90m"   
 #define COLOR_RED_HI			"\u001b[91m"    
-//#define COLOR_GREEN_HI			"\u001b[92m"
+#define COLOR_GREEN_HI			"\u001b[92m"
 #define COLOR_YELLOW_HI			"\u001b[93m"
 #define COLOR_BLUE_HI			"\u001b[94m" 
 //#define COLOR_MAGNETA_HI			"\u001b[95m"
@@ -55,6 +55,7 @@
 #define BACKGROUND_MAGNETA		"\u001b[105m"
 #define BACKGROUND_CYAN			"\u001b[106m"
 #define BACKGROUND_WHITE		"\u001b[107m"
+#define BACKGROUND_GREEN_DARK       "\u001b[42m"
 
 //\e[40m	Black
 //\e[41m	Red
