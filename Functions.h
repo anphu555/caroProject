@@ -1,5 +1,7 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+#define _WINSOCK_DEPRECATED_NO_WARNINGS 
+#pragma warning(disable:4996) 
 #define LEFT 36 // 3 toa do cua ban co
 #define TOP 1 // 1
 #define RIGHT LEFT+BOARD_SIZE*4
@@ -17,13 +19,14 @@
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
+
 //AI related variables
 #define P1 4 //Red
 #define P2 1 //Blue
 #define VX 1
 #define VO 2
 #define _level 2 // AI search depth
-
+#include <WinSock2.h>
 #include <conio.h>
 #include <ctype.h>
 #include <cstdio>
@@ -37,6 +40,9 @@
 #include <algorithm>
 #include <iomanip>
 
+
+
+#pragma comment (lib, "ws2_32.lib")
 #pragma comment (lib, "winmm.lib") // de them hieu ung am thanh
 
 using namespace std;
@@ -72,6 +78,8 @@ void MoveUp();
 // moi sua ten move wasd thanh gamemove
 void GameMove();
 void moveWASDAI();
+void moveArrowLAN();
+void moveWASDLAN();
 
 //View
 void GotoXY(int, int);
@@ -109,6 +117,7 @@ void ResetData();
 //void GarbageCollect();
 int TestBoard(int);
 int CheckBoard(int, int, int);
+void changePlayer();
 //Model-AI
 void BoardToBoard(int, int); //copy board1 sang board2
 // AI-related function prototypes
@@ -131,6 +140,23 @@ void pickSound();
 void exitSound();
 void saveSound();
 //void moveSound();
+
+
+
+
+
+//LAN
+void initWinsock();
+void cleanupWinsock();
+void startServer();
+void startClient(const string& serverIP);
+void serializePoint(const _POINT& point, char* buffer);
+void deserializePoint(const char* buffer, _POINT& point);
+void sendPoint(SOCKET sock, const _POINT& point);
+void recvPoint(SOCKET sock, _POINT& point);
+void LANcore(SOCKET sock, bool isHost);
+
+
 
 
 #endif

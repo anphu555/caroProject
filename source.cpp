@@ -46,8 +46,8 @@ int main() {
     setConsoleSize(120, 30);
     FixConsoleWindow();
     HideCursor();
-
+    initWinsock();
     MenuHandler();
-
+    cleanupWinsock();
     return 0;
 }

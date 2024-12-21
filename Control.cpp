@@ -229,3 +229,162 @@ void moveWASDAI()
         }
     }
 }
+
+void moveWASDLAN()
+{
+    bool validEnter = true;
+    while (1) {
+        _COMMAND = toupper(getch());
+        // xet tung nut bam
+        switch (_COMMAND) {
+        case 27: { // phim esc la 27
+            InGameMenu();
+            break; // Changed from ExitGame() to open menu
+        }
+               // WASD cho X, mui ten cho O
+               // nut danh luot X (_TURN true)
+        case 'A': {
+            if (_TURN) MoveLeft();
+            break;
+        }
+        case 'W': {
+            if (_TURN) MoveUp();
+            break;
+        }
+        case 'S': {
+            if (_TURN) MoveDown();
+            break;
+        }
+        case 'D': {
+            if (_TURN) MoveRight();
+            break;
+        }
+               // press Enter
+        case 13: {
+            switch (CheckBoard(_X, _Y, 0))
+            {
+
+            case -1:
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
+                enterXOSound();
+                moveXCount++;
+                GotoXY(10, 12); // Hiển thị dưới bàn cờ
+                cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
+                break;
+
+            case 1:
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
+                enterXOSound();
+                moveOCount++;
+                GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
+                break;
+
+            case 0:
+                validEnter = false; //danh vao o dah roi
+            }
+            // check win/lose/draw/continue
+            if (validEnter == true)
+            {
+                switch (ProcessFinish(TestBoard(0)))
+                {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y')
+                    {
+                        /*ExitGame();*/
+                        // gọi lại như lúc vào game
+                        MenuHandler();
+                        return;
+                    }
+                    else
+                        StartGame();
+                }
+            }
+            validEnter = true; // unlock
+        }
+        }
+    }
+}
+
+void moveArrowLAN()
+{
+    bool validEnter = true;
+    while (1) {
+        _COMMAND = toupper(getch());
+        // xet tung nut bam
+        switch (_COMMAND) {
+        case 27: { // phim esc la 27
+            InGameMenu();
+            break; // Changed from ExitGame() to open menu
+        }
+               // WASD cho X, mui ten cho O
+               // nut danh luot X (_TURN true)
+
+                // _TURN false (luot O)
+        case 75: {          // left arrow: 75
+            if (!_TURN) MoveLeft();
+            break;
+        }
+        case 72: {          // up arrow: 72
+            if (!_TURN) MoveUp();
+            break;
+        }
+        case 80: {          // down arrow: 80
+            if (!_TURN) MoveDown();
+            break;
+        }
+        case 77: {          // right arrow: 77
+            if (!_TURN) MoveRight();
+            break;
+        }
+               // press Enter
+        case 13: {
+            switch (CheckBoard(_X, _Y, 0))
+            {
+
+            case -1:
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
+                enterXOSound();
+                moveXCount++;
+                GotoXY(10, 12); // Hiển thị dưới bàn cờ
+                cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
+                break;
+
+            case 1:
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
+                enterXOSound();
+                moveOCount++;
+                GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
+                break;
+
+            case 0:
+                validEnter = false; //danh vao o dah roi
+            }
+            // check win/lose/draw/continue
+            if (validEnter == true)
+            {
+                switch (ProcessFinish(TestBoard(0)))
+                {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y')
+                    {
+                        /*ExitGame();*/
+                        // gọi lại như lúc vào game
+                        MenuHandler();
+                        return;
+                    }
+                    else
+                        StartGame();
+                }
+            }
+                _POINT player2 = { _X, _Y, 1 };
+            validEnter = true; // unlock
+        }
+        }
+    }
+}
