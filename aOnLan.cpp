@@ -43,6 +43,7 @@ void startServer() {
     }
 
     // Thiết lập địa chỉ server
+    sockaddr_in serverAddr = {};
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(PORT);
     serverAddr.sin_addr.s_addr = INADDR_ANY;
@@ -51,19 +52,47 @@ void startServer() {
     if (bind(serverSocket, (sockaddr*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
         cerr << "Bind failed. Error: " << WSAGetLastError() << endl;
         closesocket(serverSocket);
-        exit(EXIT_FAILURE);
+        WSACleanup();
+        return;
+    }
+
+    char hostname[256];
+    if (gethostname(hostname, sizeof(hostname)) == SOCKET_ERROR) {
+        cerr << "Failed to get hostname. Error: " << WSAGetLastError() << endl;
+    }
+    else {
+        addrinfo hints = {}, * info;
+        hints.ai_family = AF_INET; // IPv4
+        hints.ai_socktype = SOCK_STREAM;
+
+        if (getaddrinfo(hostname, nullptr, &hints, &info) == 0) {
+            cout << "Server is running. Connect using one of these IPs:" << endl;
+
+            for (addrinfo* ptr = info; ptr != nullptr; ptr = ptr->ai_next) {
+                sockaddr_in* addr = reinterpret_cast<sockaddr_in*>(ptr->ai_addr);
+                cout << "- " << inet_ntoa(addr->sin_addr) << " (port 12345)" << endl;
+            }
+
+            freeaddrinfo(info);
+        }
+        else {
+            cerr << "Failed to get IP addresses. Error: " << WSAGetLastError() << endl;
+        }
     }
 
     // Lắng nghe kết nối
     if (listen(serverSocket, SOMAXCONN) == SOCKET_ERROR) {
         cerr << "Listen failed. Error: " << WSAGetLastError() << endl;
         closesocket(serverSocket);
-        exit(EXIT_FAILURE);
+        WSACleanup();
+        return;
     }
 
-    cout << "Waiting for client connection on port " << PORT << "...\n";
+    cout << "Waiting for a client to connect..." << endl;
+    
 
     // Chấp nhận kết nối từ client
+
     clientSocket = accept(serverSocket, (sockaddr*)&clientAddr, &clientAddrSize);
     if (clientSocket == INVALID_SOCKET) {
         cerr << "Accept failed. Error: " << WSAGetLastError() << endl;
