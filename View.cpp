@@ -64,7 +64,8 @@ void AppearCursor()
 void DrawBoard() // pSize = BOARD_SIZE
 {
     AppearCursor();
-
+    GotoXY(52, 27);
+    cout << COLOR_GREEN "Press ESC to pause!";
     cout << COLOR_GREEN << COLOR_BOLD; // tao mau cho toan bang
 
     // ve canh tren, khong ve 4 goc
@@ -281,6 +282,8 @@ int AskContinue()
 
     //GotoXY(80, 50);
     HideCursor();
+    GotoXY(52, 27);
+    cout << "                                       ";
     const int NUM_REPLAY_ITEMS = 2;
     const char* replayItems[NUM_REPLAY_ITEMS] = {
         "   PLAY AGAIN   ",
@@ -288,28 +291,30 @@ int AskContinue()
     };
 
     int selectedItem = 3;
-    BorderSquareLine(42, 59, 14, 16,0); // Khung cho "PLAY AGAIN"
-    BorderSquareLine(67, 78, 14, 16,0); // Khung cho "EXIT"
+    cout << COLOR_GREEN;
+    BorderSquareLine(41, 60, 26, 28.5, 0); // Khung cho "PLAY AGAIN"
+    BorderSquareLine(63, 82, 26, 28.5 ,0); // Khung cho "EXIT"
     while (1) {
 
         if (selectedItem == 0) {
 
             replayItems[selectedItem] = ">> PLAY AGAIN <<";
 
-            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = "   Exit   ";
+            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = COLOR_GREEN "   Exit   ";
         }
         else if (selectedItem == 1) {
             replayItems[selectedItem] = ">> Exit <<";
 
-            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = "   PLAY AGAIN   ";
+            replayItems[(selectedItem + 1 + NUM_REPLAY_ITEMS) % NUM_REPLAY_ITEMS] = COLOR_GREEN "   PLAY AGAIN   ";
         }
 
         int toadoX1 = LEFT + 7; // tọa đọ test vị trsi settings
         for (int i = 0; i < NUM_REPLAY_ITEMS; i++) {
-            GotoXY(toadoX1 + i * 25, 15);
+            GotoXY(toadoX1 + i * 25, 27.5);
 
             if (i == selectedItem) {
                 cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+                cout << COLOR_GREEN;
                 cout << replayItems[i];
                 cout << COLOR_RESET;
             }

@@ -121,12 +121,29 @@ void introLoading() {
 	system("color f0");
 	HideCursor();
 
-	IngameLogo4(14, 9);
+	//IngameLogo4(14, 9);
+
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"████████╗██╗░░██╗███████╗░░█████╗░░█████╗░██████╗░░█████╗░░░██████╗░░█████╗░███╗░░░███╗███████╗";
+	logo[1] = L"╚══██╔══╝██║░░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗░██╔════╝░██╔══██╗████╗░████║██╔════╝";
+	logo[2] = L"░░░██║░░░███████║█████╗░░░██║░░╚═╝███████║██████╔╝██║░░██║░██║░░██╗░███████║██╔████╔██║█████╗░░";
+	logo[3] = L"░░░██║░░░██╔══██║██╔══╝░░░██║░░██╗██╔══██║██╔══██╗██║░░██║░██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░";
+	logo[4] = L"░░░██║░░░██║░░██║███████╗░╚█████╔╝██║░░██║██║░░██║╚█████╔╝░╚██████╔╝██║░░██║██║░╚═╝░██║███████╗";
+	logo[5] = L"░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░░░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝";
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(14, 9 + i);
+		wcout << COLOR_RED COLOR_BOLD << logo[i] << " " << COLOR_RESET;
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
 
 	GotoXY(56, 19);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Loading..." );
 	BorderSquare(30, 90, 20, 20, 16);
-	cout << COLOR_RESET;
+	cout << COLOR_RESET BACKGROUND_WHITE;
 
 	Sleep(500);
 
@@ -134,64 +151,160 @@ void introLoading() {
 }
 // ===========================================
 
-void MenuLogo1(int x, int y)
+void MenuLogoTree1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	// Tạo biến cây thông
-	wstring tree[12] = {
-		L"        █         ",
-		L"       ███        ",
-		L"      █████       ",
-		L"     ███████      ",
-		L"    █████████     ",
-		L"   ███████████    ",
-		L"  █████████████   ",
-		L" ███████████████  ",
-		L"█████████████████ ",
-		L"       ███        ",
-		L"       ███        ",
-		L"       ███        "
+	wstring tree[10] = {
+		L"      \u001b[32m█████     ",
+		L"    █████████   ",
+		L"   ███████████  ",
+		L"   ███████████  ",
+		L"  █████████████ ",
+		L" ███████████████",
+		L"       \u001b[2;33m███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      "
 	};
 
 	// In cây thông
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 9; i++)
 	{
 		GotoXY(x, y + i);
 		wcout << tree[i];
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET BACKGROUND_CYAN;
 }
 
-void MenuLogo2(int x, int y)
+void MenuLogoTree2(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	// Tạo biến cây thông
+	wstring tree[13] = {
+		L"      \u001b[32m█████     ",
+		L"   ███████████   ",
+		L"  █████████████  ",
+		L" ███████████████  ",
+		L"█████████████████ ",
+		L" ███████████████",
+		L"  █████████████",
+		L"       \u001b[2;33m███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      ",
+		L"       ███      "
+	};
+
+	// In cây thông
+	for (int i = 0; i < 13; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET BACKGROUND_CYAN;
+}
+
+void EnderMan(int x, int y)
+{
+	cout << BACKGROUND_BLACK;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring tree[13] = {
+		L"        ",
+		L"        ",
+		L"\u001b[38;5;218m█\u001b[95m█\u001b[38;5;218m█  \u001b[38;5;218m█\u001b[95m█\u001b[38;5;218m█",
+	    L"        ",
+	};
+
+	for (int i = 0; i < 13; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	/*cout << COLOR_RESET BACKGROUND_CYAN*/;
+}
+
+void Chicken(int x, int y)
+{
+	cout << BACKGROUND_WHITE_SOFT;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	wstring tree[6] = {
+		L"            ",
+		L"  \u001b[30m ██  ██   ",
+		L"  \u001b[33m ██████   ",
+		L"  \u001b[33m\u001b[2m ██████   ",
+		L"    \u001b[31m▐██▌    ",
+		L"    \u001b[31m▐██▌    "
+	};
+	//▌▐
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << tree[i];
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_RESET;
+}
+
+
+
+
+void MenuCloud1(int x, int y)
 {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
 
 	// Tạo biến ông già Noel
-	wstring logo[11] = {
-	L"	_.█████████████████			 ",
-	L"_ ██████████████████			 ",
-	L"████████████████████			 ",
-	L"█████████████████████			 ",
-	L"_█_________▄▄▄▄_ ▄▄▄▄_█	 	 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█		 	 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
-	L"_█__█████_▐▓▓▌_▐▓▓▌_█			 ",
-	L"_█__█████_▀▀▀▀_ ▀▀▀▀ █  ✿ ✿ ✿",
-	L"_█__█████_____________ █(\\|/) ",
-	L"_____________██ _____________██"
+	wstring logo[2] = {
+	L"▁▂▃▄▅▆▇▇▆▅▄▃▂▃▄▆▇▇▆▅▄▇▆▅▄▃▁▂"
     };
 
 	// In ông già Noel
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " " ; 
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	cout << COLOR_RESET BACKGROUND_CYAN;
 }
+
+void MenuCloud2(int x, int y)
+{
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT); // _setmode return mode trước khi bị đổi, lưu vào để hồi lại
+
+	// Tạo biến ông già Noel
+	wstring logo[2] = {
+	L"▁▂▃▄▆▇▇▆▅▄▇▆▅▄▃▁▂"
+	};
+
+	// In ông già Noel
+	for (int i = 0; i < 2; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << COLOR_WHITE COLOR_BOLD << logo[i] << " ";
+	}
+
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	cout << COLOR_RESET BACKGROUND_CYAN;
+}
+
 
 void IngameLogo(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
@@ -211,6 +324,220 @@ void IngameLogo(int x, int y) {
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
+
+void CreeperMini(int x, int y) {
+	cout << BACKGROUND_GREEN;
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[5];
+	logo[0] = L"          ";
+	logo[1] = L" \u001b[30m ██  ██  ";
+	logo[2] = L"  \u001b[30m ▄██▄   ";
+	logo[3] = L"  \u001b[30m █▀▀█   ";
+	logo[4] = L"          ";
+
+	for (int i = 0; i < 5; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	//cout << BACKGROUND_CYAN;
+
+}
+
+void DiamondPickaxe(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"\u001b[34m  ▄█████▄▄\u001b[33m▄";
+	logo[1] = L"\u001b[34m   ▀▀▀▀████";
+	logo[2] = L"\u001b[33m     ▄██\u001b[34m▀███";
+	logo[3] = L"\u001b[33m   ▄██▀  \u001b[34m███";
+	logo[4] = L"\u001b[33m ▄██▀    \u001b[34m▀█▀";
+	logo[5] = L"\u001b[33m██▀";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
+void DiamondPickaxe2(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"\u001b[33m ▄\u001b[96m▄▄█████▄";
+	logo[1] = L"\u001b[96m ████▀▀▀▀";
+	logo[2] = L"\u001b[96m███▀\u001b[33m██▄     ";
+	logo[3] = L"\u001b[96m███  \u001b[33m▀██▄   ";
+	logo[4] = L"\u001b[96m▀█▀    \u001b[33m▀██▄ ";
+	logo[5] = L"         \u001b[33m▀██";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
+void DiamondPickaxe3(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[6];
+	logo[0] = L"\u001b[96m  ▄█████▄▄\u001b[33m▄";
+	logo[1] = L"\u001b[96m   ▀▀▀▀████";
+	logo[2] = L"\u001b[33m     ▄██\u001b[96m▀███";
+	logo[3] = L"\u001b[33m   ▄██▀  \u001b[96m███";
+	logo[4] = L"\u001b[33m ▄██▀    \u001b[96m▀█▀";
+	logo[5] = L"\u001b[33m██▀";
+
+	//▄█▀▀
+
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
+
+void DiamondSword(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[8];
+	logo[0] = L"\u001b[34m███▄      ";
+	logo[1] = L"\u001b[34m▀████▄    ";
+	logo[2] = L"\u001b[34m  ▀████▄      ";
+	logo[3] = L"\u001b[34m    ▀████▄ ▄██ ";
+	logo[4] = L"\u001b[34m      ▀██████ ";
+	logo[5] = L"\u001b[34m       ▄██\u001b[33m██▄ ";
+	logo[6] = L"\u001b[34m     ██▀▀ \u001b[33m▀██\u001b[34m▄ ";
+	logo[7] = L"\u001b[34m            ▀▀ ";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout <<  COLOR_BLACK;
+
+}
+
+void DiamondSword2(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[8];
+	logo[0] = L"\u001b[96m███▄      ";
+	logo[1] = L"\u001b[96m▀████▄    ";
+	logo[2] = L"\u001b[96m  ▀████▄      ";
+	logo[3] = L"\u001b[96m    ▀████▄ ▄██ ";
+	logo[4] = L"\u001b[96m      ▀██████ ";
+	logo[5] = L"\u001b[96m       ▄██\u001b[33m██▄ ";
+	logo[6] = L"\u001b[96m     ██▀▀ \u001b[33m▀██\u001b[96m▄ ";
+	logo[7] = L"\u001b[96m            ▀▀ ";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+
+}
+void DiamondSword3(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[8];
+	logo[0] = L"\u001b[96m           ▄███";
+	logo[1] = L"\u001b[96m         ▄████▀";
+	logo[2] = L"\u001b[96m       ▄████▀";
+	logo[3] = L"\u001b[96m ██▄ ▄████▀";
+	logo[4] = L"\u001b[96m  ██████▀";
+	logo[5] = L"\u001b[96m  \u001b[33m▄██\u001b[96m██▄";
+	logo[6] = L"\u001b[96m ▄\u001b[33m██▀ \u001b[96m▀▀██";
+	logo[7] = L"\u001b[96m ▀▀";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+
+}
+
+void RedMushroom(int x, int y) {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[3];
+	logo[0] = L"\u001b[31m ▄██▄";
+	logo[1] = L"\u001b[31m██████";
+	logo[2] = L"\u001b[93m  ██";
+
+	//▄█▀▀
+
+
+	for (int i = 0; i < 3; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout <<  COLOR_BLACK;
+
+
+}
+
+
+void GoldOre(int x, int y) {
+	cout << BACKGROUND_BLACK;
+
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	wstring logo[4];
+	logo[0] = L"\u001b[33m ▄▄  ▄▄ ";
+	logo[1] = L"\u001b[33m    ▀▀▀ ";
+	logo[2] = L"\u001b[33m ▄▄  ▄  ";
+	logo[3] = L"\u001b[33m ▀▀▀ ▀▀ ";
+
+	//▄█▀▀
+
+	for (int i = 0; i < 4; i++)
+	{
+		GotoXY(x, y + i);
+		wcout << logo[i];
+	}
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+	cout << COLOR_BLACK;
+}
+
 void IngameLogo4(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[6];
@@ -224,7 +551,7 @@ void IngameLogo4(int x, int y) {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << COLOR_RED  << logo[i] << " " << COLOR_RESET;
+		wcout << COLOR_RED  << logo[i] << " " << COLOR_RESET BACKGROUND_CYAN;
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
@@ -495,7 +822,7 @@ void SettingLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_BLUE << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -517,7 +844,7 @@ void AboutLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout <<COLOR_GREEN_HI << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -539,7 +866,7 @@ void GuideLogo(int x, int y)
 	for (int i = 0; i < 7; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout <<COLOR_YELLOW COLOR_DARK << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -567,23 +894,6 @@ void PauseLogo(int x, int y)
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-/*
-	⠀⠀⠀⠀⠀     ⠀⠀⠀⢠⣶⣶⣶⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-	⠀⠀ ⠀⠀⠀⠀⢀⣴⣾⣿⣷⣄⢀⣸⣿⣿⣿⣿⣄⠀⣴⣿⣿⣶⣄⠀⠀⠀⠀⠀
-	⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀
-	⠀⠀⢀⣴⣦⣤⣠⣾⣿⣿⣿⠟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⣤⣤⡄⠀
-	⠀⠀⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⢙⣿⣿⣿⣿⣿⡿⠋⢹⣿⣿⣿⣿⣿⣿⣿⡆
-	⠀⠀⠉⠻⣿⣿⣿⡿⠁⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⠃⠀⠻⠿⠃⣿⣿⣿⣿⠋⠀
-	⣡⣀⣀⣼⣿⣿⣿⡇⠀⠀⣠⡟⠉⠙⢿⣿⣿⡿⠉⠀⢀⣨⣤⣴⣿⣿⣿⣿⣀⣀
-	⢸⣿⣿⣿⣿⣿⣿⣷⣠⣾⣿⣿⣦⡄⣠⡿⠃⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-	⠼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⣠⡾⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-	⠀⠀⠀⢙⣿⣿⣿⣿⣿⠿⠿⠟⠁⠀⣠⣾⣧⡀⠀⠈⠻⣿⣿⣿⣿⣿⣿⡏⠀⠀
-	⠀⠀⣵⣿⣿⣿⣿⣿⠁⣾⡀⠀⢠⣾⣿⣿⣿⣿⣦⡀⠀⠈⢻⣿⣿⣿⣿⣿⣶⡀
-	⠀⠀⢻⣿⣿⣿⣿⣿⣼⣿⡟⠀⣼⣿⣿⣿⣿⣿⣿⣿⣦⣤⣾⣿⣿⣿⣿⣿⣿⠃
-	⠀⠀⠀⠙⠉⠁⠈⣻⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠉⠙⠁⠀
-	⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀
-	⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⠏⠀⠀⢸⣿⣿⣿⣿⠀⠀⠘⠿⠿⠛⠁⠀⠀⠀⠀
-*/
 void LoadLogo(int x, int y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	wstring logo[6] = {
@@ -599,7 +909,7 @@ void LoadLogo(int x, int y) {
 	for (int i = 0; i < 6; i++)
 	{
 		GotoXY(x, y + i);
-		wcout << logo[i];
+		wcout << COLOR_CYAN COLOR_DARK << logo[i] << COLOR_RESET;
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
@@ -702,5 +1012,15 @@ void SaveGameLogo(int x, int y) {
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
+}
+
+void backgroundGraphic()
+{
+	cout << BACKGROUND_CYAN;
+	BorderSquareFILL(0, 119, 0, 27);
+	
+	cout << BACKGROUND_GREEN;
+	BorderSquareFILL(0, 119, 28, 29);
 
 }

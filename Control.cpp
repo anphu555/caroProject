@@ -122,7 +122,7 @@ void GameMove()
                     cout << COLOR_RED << COLOR_BOLD<< "X" << COLOR_RESET;
                     enterXOSound();
                     moveXCount++;
-                    GotoXY(10, 12); // Hiển thị dưới bàn cờ
+                    GotoXY(10, 12); 
                     cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
                     break;
                 
@@ -131,7 +131,7 @@ void GameMove()
                     cout << COLOR_BLUE << COLOR_BOLD<< "O" << COLOR_RESET;
                     enterXOSound();
                     moveOCount++;
-                    GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                    GotoXY(93, 12); 
                     cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
                     break;
                 
@@ -164,7 +164,9 @@ void GameMove()
 
 void moveWASDAI()
 {
+
     bool validEnter = true;
+
     while (1) {
         _COMMAND = toupper(getch());
         // xet tung nut bam
@@ -198,9 +200,10 @@ void moveWASDAI()
                 cout << BACKGROUND_WHITE;
                 cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
                 enterXOSound();
+                moveXCount++;
+                GotoXY(10, 12);
+                cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
 
-                // AI Play
-                AIPlay();
 
                 // check win/lose/draw/continue
                 switch (ProcessFinish(TestBoard(0)))
@@ -212,13 +215,44 @@ void moveWASDAI()
                         return;
                     }
                     else
+                    {
+                        //return;
                         StartGame();
+                        _TURN = true;
+                        //moveWASDAI();
+                    }
                     break;
                 case 2:
                     // continue
+                    
+                    // AI Play
+                    AIPlay();
+                    moveOCount++;
+                    GotoXY(93, 12); // Hiển thị dưới bàn cờ
+                    cout << COLOR_BLUE "   Moves Bot: " << moveOCount << COLOR_RESET;
+                    // check win/lose/draw/continue
+                    switch (ProcessFinish(TestBoard(0)))
+                    {
+                    case -1: case 1: case 0:
+                        if (AskContinue() != 'Y')
+                        {
+                            ExitGame();
+                            return;
+                        }
+                        else
+                        {
+                            StartGame();
+                            //moveWASDAI();
+                        }
+                        break;
+                    case 2:
+                        // continue
+                        break;
+                    }
                     break;
                 }
-                //_TURN = true; ai tu doi turn roi
+                
+                _TURN = true; //ai tu doi turn roi
                 break;
 
             case 0:
