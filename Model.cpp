@@ -168,8 +168,8 @@ int AIHori(int x, int y, int cboard) {
 
 	// check left side
 	for (int i = x; i >= 0; i--) {
-		if (_A[cboard][y][i].c == player) count++;
-		else if (_A[cboard][y][i].c != 0) {
+		if (_A[cboard][x][i].c == player) count++;
+		else if (_A[cboard][x][i].c != 0) {
 			opcount++;
 			break;
 		}
@@ -178,8 +178,8 @@ int AIHori(int x, int y, int cboard) {
 
 	// check right side
 	for (int i = x + 1; i < BOARD_SIZE; i++) {
-		if (_A[cboard][y][i].c == player) count++;
-		else if (_A[cboard][y][i].c != 0) {
+		if (_A[cboard][x][i].c == player) count++;
+		else if (_A[cboard][x][i].c != 0) {
 			opcount++;
 			break;
 		}
@@ -202,8 +202,8 @@ int AIVerti(int x, int y, int cboard)
 
 	// check up
 	for (int i = y; i >= 0; i--) {
-		if (_A[cboard][i][x].c == player) count++;
-		else if (_A[cboard][i][x].c != 0) {
+		if (_A[cboard][i][y].c == player) count++;
+		else if (_A[cboard][i][y].c != 0) {
 			opcount++;
 			break;
 		}
@@ -212,8 +212,8 @@ int AIVerti(int x, int y, int cboard)
 
 	// check down
 	for (int i = y + 1; i < BOARD_SIZE; i++) {
-		if (_A[cboard][i][x].c == player) count++;
-		else if (_A[cboard][i][x].c != 0) {
+		if (_A[cboard][i][y].c == player) count++;
+		else if (_A[cboard][i][y].c != 0) {
 			opcount++;
 			break;
 		}
@@ -237,8 +237,8 @@ int AIPCross(int x, int y, int cboard)
 	int m = min(x, y);
 	for (int i = 0; i <= m; i++)
 	{
-		if (_A[cboard][y - i][x + i].c == player) count++;
-		else if (_A[cboard][y - i][x + i].c != 0)
+		if (_A[cboard][x - i][y - i].c == player) count++;
+		else if (_A[cboard][x - i][y - i].c != 0)
 		{
 			opcount++;
 			break;
@@ -250,8 +250,8 @@ int AIPCross(int x, int y, int cboard)
 	m = min(BOARD_SIZE, BOARD_SIZE);
 	for (int i = 1;i <= m; i++)
 	{
-		if (_A[cboard][y + i][x - i].c == player) count++;
-		else if (_A[cboard][y + i][x - i].c != 0)
+		if (_A[cboard][x + i][y + i].c == player) count++;
+		else if (_A[cboard][x + i][y + i].c != 0)
 		{
 			opcount++;
 			break;
@@ -276,9 +276,9 @@ int AIRCross(int x, int y, int cboard)
 	int m = min(x, BOARD_SIZE - y);
 	for (int i = 0; i <= m; i++)
 	{
-		if (_A[cboard][y - i][x - i].c == player)
+		if (_A[cboard][x - i][y + i].c == player)
 			count++;
-		else if (_A[cboard][y - i][x - i].c != 0)
+		else if (_A[cboard][x - i][y + i].c != 0)
 		{
 			opcount++;
 			break;
@@ -290,9 +290,9 @@ int AIRCross(int x, int y, int cboard)
 	m = min(BOARD_SIZE - x, y);
 	for (int i = 1;i <= m; i++)
 	{
-		if (_A[cboard][y + i][x + i].c == player)
+		if (_A[cboard][x + i][y - i].c == player)
 			count++;
-		else if (_A[cboard][y + i][x + i].c != 0)
+		else if (_A[cboard][x + i][y - i].c != 0)
 		{
 			opcount++;
 			break;
@@ -309,7 +309,7 @@ int AIRCross(int x, int y, int cboard)
 
 
 //Thuat toan AI minimax
-int _AtkArray[9] = { 0,1,2,7,100,200,210,220,230 };
+int _AtkArray[9] = { 0,1,2,10,100,200,210,220,230 };
 int _DefArray[9] = { 0,1,2,7,30,40,50,60,70 };
 
 int AIRepeat(int x, int y, int pl, int b) {
