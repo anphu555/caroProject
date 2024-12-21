@@ -32,7 +32,7 @@ void cleanupWinsock() {
 // Server chính
 void startServer() {
     SOCKET serverSocket, clientSocket;
-    sockaddr_in serverAddr, clientAddr;
+    sockaddr_in serverAddr {}, clientAddr;
     int clientAddrSize = sizeof(clientAddr);
 
     // Tạo socket server
@@ -43,7 +43,6 @@ void startServer() {
     }
 
     // Thiết lập địa chỉ server
-    sockaddr_in serverAddr = {};
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(PORT);
     serverAddr.sin_addr.s_addr = INADDR_ANY;
