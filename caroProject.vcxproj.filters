@@ -36,6 +36,9 @@
     <ClCompile Include="sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="aOnLan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h">
@@ -47,5 +50,54 @@
     <ClInclude Include="graphic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="afd.txt" />
+    <Text Include="cgh.txt" />
+    <Text Include="djtconmemay.txt" />
+    <Text Include="drawwwwwww.txt" />
+    <Text Include="ut.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BACK" />
+    <None Include="TODO.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="enterXO.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="exitsound.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="gameWin.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="introloading.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="move.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="newgame.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="NhacGame.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="picksound.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="savesound.wav">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="music1.mp3">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
+    <Media Include="BRO.mp3">
+      <Filter>Source Files\Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

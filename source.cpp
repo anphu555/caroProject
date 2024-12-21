@@ -46,11 +46,11 @@ int main() {
     // ===================================================
 
     system("color b0");
-
-    
+    HideCursor();
+    initWinsock();
     //cout << COLOR_RESET;
 
     MenuHandler();
-
+    cleanupWinsock();
     return 0;
 }

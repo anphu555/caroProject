@@ -23,6 +23,10 @@ void ResetData() {
 //void GarbageCollect() {
 //}
 
+void changePlayer() {
+    _TURN != _TURN;
+}
+
 int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
 	bool boardFull = true;
 	for (int i = 0; i < BOARD_SIZE; i++) {

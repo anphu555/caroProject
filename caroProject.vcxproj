@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aOnLan.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -31,6 +32,31 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="graphic.h" />
+    <ClInclude Include="Header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="afd.txt" />
+    <Text Include="cgh.txt" />
+    <Text Include="djtconmemay.txt" />
+    <Text Include="drawwwwwww.txt" />
+    <Text Include="ut.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BACK" />
+    <None Include="TODO.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="BRO.mp3" />
+    <Media Include="enterXO.wav" />
+    <Media Include="exitsound.wav" />
+    <Media Include="gameWin.wav" />
+    <Media Include="introloading.wav" />
+    <Media Include="move.wav" />
+    <Media Include="music1.mp3" />
+    <Media Include="newgame.wav" />
+    <Media Include="NhacGame.wav" />
+    <Media Include="picksound.wav" />
+    <Media Include="savesound.wav" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

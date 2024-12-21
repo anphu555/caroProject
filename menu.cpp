@@ -300,7 +300,85 @@ bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	}
 }
 
+void MenuPVP()
+{
+	const int NUM_OFFLINE_ITEMS = 3;
+	const char* offlineItems[NUM_OFFLINE_ITEMS] = {
+		"Create a room",
+		"Join a room",
+		"BACK"
+	};
 
+	system("cls");
+
+	OfflineMode(13, 5);
+	BorderSquareLine(48, 70, 12, 22, 0);
+	int selectedItem = 5;
+
+	while (1) {
+		// hien thi menu
+		system("cls");
+		HideCursor();
+		OfflineMode(13, 5);
+		BorderSquareLine(48, 70, 12, 22, 0);
+		int toadoY1 = 15; // toa do kiemm thu
+		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
+		{
+			GotoXY(((RIGHT + LEFT) / 2 - 6), toadoY1 + i * 2); //*2 de moi dong cach 1 o
+			if (i == selectedItem)
+			{
+				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+				cout << ">> " << offlineItems[i] << " <<";
+				cout << COLOR_RESET;
+			}
+			else
+			{
+				cout << "   " << offlineItems[i];
+			}
+		}
+
+		// lua chon
+		int choice = getch();
+		switch (choice)
+		{
+		case 'W': case 'w': case 72: //up
+			selectedItem = (selectedItem - 1 + NUM_OFFLINE_ITEMS) % NUM_OFFLINE_ITEMS;
+			break;
+
+		case 'S': case 's': case 80: // down
+			selectedItem = (selectedItem + 1) % NUM_OFFLINE_ITEMS;
+			break;
+		case 13: // enter
+			pickSound();
+			switch (selectedItem)
+			{
+			case 0:
+				// create room
+				newGameSound();
+				system("cls");
+				StartGame();
+				startServer();
+				break;
+
+			case 1: {
+				string serverIP;
+				cout << "Enter server IP: ";
+				cin >> serverIP;
+				startClient(serverIP);
+			}
+				  break;
+			case 2: //back
+				return;
+			}
+			break;
+
+		case 27: // back with esc
+			pickSound();
+			return;
+		}
+	}
+
+}
 
 
 void MenuNewGame()
@@ -366,7 +444,7 @@ void MenuNewGame()
 				break;
 			case 1:
 				// che do online
-
+				MenuPVP();
 				// am thanh ghep dau ==========
 
 				break;
@@ -442,11 +520,8 @@ void MenuOffline()
 			case 0:
 				// PvE
 				newGameSound();
-
 				system("cls");
-				// Add a flag or global variable to indicate AI mode
 				StartGame();
-				// Modify moveWASD to handle AI play
 				moveWASDAI();
 
 
@@ -1209,4 +1284,7 @@ void deleteOldestSaveFile() {
 		fs::remove(saveFiles.front());
 	}
 }
+
+
+
 

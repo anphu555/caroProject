@@ -5,11 +5,11 @@ sắp xếp tên trong load game
 ((- Chức năng thêm tên khi khởi tạo trò chơi mới)
 
 - Trang trí bàn cờ
-- PvE (Phú)
 
 - Trang trí game
 
 ĐÃ XONG:
+- PVE
 - Settings (music, sfx)
 - Fix kích thước console windows
 - Bổ sung menu, menu ingame (chức năng setting)
