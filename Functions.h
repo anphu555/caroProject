@@ -27,6 +27,7 @@
 #define VO 2
 #define _level 2 // AI search depth
 #include <WinSock2.h>
+#include <ws2tcpip.h>
 #include <conio.h>
 #include <ctype.h>
 #include <cstdio>
