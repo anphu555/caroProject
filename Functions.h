@@ -65,6 +65,7 @@ struct XO{
 
 struct _POINT {
     int x , y, c;
+    bool isMove;
 };
 
 
@@ -104,7 +105,7 @@ void deleteOldestSaveFile();
 
 void MenuNewGame();
 void MenuOffline();
-
+void MenuPVP();
 bool sureExit();
 
 void InGameMenu();

@@ -1,11 +1,7 @@
-﻿#include <winsock2.h>
-#include <iostream>
-#include <string>
-#include <thread>
-#include "Functions.h"
+﻿#include "Functions.h"
 #pragma comment(lib, "ws2_32.lib") // Link thư viện Winsock
 
-#define PORT 12345
+#define PORT 69696
 #define BUFFER_SIZE 1024
 
 using namespace std;
@@ -14,6 +10,11 @@ extern _POINT _A[3][BOARD_SIZE][BOARD_SIZE];
 extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
+
+
+
+
+
 // Hàm khởi tạo Winsock
 void initWinsock() {
     WSADATA wsaData;
@@ -69,13 +70,13 @@ void startServer() {
 
             for (addrinfo* ptr = info; ptr != nullptr; ptr = ptr->ai_next) {
                 sockaddr_in* addr = reinterpret_cast<sockaddr_in*>(ptr->ai_addr);
-                cout << "- " << inet_ntoa(addr->sin_addr) << " (port 12345)" << endl;
+                cout << "- " << inet_ntoa(addr->sin_addr) << " (port: " << PORT << ")" << endl;
             }
 
             freeaddrinfo(info);
         }
         else {
-            cerr << "Failed to get IP addresses. Error: " << WSAGetLastError() << endl;
+            cerr << "Failed to get IP address. Error: " << WSAGetLastError() << endl;
         }
     }
 
@@ -135,7 +136,8 @@ void startClient(const string& serverIP) {
 
     cout << "Connected to server!\n";
 
-    // Chơi game
+    system("cls");
+    StartGame();  // Initialize game board for client
     LANcore(clientSocket, false);
 
     // Đóng socket
@@ -175,22 +177,35 @@ void LANcore(SOCKET sock, bool isHost) {
     while (true) {
         if (isHost) {
             moveWASDLAN();
-            _POINT player1 = { _X, _Y, -1 };
+            _POINT player1 = { _X, _Y, -1, true };
             sendPoint(sock, player1);
+            if (player1.isMove) {
+                // Update local board
+                CheckBoard(player1.x, player1.y, player1.c);
+            }
 
             _POINT player2;
             recvPoint(sock, player2);
-            moveArrowLAN();
+            if (player2.isMove) {
+                // Update local board with opponent's move
+                CheckBoard(player2.x, player2.y, player2.c);
+            }
         }
         else {
             _POINT player2;
             recvPoint(sock, player2);
-            CheckBoard(_X, _Y, 0); //update board
-
+            if (player2.isMove) {
+                // Update local board with opponent's move
+                CheckBoard(player2.x, player2.y, player2.c);
+            }
 
             moveWASDLAN();
-            _POINT player1 = { _X, _Y, -1 };
+            _POINT player1 = { _X, _Y, -1, true };
             sendPoint(sock, player1);
+            if (player1.isMove) {
+                // Update local board
+                CheckBoard(player1.x, player1.y, player1.c);
+            }
         }
     }
 }
