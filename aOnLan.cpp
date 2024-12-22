@@ -102,6 +102,17 @@ void startServer() {
 
     cout << "Client connected!\n";
 
+    // Initialize game first
+    system("cls");
+    StartGame();
+
+    // Send initial game state
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
+            _POINT boardState = { _A[0][i][j].x, _A[0][i][j].y, _A[0][i][j].c, false };
+            sendPoint(clientSocket, boardState);
+        }
+    }
     // Chơi game
     LANcore(clientSocket, true);
 
@@ -136,8 +147,20 @@ void startClient(const string& serverIP) {
 
     cout << "Connected to server!\n";
 
+    // Initialize empty game board
     system("cls");
-    StartGame();  // Initialize game board for client
+    StartGame();
+
+    // Receive initial game state
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
+            _POINT boardState;
+            recvPoint(clientSocket, boardState);
+            _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
+        }
+    }
+    DrawBoard(); // Redraw board with received state
+
     LANcore(clientSocket, false);
 
     // Đóng socket
@@ -176,35 +199,37 @@ void recvPoint(SOCKET sock, _POINT& point) {
 void LANcore(SOCKET sock, bool isHost) {
     while (true) {
         if (isHost) {
-            moveWASDLAN();
-            _POINT player1 = { _X, _Y, -1, true };
+            bool madMove = moveWASDLAN();
+            _POINT player1 = { _X, _Y, VX, madMove };
             sendPoint(sock, player1);
-            if (player1.isMove) {
-                // Update local board
-                CheckBoard(player1.x, player1.y, player1.c);
+
+            if (madMove) {
+                _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = VX;
+                DrawBoard();
             }
 
             _POINT player2;
             recvPoint(sock, player2);
             if (player2.isMove) {
-                // Update local board with opponent's move
-                CheckBoard(player2.x, player2.y, player2.c);
+                _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = VO;
+                DrawBoard();
             }
         }
         else {
-            _POINT player2;
-            recvPoint(sock, player2);
-            if (player2.isMove) {
-                // Update local board with opponent's move
-                CheckBoard(player2.x, player2.y, player2.c);
+            _POINT player1;
+            recvPoint(sock, player1);
+            if (player1.isMove) {
+                _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = VX;
+                DrawBoard();
             }
 
-            moveWASDLAN();
-            _POINT player1 = { _X, _Y, -1, true };
-            sendPoint(sock, player1);
-            if (player1.isMove) {
-                // Update local board
-                CheckBoard(player1.x, player1.y, player1.c);
+            bool madMove = moveArrowLAN();
+            _POINT player2 = { _X, _Y, VO, madMove };
+            sendPoint(sock, player2);
+
+            if (madMove) {
+                _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = VO;
+                DrawBoard();
             }
         }
     }

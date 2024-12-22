@@ -80,8 +80,8 @@ void MoveUp();
 // moi sua ten move wasd thanh gamemove
 void GameMove();
 void moveWASDAI();
-void moveArrowLAN();
-void moveWASDLAN();
+bool moveArrowLAN();
+bool moveWASDLAN();
 
 //View
 void GotoXY(int, int);
