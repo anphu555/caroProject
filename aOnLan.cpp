@@ -196,43 +196,44 @@ void recvPoint(SOCKET sock, _POINT& point) {
     }
 }
 
+
+
+
 void LANcore(SOCKET sock, bool isHost) {
+    _TURN = -1;  // Start with X's turn
     while (true) {
-        if (isHost) {
-            bool madMove = moveWASDLAN();
-            _POINT player1 = { _X, _Y, VX, madMove };
-            sendPoint(sock, player1);
-
-            if (madMove) {
-                _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = VX;
-                DrawBoard();
+        if (isHost) {  // Host plays X
+            if (_TURN == -1) {  // X's turn
+                if (moveWASDLAN()) {  // Made a move
+                    _POINT player1 = { _X, _Y, -1, true };
+                    sendPoint(sock, player1);
+                }
             }
-
-            _POINT player2;
-            recvPoint(sock, player2);
-            if (player2.isMove) {
-                _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = VO;
-                DrawBoard();
+            else {  // O's turn
+                _POINT player2;
+                recvPoint(sock, player2);
+                if (player2.isMove) {
+                    _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = 1;
+                    DrawBoard();
+                }
             }
         }
-        else {
-            _POINT player1;
-            recvPoint(sock, player1);
-            if (player1.isMove) {
-                _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = VX;
-                DrawBoard();
+        else {  // Client plays O
+            if (_TURN == -1) {  // X's turn
+                _POINT player1;
+                recvPoint(sock, player1);
+                if (player1.isMove) {
+                    _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = -1;
+                    DrawBoard();
+                }
             }
-
-            bool madMove = moveArrowLAN();
-            _POINT player2 = { _X, _Y, VO, madMove };
-            sendPoint(sock, player2);
-
-            if (madMove) {
-                _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = VO;
-                DrawBoard();
+            else {  // O's turn
+                if (moveArrowLAN()) {  // Made a move
+                    _POINT player2 = { _X, _Y, 1, true };
+                    sendPoint(sock, player2);
+                }
             }
         }
     }
 }
-
 

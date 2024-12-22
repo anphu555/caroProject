@@ -268,101 +268,80 @@ bool moveWASDLAN() {
     bool validEnter = true;
     bool moveMade = false;
 
-    _COMMAND = toupper(getch());
-    // Check each key press
-    switch (_COMMAND) {
-    case 27:
-        InGameMenu();
-        break;
+    while (1) {  // Keep the loop for continuous movement
+        _COMMAND = toupper(getch());
+        switch (_COMMAND) {
+        case 27:
+            InGameMenu();
+            break;
 
-    case 'A':
-        if (_TURN) MoveLeft();
-        break;
-    case 'W':
-        if (_TURN) MoveUp();
-        break;
-    case 'S':
-        if (_TURN) MoveDown();
-        break;
-    case 'D':
-        if (_TURN) MoveRight();
-        break;
+        case 'A':
+            if (_TURN) MoveLeft();  // X's turn
+            break;
+        case 'W':
+            if (_TURN) MoveUp();
+            break;
+        case 'S':
+            if (_TURN) MoveDown();
+            break;
+        case 'D':
+            if (_TURN) MoveRight();
+            break;
 
-    case 13: { // Enter key
-        if (CheckBoard(_X, _Y, 0) == -1) { // Valid X move
-            cout << BACKGROUND_WHITE;
-            cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
-            moveXCount++;
-            GotoXY(10, 12);
-            cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
-            moveMade = true;
-        }
-
-        if (validEnter && moveMade) {
-            switch (ProcessFinish(TestBoard(0))) {
-            case -1: case 1: case 0:
-                if (AskContinue() != 'Y') {
-                    MenuHandler();
-                    return false;
-                }
-                else {
-                    StartGame();
-                    return false;
-                }
+        case 13: { // Enter key
+            if (CheckBoard(_X, _Y, 0) == -1) { // Valid X move
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
+                moveXCount++;
+                GotoXY(10, 12);
+                cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
+                moveMade = true;
+                _TURN = !_TURN; // Switch to O's turn
+                return true; // Exit the loop when move is made
             }
         }
+        }
     }
-    }
-    return moveMade;
+    return false;
 }
 
 bool moveArrowLAN() {
     bool validEnter = true;
     bool moveMade = false;
 
-    _COMMAND = toupper(getch());
-    switch (_COMMAND) {
-    case 27:
-        InGameMenu();
-        break;
+    while (1) {  // Keep the loop for continuous movement
+        _COMMAND = toupper(getch());
+        switch (_COMMAND) {
+        case 27:
+            InGameMenu();
+            break;
 
-    case 75: // left
-        if (!_TURN) MoveLeft();
-        break;
-    case 72: // up
-        if (!_TURN) MoveUp();
-        break;
-    case 80: // down
-        if (!_TURN) MoveDown();
-        break;
-    case 77: // right
-        if (!_TURN) MoveRight();
-        break;
+        case 75: // left
+            if (!_TURN) MoveLeft();  // O's turn
+            break;
+        case 72: // up
+            if (!_TURN) MoveUp();
+            break;
+        case 80: // down
+            if (!_TURN) MoveDown();
+            break;
+        case 77: // right
+            if (!_TURN) MoveRight();
+            break;
 
-    case 13: { // Enter key
-        if (CheckBoard(_X, _Y, 0) == 1) { // Valid O move
-            cout << BACKGROUND_WHITE;
-            cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
-            moveOCount++;
-            GotoXY(93, 12);
-            cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
-            moveMade = true;
-        }
-
-        if (validEnter && moveMade) {
-            switch (ProcessFinish(TestBoard(0))) {
-            case -1: case 1: case 0:
-                if (AskContinue() != 'Y') {
-                    MenuHandler();
-                    return false;
-                }
-                else {
-                    StartGame();
-                    return false;
-                }
+        case 13: { // Enter key
+            if (CheckBoard(_X, _Y, 0) == 1) { // Valid O move
+                cout << BACKGROUND_WHITE;
+                cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
+                moveOCount++;
+                GotoXY(93, 12);
+                cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
+                moveMade = true;
+                _TURN = !_TURN; // Switch to X's turn
+                return true; // Exit the loop when move is made
             }
         }
+        }
     }
-    }
-    return moveMade;
+    return false;
 }
