@@ -200,13 +200,14 @@ void recvPoint(SOCKET sock, _POINT& point) {
 
 
 void LANcore(SOCKET sock, bool isHost) {
-    _TURN = -1;  // Start with X's turn
+    _TURN = true;  // Start with X's turn
     while (true) {
         if (isHost) {  // Host plays X
-            if (_TURN == -1) {  // X's turn
+            if (_TURN == true) {  // X's turn
                 if (moveWASDLAN()) {  // Made a move
                     _POINT player1 = { _X, _Y, -1, true };
                     sendPoint(sock, player1);
+                    _TURN = !_TURN;
                 }
             }
             else {  // O's turn
@@ -215,22 +216,23 @@ void LANcore(SOCKET sock, bool isHost) {
                 if (player2.isMove) {
                     _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = 1;
                     DrawBoard();
+                    _TURN = !_TURN;
                 }
             }
         }
         else {  // Client plays O
-            if (_TURN == -1) {  // X's turn
+            if (_TURN == false) {  // Client's turn (O)
+                if (moveArrowLAN()) {  // Made a move
+                    _POINT player2 = { _X, _Y, 1, true };
+                    sendPoint(sock, player2);
+                }
+            }
+            else {  // Wait for X's turn
                 _POINT player1;
                 recvPoint(sock, player1);
                 if (player1.isMove) {
                     _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = -1;
                     DrawBoard();
-                }
-            }
-            else {  // O's turn
-                if (moveArrowLAN()) {  // Made a move
-                    _POINT player2 = { _X, _Y, 1, true };
-                    sendPoint(sock, player2);
                 }
             }
         }

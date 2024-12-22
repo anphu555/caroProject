@@ -296,7 +296,7 @@ bool moveWASDLAN() {
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
                 moveMade = true;
-                _TURN = !_TURN; // Switch to O's turn
+                 // Switch to O's turn
                 return true; // Exit the loop when move is made
             }
         }
@@ -337,7 +337,7 @@ bool moveArrowLAN() {
                 GotoXY(93, 12);
                 cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
                 moveMade = true;
-                _TURN = !_TURN; // Switch to X's turn
+                // Switch to X's turn
                 return true; // Exit the loop when move is made
             }
         }
