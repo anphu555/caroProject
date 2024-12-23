@@ -6,6 +6,7 @@ extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
 
+extern int musicSong; // 0 menu, 1 ingame
 extern bool backgroundMusicmode;
 extern bool SFXmode; // false off, true on
 
@@ -71,7 +72,6 @@ void Guide() {
 	GotoXY(55, 10);
 	printf(COLOR_ITALIC COLOR_BOLD COLOR_GREEN "Controls:" COLOR_RESET);
 
-	// rut gon noi dung
 	GotoXY(40, 12);
 	printf(COLOR_UNDERLINE COLOR_RED COLOR_BOLD "Player X:" COLOR_RESET);
 
@@ -109,18 +109,14 @@ void Settings() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 	system("cls");
 	HideCursor();
 
-
 	SettingLogo(34, 3);
 
 	DiamondPickaxe3(20, 14);
-	//DiamondPickaxe(85, 14);
 
 	DiamondPickaxe2(90, 14);
 	cout << BACKGROUND_WHITE;
 
 	BorderSquareLine(42, 78, 13, 21, 0);
-	//SettingLogo(30, 3);
-	//BorderSquareLine(42, 78, 13, 21, 0);
 
 	const int NUM_SETTINGS_ITEMS = 3;
 	const char* settingsItems[NUM_SETTINGS_ITEMS] = {
@@ -519,7 +515,6 @@ void MenuOffline()
 			{
 			case 0:
 				// PvE
-				newGameSound();
 				system("cls");
 				StartGame();
 				moveWASDAI();
@@ -528,8 +523,6 @@ void MenuOffline()
 				break;
 			case 1:
 				// PvP
-				newGameSound();
-
 				StartGame();
 				GameMove();
 				break;
@@ -558,7 +551,8 @@ void MenuHandler() {
 		COLOR_RED_HI "   Exit   " 
 	};
 
-	//backgroundGraphic();
+	musicSong = 0;
+	backgroundMusicSound();
 
 	int selectedItem = 11;
 	while (true) {
@@ -599,7 +593,7 @@ void MenuHandler() {
 		 GotoXY(51, 24); cout << char(204);
 		 GotoXY(71, 24); cout << char(185);
 
-		backgroundMusicSound();
+		
 
 		MenuLogoTree1(85, 19);
 		MenuLogoTree2(102, 15);
@@ -722,12 +716,14 @@ void MenuHandler() {
 				exitSound();
 
 				ExitGame();
+
+				mciSendString(L"close \"NewSwe2.mp3\"", NULL, 0, NULL);
+				mciSendString(L"close \"music1.mp3\"", NULL, 0, NULL);
 				exit(0);
 				break;
 			}
 			// false, continue
 			break;
-			exitSound();
 		}
 	}
 }

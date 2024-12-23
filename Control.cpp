@@ -7,6 +7,7 @@ extern bool _TURN;
 extern int _COMMAND;
 extern int _X, _Y;
 
+extern int musicSong; // 0 menu, 1 ingame
 extern bool backgroundMusicmode;
 extern bool SFXmode;
 
@@ -19,6 +20,14 @@ void StartGame() {
     moveOCount = 0;
 
     system("cls");
+
+    // âm thanh start game
+    newGameSound();
+    // nhạc ingame
+    musicSong = 1;
+    backgroundMusicSound();
+    //ingameMusicSound();
+
     ResetData();
     DrawBoard();
    

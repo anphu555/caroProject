@@ -1,5 +1,6 @@
 #include "Functions.h"
 
+extern int musicSong; // 0 menu, 1 ingame
 extern bool backgroundMusicmode;
 extern bool SFXmode; // false off, true on
 
@@ -9,7 +10,17 @@ void introSound()
 }
 void backgroundMusicSound()
 {
-	(backgroundMusicmode) ? mciSendString(L"play \"NewSwe2.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"NewSwe2.mp3\"", NULL, 0, 0);
+	if (musicSong == 0) // menu
+	{
+		mciSendString(L"stop \"music1.mp3\"", NULL, 0, 0); //stop ingame music
+		(backgroundMusicmode) ? mciSendString(L"play \"NewSwe2.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"NewSwe2.mp3\"", NULL, 0, 0);
+		
+	}
+	else if (musicSong == 1) 
+	{
+		mciSendString(L"stop \"NewSwe2.mp3\"", NULL, 0, 0);
+		(backgroundMusicmode) ? mciSendString(L"play \"music1.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
+	}
 }
 void enterXSound()
 {
@@ -39,8 +50,3 @@ void saveSound()
 {
 	(SFXmode) ? PlaySound(TEXT("savesound.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
-
-//void moveSound()
-//{
-//	(SFXmode) ? PlaySound(TEXT("move.wav"), NULL, SND_FILENAME | SND_SYNC) : PlaySound(0, 0, 0);
-//}
