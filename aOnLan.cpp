@@ -204,49 +204,125 @@ void recvPoint(SOCKET sock, _POINT& point) {
 
 
 
+//gui trang thai game 
+void sendGameState(SOCKET sock, const GameState& state) {
+    send(sock, (char*)&state, sizeof(GameState), 0);
+}
+
+
+//nhan trang thai
+void recvGameState(SOCKET sock, GameState& state) {
+    int totalReceived = 0;
+    while (totalReceived < sizeof(GameState)) {
+        int received = recv(sock, ((char*)&state) + totalReceived,
+            sizeof(GameState) - totalReceived, 0);
+        if (received <= 0) throw std::runtime_error("Connection lost");
+        totalReceived += received;
+    }
+}
 
 void LANcore(SOCKET sock, bool isHost) {
-    _TURN = true;  // Start with X's turn
+    _TURN = true;
     while (true) {
-        DrawBoard();  // Refresh board each turn
+        DrawBoard();
 
-        if (isHost) {  // Host plays X
-            if (_TURN) {  // X's turn
+        if (isHost) {
+            if (_TURN) {
                 if (moveWASDLAN()) {
-                    _POINT player1 = { _X, _Y, -1, true };
-                    sendPoint(sock, player1);
+                    GameState state;
+                    state.move = { _X, _Y, -1, true };
+                    state.gameResult = TestBoard(0);
+                    state.isNewGame = false;
+
+                    sendGameState(sock, state);
                     _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = -1;
+
+                    if (state.gameResult != 2) {
+                        ProcessFinish(state.gameResult);
+                        if (AskContinue() == 'Y') {
+                            state.isNewGame = true;
+                            sendGameState(sock, state);
+                            StartGame();
+                        }
+                        else {
+                            MenuHandler();
+                            break;
+                        }
+                    }
                     _TURN = false;
-                    DrawBoard();
                 }
             }
-            else {  // O's turn
-                _POINT player2;
-                recvPoint(sock, player2);
-                if (player2.isMove) {
-                    _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = 1;
+            else {
+                GameState state;
+                recvGameState(sock, state);
+
+                if (state.isNewGame) {
+                    StartGame();
+                    continue;
+                }
+
+                if (state.move.isMove) {
+                    _A[0][(state.move.y - TOP - 1) / 2][(state.move.x - LEFT - 2) / 4].c = 1;
+                    if (state.gameResult != 2) {
+                        DrawBoard();
+                        ProcessFinish(state.gameResult);
+                        if (AskContinue() != 'Y') {
+                            MenuHandler();
+                            break;
+                        }
+                        StartGame();
+                    }
                     _TURN = true;
-                    DrawBoard();
                 }
             }
         }
-        else {  // Client plays O
-            if (!_TURN) {  // O's turn
+        else {
+            if (!_TURN) {
                 if (moveArrowLAN()) {
-                    _POINT player2 = { _X, _Y, 1, true };
-                    sendPoint(sock, player2);
+                    GameState state;
+                    state.move = { _X, _Y, 1, true };
+                    state.gameResult = TestBoard(0);
+                    state.isNewGame = false;
+
+                    sendGameState(sock, state);
                     _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = 1;
+
+                    if (state.gameResult != 2) {
+                        ProcessFinish(state.gameResult);
+                        if (AskContinue() == 'Y') {
+                            state.isNewGame = true;
+                            sendGameState(sock, state);
+                            StartGame();
+                        }
+                        else {
+                            MenuHandler();
+                            break;
+                        }
+                    }
                     _TURN = true;
-                    DrawBoard();
                 }
             }
-            else {  // X's turn
-                _POINT player1;
-                recvPoint(sock, player1);
-                if (player1.isMove) {
-                    _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = -1;
+            else {
+                GameState state;
+                recvGameState(sock, state);
+
+                if (state.isNewGame) {
+                    StartGame();
+                    continue;
+                }
+
+                if (state.move.isMove) {
+                    _A[0][(state.move.y - TOP - 1) / 2][(state.move.x - LEFT - 2) / 4].c = -1;
+                    if (state.gameResult != 2) {
+                        DrawBoard();
+                        ProcessFinish(state.gameResult);
+                        if (AskContinue() != 'Y') {
+                            MenuHandler();
+                            break;
+                        }
+                        StartGame();
+                    }
                     _TURN = false;
-                    DrawBoard();
                 }
             }
         }

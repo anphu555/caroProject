@@ -1,7 +1,16 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+
+
+
 #define _WINSOCK_DEPRECATED_NO_WARNINGS 
 #pragma warning(disable:4996) 
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+
+
+
 #define LEFT 36 // 3 toa do cua ban co
 #define TOP 1 // 1
 #define RIGHT LEFT+BOARD_SIZE*4
@@ -15,9 +24,6 @@
 
 // 1 o co kich thuoc la 4x2 (ngang 4 dai 2)
 #define BOARD_SIZE 12
-#define _CRT_SECURE_NO_WARNINGS
-#define _CRT_NONSTDC_NO_DEPRECATE
-#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
 
 //AI related variables
@@ -26,6 +32,9 @@
 #define VX 1
 #define VO 2
 #define _level 2 // AI search depth
+
+
+
 #include <WinSock2.h>
 #include <ws2tcpip.h>
 #include <conio.h>
@@ -68,6 +77,12 @@ struct _POINT {
     bool isMove;
 };
 
+
+struct GameState {
+    _POINT move;
+    int gameResult;  // -1 for X wins, 1 for O wins, 0 for draw, 2 for continue
+    bool isNewGame;
+};
 
 
 //Control
@@ -158,6 +173,8 @@ void deserializePoint(const char* buffer, _POINT& point);
 void sendPoint(SOCKET sock, const _POINT& point);
 void recvPoint(SOCKET sock, _POINT& point);
 void LANcore(SOCKET sock, bool isHost);
+void sendGameState(SOCKET sock, const GameState& state);
+void recvGameState(SOCKET sock, GameState& state);
 
 
 
