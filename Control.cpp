@@ -265,18 +265,14 @@ void moveWASDAI()
 }
 
 bool moveWASDLAN() {
-    bool validEnter = true;
-    bool moveMade = false;
-
-    while (1) {  // Keep the loop for continuous movement
+    while (1) {
         _COMMAND = toupper(getch());
         switch (_COMMAND) {
         case 27:
             InGameMenu();
             break;
-
         case 'A':
-            if (_TURN) MoveLeft();  // X's turn
+            if (_TURN) MoveLeft();
             break;
         case 'W':
             if (_TURN) MoveUp();
@@ -287,90 +283,69 @@ bool moveWASDLAN() {
         case 'D':
             if (_TURN) MoveRight();
             break;
-
-        case 13: { // Enter key
-            if (CheckBoard(_X, _Y, 0) == -1) { // Valid X move
+        case 13:
+            if (CheckBoard(_X, _Y, 0) == -1) {
                 cout << BACKGROUND_WHITE;
                 cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
                 moveXCount++;
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
-                moveMade = true;
-                if (moveMade == true) {
-                    // check win/lose/draw/continue
-                    switch (ProcessFinish(TestBoard(0)))
-                    {
-                    case -1: case 1: case 0:
-                        if (AskContinue() != 'Y')
-                        {
-                            MenuHandler();
-                            break;
-                        }
-                        else
-                            StartGame();
-                    }
-                    // Switch to O's turn
-                    return true; // Exit the loop when move is made
-                }
-            }
-        }
-        }
-        return false;
-    }
 
+                switch (ProcessFinish(TestBoard(0))) {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y') {
+                        MenuHandler();
+                        return false;
+                    }
+                    StartGame();
+                    return false;
+                }
+                return true;
+            }
+            break;
+        }
+    }
 }
 
 bool moveArrowLAN() {
-    bool validEnter = true;
-    bool moveMade = false;
-
-    while (1) {  // Keep the loop for continuous movement
+    while (1) {
         _COMMAND = toupper(getch());
         switch (_COMMAND) {
         case 27:
             InGameMenu();
             break;
-
-        case 75: // left
-            if (!_TURN) MoveLeft();  // O's turn
+        case 75:
+            if (!_TURN) MoveLeft();
             break;
-        case 72: // up
+        case 72:
             if (!_TURN) MoveUp();
             break;
-        case 80: // down
+        case 80:
             if (!_TURN) MoveDown();
             break;
-        case 77: // right
+        case 77:
             if (!_TURN) MoveRight();
             break;
-
-        case 13: { // Enter key
-            if (CheckBoard(_X, _Y, 0) == 1) { // Valid O move
+        case 13:
+            if (CheckBoard(_X, _Y, 0) == 1) {
                 cout << BACKGROUND_WHITE;
                 cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
                 moveOCount++;
                 GotoXY(93, 12);
                 cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
-                moveMade = true;
-                if (moveMade == true) {
-                    // check win/lose/draw/continue
-                    switch (ProcessFinish(TestBoard(0)))
-                    {
-                    case -1: case 1: case 0:
-                        if (AskContinue() != 'Y')
-                        {
-                            MenuHandler();
-                            break;
-                        }
-                        else
-                            StartGame();
+
+                switch (ProcessFinish(TestBoard(0))) {
+                case -1: case 1: case 0:
+                    if (AskContinue() != 'Y') {
+                        MenuHandler();
+                        return false;
                     }
-                    // Switch to X's turn
-                    return true; // Exit the loop when move is made
+                    StartGame();
+                    return false;
                 }
+                return true;
             }
+            break;
         }
-        }
-        return false;
     }
 }
