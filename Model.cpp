@@ -387,5 +387,5 @@ void AIPlay() {
 	GotoXY(_X, _Y);
 	cout << BACKGROUND_WHITE;
 	cout << COLOR_BLUE << COLOR_BOLD << "O" << COLOR_RESET;
-	enterXOSound();
+	enterOSound();
 }

@@ -9,11 +9,15 @@ void introSound()
 }
 void backgroundMusicSound()
 {
-	(backgroundMusicmode) ? mciSendString(L"play \"BRO.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"music1.mp3\"", NULL, 0, 0);
+	(backgroundMusicmode) ? mciSendString(L"play \"Swedenremix.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"Swedenremix.mp3\"", NULL, 0, 0);
 }
-void enterXOSound()
+void enterXSound()
 {
-	(SFXmode) ? PlaySound(TEXT("enterXO.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0,0,0);
+	(SFXmode) ? PlaySound(TEXT("wood2.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0,0,0);
+}
+void enterOSound()
+{
+	(SFXmode) ? PlaySound(TEXT("stone1.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
 void winSound()
 {
@@ -25,7 +29,7 @@ void newGameSound()
 }
 void pickSound()
 {
-	(SFXmode) ? PlaySound(TEXT("picksound.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
+	(SFXmode) ? PlaySound(TEXT("mclick.wav"), NULL, SND_FILENAME | SND_ASYNC) : PlaySound(0, 0, 0);
 }
 void exitSound()
 {

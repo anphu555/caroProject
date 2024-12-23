@@ -135,7 +135,8 @@ void AIPlay();
 // Sound
 void introSound();
 void backgroundMusicSound();
-void enterXOSound();
+void enterXSound();
+void enterOSound();
 void winSound();
 void newGameSound();
 void pickSound();

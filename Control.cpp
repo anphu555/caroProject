@@ -120,7 +120,7 @@ void GameMove()
                 case -1:
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_RED << COLOR_BOLD<< "X" << COLOR_RESET;
-                    enterXOSound();
+                    enterXSound();
                     moveXCount++;
                     GotoXY(10, 12); 
                     cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
@@ -129,7 +129,7 @@ void GameMove()
                 case 1:
                     cout << BACKGROUND_WHITE;
                     cout << COLOR_BLUE << COLOR_BOLD<< "O" << COLOR_RESET;
-                    enterXOSound();
+                    enterOSound();
                     moveOCount++;
                     GotoXY(93, 12); 
                     cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
@@ -199,7 +199,7 @@ void moveWASDAI()
             case -1:
                 cout << BACKGROUND_WHITE;
                 cout << COLOR_RED << COLOR_BOLD << "X" << COLOR_RESET;
-                enterXOSound();
+                enterXSound();
                 moveXCount++;
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
