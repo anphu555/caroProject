@@ -365,11 +365,12 @@ bool moveArrowLAN() {
                         else
                             StartGame();
                     }
-                // Switch to X's turn
-                return true; // Exit the loop when move is made
+                    // Switch to X's turn
+                    return true; // Exit the loop when move is made
+                }
             }
         }
         }
+        return false;
     }
-    return false;
 }
