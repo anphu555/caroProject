@@ -80,8 +80,8 @@ struct _POINT {
 
 struct GameState {
     _POINT move;
-    int gameResult;  // -1 for X wins, 1 for O wins, 0 for draw, 2 for continue
-    bool isNewGame;
+    int winner;  // -1: X wins, 1: O wins, 0: draw, 2: game continues
+    bool acknowledged;
 };
 
 
@@ -107,7 +107,7 @@ void AppearCursor();
 void DrawBoard();
 int ProcessFinish(int);
 int AskContinue();
-
+void DrawExistingXO();
 
 //Menu
 void MenuHandler();

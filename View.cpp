@@ -353,7 +353,20 @@ int AskContinue()
 }
 
     
-
+void DrawExistingXO() {
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
+            GotoXY(_A[0][i][j].x, _A[0][i][j].y);
+            if (_A[0][i][j].c == -1) {
+                cout << COLOR_RED COLOR_BOLD << "X" << COLOR_RESET;
+            }
+            else if (_A[0][i][j].c == 1) {
+                cout << COLOR_BLUE COLOR_BOLD << "O" << COLOR_RESET;
+            }
+        }
+    }
+    GotoXY(_X, _Y);
+}
     
 
     
