@@ -9,7 +9,7 @@ void introSound()
 }
 void backgroundMusicSound()
 {
-	(backgroundMusicmode) ? mciSendString(L"play \"Swedenremix.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"Swedenremix.mp3\"", NULL, 0, 0);
+	(backgroundMusicmode) ? mciSendString(L"play \"NewSwe2.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"NewSwe2.mp3\"", NULL, 0, 0);
 }
 void enterXSound()
 {
