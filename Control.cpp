@@ -296,13 +296,28 @@ bool moveWASDLAN() {
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
                 moveMade = true;
-                 // Switch to O's turn
-                return true; // Exit the loop when move is made
+                if (moveMade == true) {
+                    // check win/lose/draw/continue
+                    switch (ProcessFinish(TestBoard(0)))
+                    {
+                    case -1: case 1: case 0:
+                        if (AskContinue() != 'Y')
+                        {
+                            MenuHandler();
+                            break;
+                        }
+                        else
+                            StartGame();
+                    }
+                    // Switch to O's turn
+                    return true; // Exit the loop when move is made
+                }
             }
         }
         }
+        return false;
     }
-    return false;
+
 }
 
 bool moveArrowLAN() {
@@ -337,6 +352,19 @@ bool moveArrowLAN() {
                 GotoXY(93, 12);
                 cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
                 moveMade = true;
+                if (moveMade == true) {
+                    // check win/lose/draw/continue
+                    switch (ProcessFinish(TestBoard(0)))
+                    {
+                    case -1: case 1: case 0:
+                        if (AskContinue() != 'Y')
+                        {
+                            MenuHandler();
+                            break;
+                        }
+                        else
+                            StartGame();
+                    }
                 // Switch to X's turn
                 return true; // Exit the loop when move is made
             }
