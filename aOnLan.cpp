@@ -190,10 +190,16 @@ void sendPoint(SOCKET sock, const _POINT& point) {
 //ham nhan
 void recvPoint(SOCKET sock, _POINT& point) {
     char buffer[sizeof(_POINT)];
-    int bytesReceived = recv(sock, buffer, sizeof(_POINT), 0);
-    if (bytesReceived > 0) {
-        deserializePoint(buffer, point);
+    int totalReceived = 0;
+    while (totalReceived < sizeof(_POINT)) {
+        int bytesReceived = recv(sock, buffer + totalReceived, sizeof(_POINT) - totalReceived, 0);
+        if (bytesReceived <= 0) {
+            // Handle disconnect or error
+            throw std::runtime_error("Connection lost");
+        }
+        totalReceived += bytesReceived;
     }
+    deserializePoint(buffer, point);
 }
 
 
@@ -202,12 +208,16 @@ void recvPoint(SOCKET sock, _POINT& point) {
 void LANcore(SOCKET sock, bool isHost) {
     _TURN = true;  // Start with X's turn
     while (true) {
+        DrawBoard();  // Refresh board each turn
+
         if (isHost) {  // Host plays X
-            if (_TURN == true) {  // X's turn
-                if (moveWASDLAN()) {  // Made a move
+            if (_TURN) {  // X's turn
+                if (moveWASDLAN()) {
                     _POINT player1 = { _X, _Y, -1, true };
                     sendPoint(sock, player1);
-                    _TURN = !_TURN;
+                    _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = -1;
+                    _TURN = false;
+                    DrawBoard();
                 }
             }
             else {  // O's turn
@@ -215,27 +225,30 @@ void LANcore(SOCKET sock, bool isHost) {
                 recvPoint(sock, player2);
                 if (player2.isMove) {
                     _A[0][(player2.y - TOP - 1) / 2][(player2.x - LEFT - 2) / 4].c = 1;
+                    _TURN = true;
                     DrawBoard();
-                    _TURN = !_TURN;
                 }
             }
         }
         else {  // Client plays O
-            if (_TURN == false) {  // Client's turn (O)
-                if (moveArrowLAN()) {  // Made a move
+            if (!_TURN) {  // O's turn
+                if (moveArrowLAN()) {
                     _POINT player2 = { _X, _Y, 1, true };
                     sendPoint(sock, player2);
+                    _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = 1;
+                    _TURN = true;
+                    DrawBoard();
                 }
             }
-            else {  // Wait for X's turn
+            else {  // X's turn
                 _POINT player1;
                 recvPoint(sock, player1);
                 if (player1.isMove) {
                     _A[0][(player1.y - TOP - 1) / 2][(player1.x - LEFT - 2) / 4].c = -1;
+                    _TURN = false;
                     DrawBoard();
                 }
             }
         }
     }
 }
-
