@@ -217,7 +217,7 @@ bool sureExit() { // mode 0 la luc moi vo game, 1 la luc pause, bool bool để 
 		COLOR_BLUE_HI "   NO   " COLOR_RESET
 	};
 
-	int selectedItem = 3;
+	int selectedItem = 0;
 
 	while (1) {
 		system("cls");
@@ -618,12 +618,7 @@ void MenuHandler() {
 		// display menu with highlights
 
 		// vị trí các ô chức năng
-		int toadoY1 = 15;  // bien test ========================================== 
-
-		//for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-		//	GotoXY(((RIGHT + LEFT) / 2) - 6, toadoY1 + i * 2);
-		//	cout << "                        "; // Xóa dòng menu cũ
-		//}
+		int toadoY1 = 15;  
 
 		
 		for (int i = 0; i < NUM_MENU_ITEMS; i++) {
