@@ -266,15 +266,14 @@ void LANcore(SOCKET sock, bool isHost) {
                             recvPoint(sock, confirmation);
                             winner = TestBoardLAN();
 
-                            ProcessFinish(winner);
-
-
-                            if (AskContinue() != 'Y') {
-                                MenuHandler();
-                                return;
-                            }
-                            else {
-                                StartGame();
+                            switch (ProcessFinish(winner)) {
+                                case -1: case 1: case 0:
+                                    if (AskContinue() != 'Y') {
+                                        MenuHandler();
+                                        return;
+                                    }
+                                    else
+                                        StartGame();
                             }
                         }
                         _TURN = false;
@@ -301,17 +300,18 @@ void LANcore(SOCKET sock, bool isHost) {
                         if (winner != 2) {
                             Sleep(100);
                             winner = TestBoardLAN();
-                            ProcessFinish(winner);
                             _POINT endAck;
                             recvPoint(sock, endAck);
                             sendPoint(sock, endAck);
 
-                            if (AskContinue() != 'Y') {
-                                MenuHandler();
-                                return;
-                            }
-                            else {
-                                StartGame();
+                            switch (ProcessFinish(winner)) {
+                            case -1: case 1: case 0:
+                                if (AskContinue() != 'Y') {
+                                    MenuHandler();
+                                    return;
+                                }
+                                else
+                                    StartGame();
                             }
                         }
                         _TURN = true;
@@ -341,18 +341,18 @@ void LANcore(SOCKET sock, bool isHost) {
                             DrawBoard();
                             DrawExistingXO();
                             winner = TestBoardLAN();
-
-                            ProcessFinish(winner);
                             _POINT endAck = { 0, 0, winner, true };
                             sendPoint(sock, endAck);
                             recvPoint(sock, confirmation);
 
-                            if (AskContinue() != 'Y') {
-                                MenuHandler();
-                                return;
-                            }
-                            else {
-                                StartGame();
+                            switch (ProcessFinish(winner)) {
+                            case -1: case 1: case 0:
+                                if (AskContinue() != 'Y') {
+                                    MenuHandler();
+                                    return;
+                                }
+                                else
+                                    StartGame();
                             }
                         }
                         _TURN = true;
@@ -379,17 +379,18 @@ void LANcore(SOCKET sock, bool isHost) {
                         if (winner != 2) {
                             Sleep(100);
                             winner = TestBoardLAN();
-                            ProcessFinish(winner);
                             _POINT endAck;
                             recvPoint(sock, endAck);
                             sendPoint(sock, endAck);
-
-                            if (AskContinue() != 'Y') {
-                                MenuHandler();
-                                return;
-                            }
-                            else {
-                                StartGame();
+                          
+                            switch (ProcessFinish(winner)) {
+                            case -1: case 1: case 0:
+                                if (AskContinue() != 'Y') {
+                                    MenuHandler();
+                                    return;
+                                }
+                                else
+                                    StartGame();
                             }
                         }
                         _TURN = false;
