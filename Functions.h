@@ -157,7 +157,7 @@ void newGameSound();
 void pickSound();
 void exitSound();
 void saveSound();
-//void moveSound();
+void moveSound();
 
 
 
