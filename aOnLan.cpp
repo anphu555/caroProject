@@ -261,12 +261,13 @@ void LANcore(SOCKET sock, bool isHost) {
                             Sleep(100);
                             DrawBoard();
                             DrawExistingXO();
-                            winner = TestBoardLAN();
-
-                            ProcessFinish(winner);
                             _POINT endAck = { 0, 0, winner, true };
                             sendPoint(sock, endAck);
                             recvPoint(sock, confirmation);
+                            winner = TestBoardLAN();
+
+                            ProcessFinish(winner);
+
 
                             if (AskContinue() != 'Y') {
                                 MenuHandler();
