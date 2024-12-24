@@ -639,10 +639,12 @@ void MenuHandler() {
 		int ch = getch();
 		switch (ch) {
 		case 'W': case 'w': case 72: // up
+			moveSound();
 			selectedItem = (selectedItem - 1 + NUM_MENU_ITEMS) % NUM_MENU_ITEMS;
 			break;
 
 		case 'S': case 's': case 80: // down
+			moveSound();
 			selectedItem = (selectedItem + 1) % NUM_MENU_ITEMS;
 			break;
 

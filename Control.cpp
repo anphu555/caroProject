@@ -90,28 +90,28 @@ void GameMove()
             // nut danh luot X (_TURN true)
             case 'A': { 
                 if (_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveLeft();
                 }
                 break;
             }
             case 'W': { 
                 if (_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveUp();
                 }
                 break;
             }
             case 'S': { 
                 if (_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveDown();
                 }
                 break;
             }
             case 'D': {
                 if (_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveRight();
                 }
                 break;
@@ -120,28 +120,28 @@ void GameMove()
             case 75: {          // left arrow: 75
                 if (!_TURN)
                 {
-                    moveSound();
+                    //moveSound();
                     MoveLeft();
                 }
                 break;
             }
             case 72: {          // up arrow: 72
                 if (!_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveUp();
                 }
                 break;
             }
             case 80: {          // down arrow: 80
                 if (!_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveDown();
                 }
                 break;
             }
             case 77: {          // right arrow: 77
                 if (!_TURN) {
-                    moveSound();
+                    //moveSound();
                     MoveRight();
                 }
                 break;
@@ -212,22 +212,22 @@ void moveWASDAI()
                // WASD cho X, mui ten cho O
                // nut danh luot X (_TURN true)
         case 'A': {
-            moveSound();
+            //moveSound();
             MoveLeft();
             break;
         }
         case 'W': {
-            moveSound();
+            //moveSound();
             MoveUp();
             break;
         }
         case 'S': {
-            moveSound();
+            //moveSound();
             MoveDown();
             break;
         }
         case 'D': {
-            moveSound();
+            //moveSound();
             MoveRight();
             break;
         }
