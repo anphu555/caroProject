@@ -66,6 +66,7 @@ void startServer() {
         hints.ai_socktype = SOCK_STREAM;
 
         if (getaddrinfo(hostname, nullptr, &hints, &info) == 0) {
+            GotoXY(32, 15);
             cout << "Server is running. Connect using one of these IPs:" << endl;
 
             for (addrinfo* ptr = info; ptr != nullptr; ptr = ptr->ai_next) {

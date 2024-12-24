@@ -126,6 +126,7 @@ bool sureExit();
 void InGameMenu();
 vector<string> GetSaveFiles();
 string SelectSaveFile(bool);
+string SelectOverwriteFile(bool);
 
 
 

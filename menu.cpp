@@ -320,7 +320,7 @@ void MenuPVP()
 		int toadoY1 = 15; // toa do kiemm thu
 		for (int i = 0; i < NUM_OFFLINE_ITEMS; i++)
 		{
-			GotoXY(((RIGHT + LEFT) / 2 - 6), toadoY1 + i * 2); //*2 de moi dong cach 1 o
+			GotoXY(((RIGHT + LEFT) / 2 - 9), toadoY1 + i * 2); //*2 de moi dong cach 1 o
 			if (i == selectedItem)
 			{
 				cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
@@ -358,6 +358,8 @@ void MenuPVP()
 
 			case 1: {
 				string serverIP;
+				BorderSquareLine(50, 78, 16, 18, 0);
+				GotoXY(52, 17);
 				cout << "Enter server IP: ";
 				cin >> serverIP;
 				startClient(serverIP);
@@ -958,9 +960,11 @@ string SelectSaveFile(bool isSaving) {
 
 			system("cls");
 			LoadLogo(22, 2);
-			RedMushroom(50, 10);
-			RedMushroom(64, 10);
 			BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom, 0);
+			RedMushroom(52, 10.5);
+			RedMushroom(62, 10.5);
+			RedMushroom(40, 10);
+			RedMushroom(74, 10);
 			for (int i = 0; i < saveFiles.size(); i++) {
 				int toadoY1 = 15;
 				GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
@@ -1030,6 +1034,161 @@ string SelectSaveFile(bool isSaving) {
 	}
 }
 
+string SelectOverwriteFile(bool isSaving) {
+	vector<string> saveFiles = GetSaveFiles();
+	int selectedFile = 1;
+	OverwriteLogo(5, 2);
+	int borderTop = 13;
+	int borderBottom = 27;
+	int borderLeft = (RIGHT + LEFT) / 2 - 20;
+	int borderRight = (RIGHT + LEFT) / 2 + 20;
+
+	while (true) {
+		system("cls");
+
+		if (isSaving) {
+			if (selectedFile == 1) {
+				while (true) {
+					system("cls");
+					BorderSquareLine(34, 82, 18, 20, 0);
+					SaveNewFileLogo(7.5, 11);
+					GotoXY(48, 22);
+					cout << "PRESS ESC TO GO BACK!";
+					int borderX = 34, borderY = 18;
+					GotoXY(borderX + 2, borderY + 1);
+					string filename;
+					cout << "Enter save name: ";
+					/*int cursorPos = 0;*/
+					/*getline(cin, filename);*/
+					int ch;
+
+					/*bool escPressed = false;*/
+					while (true) {
+
+						ch = getch();
+						if (ch == 27) {
+							/*escPressed = true;
+							break;*/
+							return "BACK";
+						}
+						else if (ch == '\r') { // Phím Enter
+
+							break;
+						}
+						else if (ch == 8) { // Nhấn Backspace để xóa ký tự cuối
+							if (!filename.empty()) {
+								filename.pop_back(); // Xóa ký tự cuối trong chuỗi
+								cout << "\b \b"; // Xóa ký tự trên màn hình
+							}
+						}
+						else if (ch == -32 || ch == 224) { // Phím mũi tên (Windows)
+							getch(); // Bỏ qua mã phím tiếp theo (phím điều hướng gửi mã kép)
+						}
+						else {
+							filename += ch;
+							cout << (char)ch;
+
+						}
+					}
+
+					/*	if (escPressed) {
+							return "BACK";
+						}*/
+
+					if (filename.empty()) {
+						GotoXY(38, 24);
+						cout << "File name cannot be empty! Please try again.\n";
+						GotoXY(46, 25);
+						cout << COLOR_RED_HI "Press any key to continue..." COLOR_RESET;
+						getch();
+						continue;
+					}
+					else if (filename.length() < 4 || filename.substr(filename.length() - 4) != ".txt") {
+						filename += ".txt";
+						//GotoXY(38, 24);
+					}
+					return filename;
+				}
+				continue;
+			}
+		}
+		else {
+
+			system("cls");
+			OverwriteLogo(5, 2);
+			EnderMan(55, 9);
+			GoldOre(35, 9);
+			GoldOre(79, 9);
+			cout << COLOR_RESET;
+			BorderSquareLine(borderLeft, borderRight, borderTop, borderBottom, 0);
+			for (int i = 0; i < saveFiles.size(); i++) {
+				int toadoY1 = 15;
+				GotoXY(((RIGHT + LEFT) / 2) - 7, toadoY1 + i * 2);
+
+				if (i + 1 == selectedFile) {
+					cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+					cout << ">> " << saveFiles[i] << " <<" << endl;
+					cout << COLOR_RESET;
+				}
+				else {
+					cout << "   " << saveFiles[i] << endl;
+				}
+			}
+		}
+
+		if (selectedFile == 0) {
+			int toadoY1 = 15;
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
+			cout << BACKGROUND_YELLOW COLOR_WHITE COLOR_BOLD COLOR_DARK;
+			cout << ">> Back <<" << endl;
+			cout << COLOR_RESET;
+		}
+		else {
+			int toadoY1 = 15;
+			GotoXY(((RIGHT + LEFT) / 2) - 7, 25);
+			cout << COLOR_RED_HI "   Back" << endl;
+			cout << COLOR_RESET;
+		}
+
+		int ch = getch();
+		switch (ch) {
+		case 'W': case 'w': case 72: // Lên
+			if (selectedFile > 0) {
+				selectedFile--;
+			}
+			else { // Vòng về cuối danh sách
+				selectedFile = isSaving ? 1 : saveFiles.size();
+			}
+			break;
+
+		case 'S': case 's': case 80: // Xuống
+			if (isSaving && selectedFile < 1) {
+				selectedFile++;
+			}
+			else if (!isSaving && selectedFile < saveFiles.size()) {
+				selectedFile++;
+			}
+			else { // Vòng về đầu danh sách
+				selectedFile = 0;
+			}
+			break;
+
+		case 13: // Enter
+			pickSound();
+			if (selectedFile == 0) {
+				return "BACK";
+			}
+			if (isSaving && selectedFile == 1) {
+				continue;
+			}
+			return saveFiles[selectedFile - (isSaving ? 2 : 1)];
+
+		case 27: // ESC
+			pickSound();
+			return "BACK";
+		}
+	}
+}
 void saveGame() {
 	HideCursor();
 	if (_X == 0 && _Y == 0) {
@@ -1089,7 +1248,6 @@ void saveGame() {
 				return;
 			}
 			if (selectedOption == 0) {
-
 				AppearCursor();
 				string filename = SelectSaveFile(true); // Gọi hàm SelectSaveFile để chọn file mới
 				if (filename == "BACK") {
@@ -1138,7 +1296,7 @@ void saveGame() {
 			if (selectedOption == 1) {
 
 				AppearCursor();
-				string filename = SelectSaveFile(false); // Chọn file đã tồn tại
+				string filename = SelectOverwriteFile(false); // Chọn file đã tồn tại
 				if (filename == "BACK") { // user canceled (Back)
 					HideCursor();
 					break;

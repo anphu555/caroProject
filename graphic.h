@@ -49,6 +49,7 @@ void backgroundGraphic();
 void CreeperMini(int x, int y);
 void EnderMan(int x, int y);
 void Chicken(int x, int y);
+void OverwriteLogo(int x, int y);
 
 void DiamondPickaxe(int x, int y);
 void DiamondPickaxe2(int x, int y);
