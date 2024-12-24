@@ -299,23 +299,14 @@ bool moveWASDLAN() {
                 moveXCount++;
                 GotoXY(10, 12);
                 cout << COLOR_RED "Moves player X: " << moveXCount << COLOR_RESET;
-
-                switch (ProcessFinish(TestBoard(0))) {
-                case -1: case 1: case 0:
-                    if (AskContinue() != 'Y') {
-                        MenuHandler();
-                        return false;
-                    }
-                    StartGame();
-                    return false;
-                }
-                return true;
+                return true;  // Just return true after making the move
             }
             break;
         }
     }
 }
 
+// Modified movement function for O player (Arrow keys)
 bool moveArrowLAN() {
     while (1) {
         _COMMAND = toupper(getch());
@@ -342,17 +333,7 @@ bool moveArrowLAN() {
                 moveOCount++;
                 GotoXY(93, 12);
                 cout << COLOR_BLUE "Moves player O: " << moveOCount << COLOR_RESET;
-
-                switch (ProcessFinish(TestBoard(0))) {
-                case -1: case 1: case 0:
-                    if (AskContinue() != 'Y') {
-                        MenuHandler();
-                        return false;
-                    }
-                    StartGame();
-                    return false;
-                }
-                return true;
+                return true;  // Just return true after making the move
             }
             break;
         }
