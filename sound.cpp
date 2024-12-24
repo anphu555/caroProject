@@ -12,13 +12,12 @@ void backgroundMusicSound()
 {
 	if (musicSong == 0) // menu
 	{
-		mciSendString(L"stop \"Sweden.mp3\"", NULL, 0, 0); //stop ingame music
+		mciSendString(L"stop \"Creator.mp3\"", NULL, 0, 0); //stop ingame music
 		(backgroundMusicmode) ? mciSendString(L"play \"Sweden.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"Sweden.mp3\"", NULL, 0, 0);
-		
 	}
 	else if (musicSong == 1) 
 	{
-		mciSendString(L"stop \"Creator.mp3\"", NULL, 0, 0);
+		mciSendString(L"stop \"Sweden.mp3\"", NULL, 0, 0);
 		(backgroundMusicmode) ? mciSendString(L"play \"Creator.mp3\" repeat", NULL, 0, 0) : mciSendString(L"pause \"Creator.mp3\"", NULL, 0, 0);
 	}
 }

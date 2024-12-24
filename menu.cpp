@@ -717,8 +717,9 @@ void MenuHandler() {
 
 				ExitGame();
 
-				mciSendString(L"close \"NewSwe2.mp3\"", NULL, 0, NULL);
-				mciSendString(L"close \"music1.mp3\"", NULL, 0, NULL);
+				mciSendString(L"close \"Sweden.mp3\"", NULL, 0, NULL);
+				mciSendString(L"close \"Creator.mp3\"", NULL, 0, NULL);
+
 				exit(0);
 				break;
 			}
