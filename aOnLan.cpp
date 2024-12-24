@@ -256,12 +256,12 @@ void LANcore(SOCKET sock, bool isHost) {
                         _POINT confirmation;
                         recvPoint(sock, confirmation);
 
-                        int winner = TestWin(0);
+                        int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
                             DrawBoard();
                             DrawExistingXO();
-                            winner = TestBoardLAN(0);
+                            winner = TestBoardLAN();
 
                             ProcessFinish(winner);
                             _POINT endAck = { 0, 0, winner, true };
@@ -296,10 +296,10 @@ void LANcore(SOCKET sock, bool isHost) {
 
                         sendPoint(sock, oppMove);
 
-                        int winner = TestWin(0);
+                        int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
-                            winner = TestBoardLAN(0);
+                            winner = TestBoardLAN();
                             ProcessFinish(winner);
                             _POINT endAck;
                             recvPoint(sock, endAck);
@@ -334,12 +334,12 @@ void LANcore(SOCKET sock, bool isHost) {
                         _POINT confirmation;
                         recvPoint(sock, confirmation);
 
-                        int winner = TestWin(0);
+                        int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
                             DrawBoard();
                             DrawExistingXO();
-                            winner = TestBoardLAN(0);
+                            winner = TestBoardLAN();
 
                             ProcessFinish(winner);
                             _POINT endAck = { 0, 0, winner, true };
@@ -374,10 +374,10 @@ void LANcore(SOCKET sock, bool isHost) {
 
                         sendPoint(sock, oppMove);
 
-                        int winner = TestWin(0);
+                        int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
-                            winner = TestBoardLAN(0);
+                            winner = TestBoardLAN();
                             ProcessFinish(winner);
                             _POINT endAck;
                             recvPoint(sock, endAck);
