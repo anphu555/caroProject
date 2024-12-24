@@ -428,4 +428,4 @@ void LANcore(SOCKET sock, bool isHost) {
             }
         }
     }
-}
+}   
