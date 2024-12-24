@@ -234,7 +234,6 @@ void handleDisconnect() {
 }
 
 void LANcore(SOCKET sock, bool isHost) {
-    // Set 30 second timeout for both send and receive
     if (!setSocketTimeout(sock, 30)) {
         cerr << "Failed to set socket timeout\n";
         return;
@@ -248,32 +247,38 @@ void LANcore(SOCKET sock, bool isHost) {
             if (_TURN) {
                 if (moveWASDLAN()) {
                     _POINT move = { _X, _Y, -1, true };
-                    _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = -1;
-
                     try {
+                        // Send move first
                         sendPoint(sock, move);
 
+                        // Wait for acknowledgment
                         _POINT confirmation;
                         recvPoint(sock, confirmation);
 
+                        // Check for win condition
                         int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
                             DrawBoard();
                             DrawExistingXO();
-                            _POINT endAck = { 0, 0, winner, true };
-                            sendPoint(sock, endAck);
-                            recvPoint(sock, confirmation);
                             winner = TestBoardLAN();
 
                             switch (ProcessFinish(winner)) {
-                                case -1: case 1: case 0:
-                                    if (AskContinue() != 'Y') {
-                                        MenuHandler();
-                                        return;
+                            case -1: case 1: case 0:
+                                if (AskContinue() != 'Y') {
+                                    MenuHandler();
+                                    return;
+                                }
+                                else {
+                                    StartGame();
+                                    // Sync new game state
+                                    for (int i = 0; i < BOARD_SIZE; i++) {
+                                        for (int j = 0; j < BOARD_SIZE; j++) {
+                                            _POINT boardState = { _A[0][i][j].x, _A[0][i][j].y, _A[0][i][j].c, false };
+                                            sendPoint(sock, boardState);
+                                        }
                                     }
-                                    else
-                                        StartGame();
+                                }
                             }
                         }
                         _TURN = false;
@@ -290,19 +295,17 @@ void LANcore(SOCKET sock, bool isHost) {
                     recvPoint(sock, oppMove);
 
                     if (oppMove.isMove) {
-                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = 1;  // O's move
+                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = 1;
                         DrawBoard();
                         DrawExistingXO();
 
+                        // Send acknowledgment
                         sendPoint(sock, oppMove);
 
                         int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
                             winner = TestBoardLAN();
-                            _POINT endAck;
-                            recvPoint(sock, endAck);
-                            sendPoint(sock, endAck);
 
                             switch (ProcessFinish(winner)) {
                             case -1: case 1: case 0:
@@ -310,8 +313,17 @@ void LANcore(SOCKET sock, bool isHost) {
                                     MenuHandler();
                                     return;
                                 }
-                                else
+                                else {
                                     StartGame();
+                                    // Receive new game state
+                                    for (int i = 0; i < BOARD_SIZE; i++) {
+                                        for (int j = 0; j < BOARD_SIZE; j++) {
+                                            _POINT boardState;
+                                            recvPoint(sock, boardState);
+                                            _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
+                                        }
+                                    }
+                                }
                             }
                         }
                         _TURN = true;
@@ -323,15 +335,15 @@ void LANcore(SOCKET sock, bool isHost) {
                 }
             }
         }
-        else {  // O Player
+        else {  // O Player (Client)
             if (!_TURN) {
                 if (moveArrowLAN()) {
                     _POINT move = { _X, _Y, 1, true };
-                    _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = 1;
-
                     try {
+                        // Send move to server
                         sendPoint(sock, move);
 
+                        // Wait for server acknowledgment
                         _POINT confirmation;
                         recvPoint(sock, confirmation);
 
@@ -341,9 +353,6 @@ void LANcore(SOCKET sock, bool isHost) {
                             DrawBoard();
                             DrawExistingXO();
                             winner = TestBoardLAN();
-                            _POINT endAck = { 0, 0, winner, true };
-                            sendPoint(sock, endAck);
-                            recvPoint(sock, confirmation);
 
                             switch (ProcessFinish(winner)) {
                             case -1: case 1: case 0:
@@ -351,8 +360,17 @@ void LANcore(SOCKET sock, bool isHost) {
                                     MenuHandler();
                                     return;
                                 }
-                                else
+                                else {
                                     StartGame();
+                                    // Wait for new game state from server
+                                    for (int i = 0; i < BOARD_SIZE; i++) {
+                                        for (int j = 0; j < BOARD_SIZE; j++) {
+                                            _POINT boardState;
+                                            recvPoint(sock, boardState);
+                                            _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
+                                        }
+                                    }
+                                }
                             }
                         }
                         _TURN = true;
@@ -369,28 +387,35 @@ void LANcore(SOCKET sock, bool isHost) {
                     recvPoint(sock, oppMove);
 
                     if (oppMove.isMove) {
-                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = -1;  // X's move
+                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = -1;
                         DrawBoard();
                         DrawExistingXO();
 
+                        // Send acknowledgment
                         sendPoint(sock, oppMove);
 
                         int winner = TestWin();
                         if (winner != 2) {
                             Sleep(100);
                             winner = TestBoardLAN();
-                            _POINT endAck;
-                            recvPoint(sock, endAck);
-                            sendPoint(sock, endAck);
-                          
+
                             switch (ProcessFinish(winner)) {
                             case -1: case 1: case 0:
                                 if (AskContinue() != 'Y') {
                                     MenuHandler();
                                     return;
                                 }
-                                else
+                                else {
                                     StartGame();
+                                    // Receive new game state
+                                    for (int i = 0; i < BOARD_SIZE; i++) {
+                                        for (int j = 0; j < BOARD_SIZE; j++) {
+                                            _POINT boardState;
+                                            recvPoint(sock, boardState);
+                                            _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
+                                        }
+                                    }
+                                }
                             }
                         }
                         _TURN = false;
