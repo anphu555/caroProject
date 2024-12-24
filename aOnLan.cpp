@@ -214,7 +214,32 @@ void recvGameState(SOCKET sock, GameState& state) {
 }
 
 
+// Add these helper functions at the top
+bool setSocketTimeout(SOCKET sock, int timeoutSec) {
+    DWORD timeout = timeoutSec * 1000; // Convert to milliseconds
+    if (setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (char*)&timeout, sizeof(timeout)) != 0) {
+        return false;
+    }
+    if (setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (char*)&timeout, sizeof(timeout)) != 0) {
+        return false;
+    }
+    return true;
+}
+
+void handleDisconnect() {
+    system("cls");
+    cout << "\nConnection lost! Press any key to return to menu...\n";
+    _getch();
+    MenuHandler();
+}
+
 void LANcore(SOCKET sock, bool isHost) {
+    // Set 30 second timeout for both send and receive
+    if (!setSocketTimeout(sock, 30)) {
+        cerr << "Failed to set socket timeout\n";
+        return;
+    }
+
     _TURN = true;
     while (true) {
         DrawBoard();
@@ -225,147 +250,153 @@ void LANcore(SOCKET sock, bool isHost) {
                     _POINT move = { _X, _Y, -1, true };
                     _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = -1;
 
+                    try {
+                        sendPoint(sock, move);
 
-                    // Send move immediately
-                    sendPoint(sock, move);
-
-                    int winner = TestBoard(0);
-                    // Wait for move confirmation from opponent
-                    _POINT confirmation;
-                    recvPoint(sock, confirmation);
-
-                    if (winner != 2) {
-                        ProcessFinish(winner);
-                        // Send game end acknowledgment
-                        _POINT endAck = { 0, 0, winner, true };
-                        sendPoint(sock, endAck);
-                        // Wait for opponent's acknowledgment
+                        _POINT confirmation;
                         recvPoint(sock, confirmation);
 
-                        if (AskContinue() == 'Y') {
-                            StartGame();
-                            // Sync new game state
-                            for (int i = 0; i < BOARD_SIZE; i++) {
-                                for (int j = 0; j < BOARD_SIZE; j++) {
-                                    _POINT boardState = { _A[0][i][j].x, _A[0][i][j].y, _A[0][i][j].c, false };
-                                    sendPoint(sock, boardState);
-                                }
+                        int winner = TestWin(0);
+                        if (winner != 2) {
+                            Sleep(100);
+                            DrawBoard();
+                            DrawExistingXO();
+                            winner = TestBoardLAN(0);
+
+                            ProcessFinish(winner);
+                            _POINT endAck = { 0, 0, winner, true };
+                            sendPoint(sock, endAck);
+                            recvPoint(sock, confirmation);
+
+                            if (AskContinue() != 'Y') {
+                                MenuHandler();
+                                return;
+                            }
+                            else {
+                                StartGame();
                             }
                         }
-                        else {
-                            break;
-                        }
+                        _TURN = false;
                     }
-                    _TURN = false;
+                    catch (const std::runtime_error&) {
+                        handleDisconnect();
+                        return;
+                    }
                 }
             }
             else {
-                _POINT oppMove;
-                recvPoint(sock, oppMove);
+                try {
+                    _POINT oppMove;
+                    recvPoint(sock, oppMove);
 
-                if (oppMove.isMove) {
-                    _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = 1;
+                    if (oppMove.isMove) {
+                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = 1;  // O's move
+                        DrawBoard();
+                        DrawExistingXO();
 
+                        sendPoint(sock, oppMove);
 
-                    // Send move confirmation
-                    sendPoint(sock, oppMove);
+                        int winner = TestWin(0);
+                        if (winner != 2) {
+                            Sleep(100);
+                            winner = TestBoardLAN(0);
+                            ProcessFinish(winner);
+                            _POINT endAck;
+                            recvPoint(sock, endAck);
+                            sendPoint(sock, endAck);
 
-                    int winner = TestBoard(0);
-                    if (winner != 2) {
-                        ProcessFinish(winner);
-                        // Wait for game end acknowledgment
-                        _POINT endAck;
-                        recvPoint(sock, endAck);
-                        // Send confirmation
-                        sendPoint(sock, endAck);
-
-                        if (AskContinue() == 'Y') {
-                            // Wait for new game state
-                            for (int i = 0; i < BOARD_SIZE; i++) {
-                                for (int j = 0; j < BOARD_SIZE; j++) {
-                                    _POINT boardState;
-                                    recvPoint(sock, boardState);
-                                    _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
-                                }
+                            if (AskContinue() != 'Y') {
+                                MenuHandler();
+                                return;
                             }
-                            StartGame();
+                            else {
+                                StartGame();
+                            }
                         }
-                        else {
-                            break;
-                        }
+                        _TURN = true;
                     }
-                    _TURN = true;
+                }
+                catch (const std::runtime_error&) {
+                    handleDisconnect();
+                    return;
                 }
             }
         }
-        else {  // O Player - Similar logic with roles reversed
+        else {  // O Player
             if (!_TURN) {
                 if (moveArrowLAN()) {
                     _POINT move = { _X, _Y, 1, true };
                     _A[0][(_Y - TOP - 1) / 2][(_X - LEFT - 2) / 4].c = 1;
 
+                    try {
+                        sendPoint(sock, move);
 
-                    sendPoint(sock, move);
-
-                    int winner = TestBoard(0);
-                    _POINT confirmation;
-                    recvPoint(sock, confirmation);
-
-                    if (winner != 2) {
-                        ProcessFinish(winner);
-                        _POINT endAck = { 0, 0, winner, true };
-                        sendPoint(sock, endAck);
+                        _POINT confirmation;
                         recvPoint(sock, confirmation);
 
-                        if (AskContinue() == 'Y') {
-                            // Wait for new game state
-                            for (int i = 0; i < BOARD_SIZE; i++) {
-                                for (int j = 0; j < BOARD_SIZE; j++) {
-                                    _POINT boardState;
-                                    recvPoint(sock, boardState);
-                                    _A[0][i][j] = { boardState.x, boardState.y, boardState.c };
-                                }
+                        int winner = TestWin(0);
+                        if (winner != 2) {
+                            Sleep(100);
+                            DrawBoard();
+                            DrawExistingXO();
+                            winner = TestBoardLAN(0);
+
+                            ProcessFinish(winner);
+                            _POINT endAck = { 0, 0, winner, true };
+                            sendPoint(sock, endAck);
+                            recvPoint(sock, confirmation);
+
+                            if (AskContinue() != 'Y') {
+                                MenuHandler();
+                                return;
                             }
-                            StartGame();
+                            else {
+                                StartGame();
+                            }
                         }
-                        else {
-                            break;
-                        }
+                        _TURN = true;
                     }
-                    _TURN = true;
+                    catch (const std::runtime_error&) {
+                        handleDisconnect();
+                        return;
+                    }
                 }
             }
             else {
-                _POINT oppMove;
-                recvPoint(sock, oppMove);
+                try {
+                    _POINT oppMove;
+                    recvPoint(sock, oppMove);
 
-                if (oppMove.isMove) {
-                    _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = -1;
+                    if (oppMove.isMove) {
+                        _A[0][(oppMove.y - TOP - 1) / 2][(oppMove.x - LEFT - 2) / 4].c = -1;  // X's move
+                        DrawBoard();
+                        DrawExistingXO();
 
+                        sendPoint(sock, oppMove);
 
-                    sendPoint(sock, oppMove);
+                        int winner = TestWin(0);
+                        if (winner != 2) {
+                            Sleep(100);
+                            winner = TestBoardLAN(0);
+                            ProcessFinish(winner);
+                            _POINT endAck;
+                            recvPoint(sock, endAck);
+                            sendPoint(sock, endAck);
 
-                    int winner = TestBoard(0);
-                    if (winner != 2) {
-                        ProcessFinish(winner);
-                        _POINT endAck;
-                        recvPoint(sock, endAck);
-                        sendPoint(sock, endAck);
-
-                        if (AskContinue() == 'Y') {
-                            StartGame();
-                            for (int i = 0; i < BOARD_SIZE; i++) {
-                                for (int j = 0; j < BOARD_SIZE; j++) {
-                                    _POINT boardState = { _A[0][i][j].x, _A[0][i][j].y, _A[0][i][j].c, false };
-                                    sendPoint(sock, boardState);
-                                }
+                            if (AskContinue() != 'Y') {
+                                MenuHandler();
+                                return;
+                            }
+                            else {
+                                StartGame();
                             }
                         }
-                        else {
-                            break;
-                        }
+                        _TURN = false;
                     }
-                    _TURN = false;
+                }
+                catch (const std::runtime_error&) {
+                    handleDisconnect();
+                    return;
                 }
             }
         }

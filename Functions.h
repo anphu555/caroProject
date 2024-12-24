@@ -131,12 +131,15 @@ string SelectSaveFile(bool);
 
 //Model
 void ResetData();
-//void GarbageCollect();
 int TestBoard(int);
+int TestWin(int boardIndex = 0);
+int TestBoardLAN(int boardIndex = 0);
 int CheckBoard(int, int, int);
 void changePlayer();
+
 //Model-AI
 void BoardToBoard(int, int); //copy board1 sang board2
+
 // AI-related function prototypes
 int AIHori(int, int, int);
 int AIVerti(int, int, int);
@@ -175,8 +178,8 @@ void recvPoint(SOCKET sock, _POINT& point);
 void LANcore(SOCKET sock, bool isHost);
 void sendGameState(SOCKET sock, const GameState& state);
 void recvGameState(SOCKET sock, GameState& state);
-
-
+bool setSocketTimeout(SOCKET sock, int timeoutSec);
+void handleDisconnect();
 
 
 #endif
