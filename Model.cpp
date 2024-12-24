@@ -137,11 +137,11 @@ int TestBoard(int boardIndex = 0) { //boardIndex bieu thi _level cua board
 	return 2;
 }
 //No animations
-int TestWin(int boardIndex = 0) {
+int TestWin() {
 	bool boardFull = true;
 	for (int i = 0; i < BOARD_SIZE; i++) {
 		for (int j = 0; j < BOARD_SIZE; j++) {
-			if (_A[boardIndex][i][j].c == 0) {
+			if (_A[0][i][j].c == 0) {
 				boardFull = false;
 				break;
 			}
@@ -153,12 +153,12 @@ int TestWin(int boardIndex = 0) {
 	// check horizontal
 	for (int i = 0; i < BOARD_SIZE; i++) {
 		for (int j = 0; j < BOARD_SIZE - 4; j++) {
-			if (_A[boardIndex][i][j].c != 0 &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i][j + 1].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i][j + 2].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i][j + 3].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i][j + 4].c) {
-				return _A[boardIndex][i][j].c > 0 ? -1 : 1;
+			if (_A[0][i][j].c != 0 &&
+				_A[0][i][j].c == _A[0][i][j + 1].c &&
+				_A[0][i][j].c == _A[0][i][j + 2].c &&
+				_A[0][i][j].c == _A[0][i][j + 3].c &&
+				_A[0][i][j].c == _A[0][i][j + 4].c) {
+				return _A[0][i][j].c > 0 ? -1 : 1;
 			}
 		}
 	}
@@ -166,12 +166,12 @@ int TestWin(int boardIndex = 0) {
 	// check vertical
 	for (int i = 0; i < BOARD_SIZE - 4; i++) {
 		for (int j = 0; j < BOARD_SIZE; j++) {
-			if (_A[boardIndex][i][j].c != 0 &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j].c) {
-				return _A[boardIndex][i][j].c > 0 ? -1 : 1;
+			if (_A[0][i][j].c != 0 &&
+				_A[0][i][j].c == _A[0][i + 1][j].c &&
+				_A[0][i][j].c == _A[0][i + 2][j].c &&
+				_A[0][i][j].c == _A[0][i + 3][j].c &&
+				_A[0][i][j].c == _A[0][i + 4][j].c) {
+				return _A[0][i][j].c > 0 ? -1 : 1;
 			}
 		}
 	}
@@ -179,12 +179,12 @@ int TestWin(int boardIndex = 0) {
 	// check diagonal (top-left to bottom-right)
 	for (int i = 0; i < BOARD_SIZE - 4; i++) {
 		for (int j = 0; j < BOARD_SIZE - 4; j++) {
-			if (_A[boardIndex][i][j].c != 0 &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j + 1].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j + 2].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j + 3].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j + 4].c) {
-				return _A[boardIndex][i][j].c > 0 ? -1 : 1;
+			if (_A[0][i][j].c != 0 &&
+				_A[0][i][j].c == _A[0][i + 1][j + 1].c &&
+				_A[0][i][j].c == _A[0][i + 2][j + 2].c &&
+				_A[0][i][j].c == _A[0][i + 3][j + 3].c &&
+				_A[0][i][j].c == _A[0][i + 4][j + 4].c) {
+				return _A[0][i][j].c > 0 ? -1 : 1;
 			}
 		}
 	}
@@ -192,12 +192,12 @@ int TestWin(int boardIndex = 0) {
 	// check diagonal (top-right to bottom-left)
 	for (int i = 0; i < BOARD_SIZE - 4; i++) {
 		for (int j = 4; j < BOARD_SIZE; j++) {
-			if (_A[boardIndex][i][j].c != 0 &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j - 1].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j - 2].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j - 3].c &&
-				_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j - 4].c) {
-				return _A[boardIndex][i][j].c > 0 ? -1 : 1;
+			if (_A[0][i][j].c != 0 &&
+				_A[0][i][j].c == _A[0][i + 1][j - 1].c &&
+				_A[0][i][j].c == _A[0][i + 2][j - 2].c &&
+				_A[0][i][j].c == _A[0][i + 3][j - 3].c &&
+				_A[0][i][j].c == _A[0][i + 4][j - 4].c) {
+				return _A[0][i][j].c > 0 ? -1 : 1;
 			}
 		}
 	}
@@ -206,19 +206,19 @@ int TestWin(int boardIndex = 0) {
 }
 
 //Animations for lan
-int TestBoardLAN(int boardIndex = 0) {
-	int winner = TestWin(boardIndex);
+int TestBoardLAN() {
+	int winner = TestWin();
 	if (winner != 2) {
 		// If there's a winner or draw, find and display the winning line
 		if (winner != 0) { // Not a draw
 			// check horizontal
 			for (int i = 0; i < BOARD_SIZE; i++) {
 				for (int j = 0; j < BOARD_SIZE - 4; j++) {
-					if (_A[boardIndex][i][j].c != 0 &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i][j + 1].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i][j + 2].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i][j + 3].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i][j + 4].c) {
+					if (_A[0][i][j].c != 0 &&
+						_A[0][i][j].c == _A[0][i][j + 1].c &&
+						_A[0][i][j].c == _A[0][i][j + 2].c &&
+						_A[0][i][j].c == _A[0][i][j + 3].c &&
+						_A[0][i][j].c == _A[0][i][j + 4].c) {
 
 						nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, winner);
 						nhapnhayXO(LEFT + 2 + (j + 1) * 4, TOP + 1 + i * 2, winner);
@@ -232,11 +232,11 @@ int TestBoardLAN(int boardIndex = 0) {
 			// check doc
 			for (int i = 0; i < BOARD_SIZE; i++) {
 				for (int j = 0; j < BOARD_SIZE; j++) {
-					if (_A[boardIndex][i][j].c != 0 &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j].c) {
+					if (_A[0][i][j].c != 0 &&
+						_A[0][i][j].c == _A[0][i + 1][j].c &&
+						_A[0][i][j].c == _A[0][i + 2][j].c &&
+						_A[0][i][j].c == _A[0][i + 3][j].c &&
+						_A[0][i][j].c == _A[0][i + 4][j].c) {
 
 						nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, winner);
 						nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + (i + 1) * 2, winner);
@@ -252,11 +252,11 @@ int TestBoardLAN(int boardIndex = 0) {
 			// check cheo tren trai xuogn duoi phai
 			for (int i = 0; i < BOARD_SIZE; i++) {
 				for (int j = 0; j < BOARD_SIZE; j++) {
-					if (_A[boardIndex][i][j].c != 0 &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j + 1].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j + 2].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j + 3].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j + 4].c && j < (BOARD_SIZE - 4)) {
+					if (_A[0][i][j].c != 0 &&
+						_A[0][i][j].c == _A[0][i + 1][j + 1].c &&
+						_A[0][i][j].c == _A[0][i + 2][j + 2].c &&
+						_A[0][i][j].c == _A[0][i + 3][j + 3].c &&
+						_A[0][i][j].c == _A[0][i + 4][j + 4].c && j < (BOARD_SIZE - 4)) {
 
 						nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, winner);
 						nhapnhayXO(LEFT + 2 + (j + 1) * 4, TOP + 1 + (i + 1) * 2, winner);
@@ -272,11 +272,11 @@ int TestBoardLAN(int boardIndex = 0) {
 			// check cheo tu tren phai xuong duoi trai
 			for (int i = 0; i < BOARD_SIZE; i++) {
 				for (int j = 0; j < BOARD_SIZE; j++) {
-					if (_A[boardIndex][i][j].c != 0 &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 1][j - 1].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 2][j - 2].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 3][j - 3].c &&
-						_A[boardIndex][i][j].c == _A[boardIndex][i + 4][j - 4].c && j < (BOARD_SIZE - 4) && (j - 4) >= 0) {
+					if (_A[0][i][j].c != 0 &&
+						_A[0][i][j].c == _A[0][i + 1][j - 1].c &&
+						_A[0][i][j].c == _A[0][i + 2][j - 2].c &&
+						_A[0][i][j].c == _A[0][i + 3][j - 3].c &&
+						_A[0][i][j].c == _A[0][i + 4][j - 4].c && j < (BOARD_SIZE - 4) && (j - 4) >= 0) {
 
 						nhapnhayXO(LEFT + 2 + j * 4, TOP + 1 + i * 2, winner);
 						nhapnhayXO(LEFT + 2 + (j - 1) * 4, TOP + 1 + (i + 1) * 2, winner);

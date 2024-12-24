@@ -132,8 +132,8 @@ string SelectSaveFile(bool);
 //Model
 void ResetData();
 int TestBoard(int);
-int TestWin(int boardIndex = 0);
-int TestBoardLAN(int boardIndex = 0);
+int TestWin();
+int TestBoardLAN();
 int CheckBoard(int, int, int);
 void changePlayer();
 
